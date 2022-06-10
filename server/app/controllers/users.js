@@ -4,6 +4,7 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// route for user registration
 router.post("/register", async (req, res, next) => {
   const { username, name, email, phone, password } = req.body;
 
@@ -49,6 +50,7 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
+// route for user login
 router.get("/login", async (req, res, next) => {
   const { username, password } = req.body;
 
@@ -69,9 +71,23 @@ router.get("/login", async (req, res, next) => {
       return res.status(400).send({ message: `Invalid credentials!` }).next;
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, {
-      expiresIn: "7 days",
-    });
+    // return data in jwt
+    const payload = {
+      user: {
+        id: user.id,
+        username: user.username,
+      },
+    };
+
+    jwt.sign(
+      payload,
+      process.env.JWT_SECRET,
+      { expiresIn: "7 days" },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
