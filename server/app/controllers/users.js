@@ -76,6 +76,7 @@ router.get("/login", async (req, res, next) => {
       user: {
         id: user.id,
         username: user.username,
+        role: user.role,
       },
     };
 
