@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const dbConnect = require("./app/config/db");
 require("dotenv").config();
@@ -9,6 +10,13 @@ const routes = require("./app/routes");
 // middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// sites access with this api server
+var corsOptions = {
+  origin: ["http://localhost:8081", "http://localhost:8082"],
+};
+
+app.use(cors(corsOptions));
 
 // file access publicly
 app.use(
