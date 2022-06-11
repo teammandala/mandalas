@@ -1,6 +1,8 @@
 .navbar{
     align-items: center;
     justify-content: center;
+    
+  box-shadow: 0 4px 8px 0 rgba(30, 149, 119, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
     background-size: 300% 300%;
     background-image: linear-gradient(
           -45deg, 
