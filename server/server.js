@@ -19,11 +19,12 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 // file access publicly
+app.use("/media/avatar", express.static(path.join(__dirname, "/media/avatar")));
 app.use(
-  "/media/avatar/",
-  express.static(path.join(__dirname, "/media/avatar"))
+  "/media/auction",
+  express.static(path.join(__dirname, "/media/auction"))
 );
-// app.use("/", express.static(__dirname));
+app.use("/media/kyc", express.static(path.join(__dirname, "/media/kyc")));
 
 // db
 dbConnect();
