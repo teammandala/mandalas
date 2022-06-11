@@ -7,6 +7,7 @@ import Loginpage from "../pages/login";
 import Profilepage from "../pages/profile";
 import Signuppage from "../pages/signup";
 import About from "../pages/about";
+import Pagenotfound from "../pages/pagenotfound";
 class Router extends React.Component {
   render() {
     return (
@@ -19,6 +20,7 @@ class Router extends React.Component {
           <Route path="/signup" element={<Signuppage />} />
           <Route path="/profile" element={<Profilepage />} />
           <Route path="/about" element={<About />} />
+          <Route path="*" element={<Pagenotfound />} />
           
         </Routes>
       </>

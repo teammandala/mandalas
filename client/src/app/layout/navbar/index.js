@@ -13,9 +13,9 @@ const Navigationbar = () => {
               <Nav.Link href="auction">Auction</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
-              
-              </Nav>
-              <Nav>
+
+            </Nav>
+            <Nav>
               <Form className="d-flex">
                 <FormControl
                   type="search"
@@ -26,12 +26,12 @@ const Navigationbar = () => {
                 />
                 <Button variant="outline-danger">Search</Button>
               </Form>
-              <NavDropdown className='me-5 animated fadeIn show fadeOut' title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+              <NavDropdown className='me-5 animated fadeIn show fadeOut' title="Join Mandala" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
+                <NavDropdown.Item href="*">Be Auctioneer</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                <NavDropdown.Item href="*">Separated link</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
