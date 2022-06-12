@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   NavDropdown,
   Nav,
@@ -6,10 +6,36 @@ import {
   Navbar,
   Form,
   FormControl,
-  Button,
 } from "react-bootstrap";
 import "./style.css";
+import { useNavigate } from "react-router-dom";
+import getUser from "../../api/user";
+
 const Navigationbar = () => {
+  const navigate = useNavigate();
+
+  const [isAuctioneer, setIsAuctioneer] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  useEffect(() => {
+    const user = getUser.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+      setIsAdmin(user.role === "ADMIN");
+      setIsAuctioneer(user.role === "AUCTIONEER");
+      setIsUser(user.role === "USER");
+    }
+  }, []);
+
+  const logOut = () => {
+    getUser.logout();
+    navigate("/login");
+    window.location.reload();
+  };
+
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -32,16 +58,82 @@ const Navigationbar = () => {
                   aria-label="Search"
                 />
               </Form>
-              <NavDropdown
-                className="me-5 animated fadeIn show fadeOut"
-                title="Account"
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item href="/login">Login</NavDropdown.Item>
-                <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="*">Password Reset</NavDropdown.Item>
-              </NavDropdown>
+              {(() => {
+                if (isUser) {
+                  return (
+                    <NavDropdown
+                      className="me-5 animated fadeIn show fadeOut"
+                      title={currentUser.username}
+                      id="basic-nav-dropdown"
+                    >
+                      <NavDropdown.Item href="/profile">
+                        Profile
+                      </NavDropdown.Item>
+                      <NavDropdown.Item onClick={logOut}>
+                        Logout
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="*">Normal User</NavDropdown.Item>
+                    </NavDropdown>
+                  );
+                } else if (isAuctioneer) {
+                  return (
+                    <NavDropdown
+                      className="me-5 animated fadeIn show fadeOut"
+                      title={currentUser.username}
+                      id="basic-nav-dropdown"
+                    >
+                      <NavDropdown.Item href="/profile">
+                        Profile
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/auction">
+                        Auction
+                      </NavDropdown.Item>
+                      <NavDropdown.Item onClick={logOut}>
+                        Logout
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="*">Auctioneer</NavDropdown.Item>
+                    </NavDropdown>
+                  );
+                } else if (isAdmin) {
+                  return (
+                    <NavDropdown
+                      className="me-5 animated fadeIn show fadeOut"
+                      title={currentUser.username}
+                      id="basic-nav-dropdown"
+                    >
+                      <NavDropdown.Item href="/profile">
+                        Profile
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/auction">
+                        Auction
+                      </NavDropdown.Item>
+                      <NavDropdown.Item href="/admin">Admin</NavDropdown.Item>
+                      <NavDropdown.Item onClick={logOut}>
+                        Logout
+                      </NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="*">Admin</NavDropdown.Item>
+                    </NavDropdown>
+                  );
+                } else {
+                  return (
+                    <NavDropdown
+                      className="me-5 animated fadeIn show fadeOut"
+                      title="Account"
+                      id="basic-nav-dropdown"
+                    >
+                      <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                      <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                      <NavDropdown.Item href="*">
+                        Password Reset
+                      </NavDropdown.Item>
+                    </NavDropdown>
+                  );
+                }
+              })()}
             </Nav>
           </Navbar.Collapse>
         </Container>

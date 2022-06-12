@@ -2,16 +2,55 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Form, Button, Input, Checkbox } from "antd";
 import "./style.css";
+import user from "../../../api/user";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const onChangeUsername = (e) => {
+    const username = e.target.value;
+    setUsername(username);
+  };
+
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    user
+      .login(username, password)
+      .then((response) => {
+        window.alert(response.message, navigate("/"), window.location.reload());
+      })
+      .catch((error) => {
+        // window.alert(err.data.message);
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          setError(error.response.data.message);
+        }
+      });
+  };
   return (
     <>
       <Form name="login-form" initialValues={{ remember: true }}>
         <p className="form-title">Welcome back</p>
         <p>Login to the Mandala</p>
+        {error && <div className="error_msg">{error}</div>}
         <Form.Item
           name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
+          onChange={onChangeUsername}
+          value={username}
         >
           <Input placeholder="Username" />
         </Form.Item>
@@ -19,6 +58,8 @@ const LoginForm = () => {
         <Form.Item
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
+          onChange={onChangePassword}
+          value={password}
         >
           <Input.Password placeholder="Password" />
         </Form.Item>
@@ -32,7 +73,7 @@ const LoginForm = () => {
             type="primary"
             htmlType="submit"
             className="login-form-button"
-            onClick={"/#"}
+            onClick={handleLogin}
           >
             LOGIN
           </Button>
