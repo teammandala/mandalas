@@ -1,10 +1,18 @@
-import React from 'react'
-import { NavDropdown, Nav, Container, Navbar, Form, FormControl, Button } from 'react-bootstrap'
-import './style.css'
+import React from "react";
+import {
+  NavDropdown,
+  Nav,
+  Container,
+  Navbar,
+  Form,
+  FormControl,
+  Button,
+} from "react-bootstrap";
+import "./style.css";
 const Navigationbar = () => {
   return (
     <>
-      <Navbar bg="light" expand="lg" >
+      <Navbar bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="/">Mandala</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -13,7 +21,6 @@ const Navigationbar = () => {
               <Nav.Link href="auction">Auction</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
-
             </Nav>
             <Nav>
               <Form className="d-flex">
@@ -24,21 +31,23 @@ const Navigationbar = () => {
                   bg="light"
                   aria-label="Search"
                 />
-                <Button variant="outline-danger">Search</Button>
               </Form>
-              <NavDropdown className='me-5 animated fadeIn show fadeOut' title="Join Mandala" id="basic-nav-dropdown">
+              <NavDropdown
+                className="me-5 animated fadeIn show fadeOut"
+                title="Account"
+                id="basic-nav-dropdown"
+              >
                 <NavDropdown.Item href="/login">Login</NavDropdown.Item>
                 <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
-                <NavDropdown.Item href="*">Be Auctioneer</NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="*">Separated link</NavDropdown.Item>
+                <NavDropdown.Item href="*">Password Reset</NavDropdown.Item>
               </NavDropdown>
             </Nav>
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </>
-  )
-}
+  );
+};
 
 export default Navigationbar;

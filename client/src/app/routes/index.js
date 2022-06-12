@@ -5,7 +5,7 @@ import Contact from "../pages/contact";
 import Home from "../pages/home";
 import Loginpage from "../pages/login";
 import Profilepage from "../pages/profile";
-import Signuppage from "../pages/signup";
+import Signuppage from "../pages/register";
 import About from "../pages/about";
 import Pagenotfound from "../pages/pagenotfound";
 class Router extends React.Component {
@@ -21,7 +21,6 @@ class Router extends React.Component {
           <Route path="/profile" element={<Profilepage />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<Pagenotfound />} />
-          
         </Routes>
       </>
     );
