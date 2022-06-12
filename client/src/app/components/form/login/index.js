@@ -27,7 +27,7 @@ const LoginForm = () => {
     user
       .login(username, password)
       .then((response) => {
-        window.alert(response.message, navigate("/"), window.location.reload());
+        window.alert(response.message, window.location.reload(), navigate("/"));
       })
       .catch((error) => {
         // window.alert(err.data.message);

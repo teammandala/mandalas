@@ -32,8 +32,8 @@ const Navigationbar = () => {
 
   const logOut = () => {
     getUser.logout();
-    navigate("/login");
     window.location.reload();
+    navigate("/login");
   };
 
   return (
