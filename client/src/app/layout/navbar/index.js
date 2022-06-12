@@ -33,7 +33,7 @@ const Navigationbar = () => {
   const logOut = () => {
     getUser.logout();
     window.location.reload();
-    navigate("/login");
+    navigate("/");
   };
 
   return (
