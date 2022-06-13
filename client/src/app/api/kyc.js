@@ -12,8 +12,6 @@ const kycRequest = (
   user,
   idImage
 ) => {
-  console.log(idImage);
-  console.log(token);
   return axios.post(
     API_URL + "request",
     {

@@ -5,6 +5,7 @@ const kyc = require("../controllers/kyc");
 const auction = require("../controllers/auction");
 const isAuth = require("../middleware/auth");
 const upload = require("../utils/kycUpload");
+const kycUpload = require("../utils/auctionUpload");
 
 // user routes
 // router.use("/api/auth", user);
@@ -20,6 +21,11 @@ router.use(
 );
 
 // auctio routes
-router.use("/api/auction", auction);
+router.use(
+  "/api/auction/request",
+  kycUpload.single("image"),
+  auction.auctoinRequest,
+  isAuth
+);
 
 module.exports = router;
