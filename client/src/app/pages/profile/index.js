@@ -3,21 +3,28 @@ import Profiledata from '../../components/profile/profiledata'
 import { Tabs, Tab, Row, Col } from 'react-bootstrap';
 import Profileupdate from '../../components/profile/profileupdate'
 import user from '../../api/user'
+import { useParams} from 'react-router-dom';
 const Profilepage = () => {
   const currentUser = user.getCurrentUser()
-  return (
-    <>
-      <div className="container-fluid p-3">
-        <div className="row d-flex justify-content-center align-items-center h-100 ">
-          <div className="col col-lg-6 mb-lg-0 gradient">
-            <div className="card mb-3 ">
+  const username = useParams().username;
+
+
+    return(
+      <div>
+        {(() =>{
+          if (currentUser && currentUser.username === username){
+            return(
+            <div className="container-fluid p-3">
+        <div className="row d-flex justify-content-center align-items-center h-100">
+          <div className="col col-lg-6 mb-lg-0">
+            <div className="card mb-3">
               <Row>
                 <Col>
                   <div className="container-fluid gradient-custom text-center text-white">
                     <img
                       src={"http://localhost:8080/" + currentUser.avatar}
                       alt="Avatar"
-                      className="img-fluid"
+                      className="img-fluid my-5"
                     />
                     <h5>{currentUser.name}</h5>
                     <p>{currentUser.role}</p>
@@ -51,12 +58,20 @@ const Profilepage = () => {
           </Row>
         </div>
       </div>
-    </div>
-      </div >
-    </>
+      </div>
+      </div>
+);
+          }else{
+            return(
+              <div className='no-access'>
+                <h1>you do not have access</h1>
+              </div>
+            );
+          }
+        })()}
+        </div>
+    );
 
-
-  )
-}
+};
 
 export default Profilepage
