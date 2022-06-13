@@ -1,12 +1,12 @@
 import React from "react";
 import Router from "../../routes";
-import Header from "../header";
+import Sidebar from "../sider";
 
 class Mid extends React.Component {
   render() {
     return (
       <>
-        <Header />
+        <Sidebar />
         <div className="mid">
           <Router />
         </div>
