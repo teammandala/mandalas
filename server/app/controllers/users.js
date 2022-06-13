@@ -98,10 +98,30 @@ const profileUpdate = async (req, res) => {
     const { username, name, phone, address, bio } = req.body;
     const avatar = req.file.path;
     const tempUser = req.params.username;
+
+    if (!tempUser) {
+      return res.status(400).send({ message: `user doesn't exist!` }).next;
+    } else if (await User.findOne({ username: username })) {
+      return res
+        .status(400)
+        .send({ message: `user with username already exists!` }).next;
+    }
+    await User.findByIdAndUpdate(tempUser.id, {
+      username: username,
+      name: name,
+      phone: phone,
+      address: address,
+      bio: bio,
+      avatar: avatar,
+    })
+      .then(() =>
+        res.status(201).send({ message: `user updated successfully` })
+      )
+      .catch((err) => res.status(400).send({ message: err.message }));
   } catch (err) {
     res.status(500).send("Server Error");
     console.error(err);
   }
 };
 // module.exports = router;
-module.exports = { register, login };
+module.exports = { register, login, profileUpdate };

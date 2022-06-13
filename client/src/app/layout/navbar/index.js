@@ -66,7 +66,9 @@ const Navigationbar = () => {
                       title={currentUser.username}
                       id="basic-nav-dropdown"
                     >
-                      <NavDropdown.Item href="/profile">
+                      <NavDropdown.Item
+                        href={"/profile/" + currentUser.username}
+                      >
                         Profile
                       </NavDropdown.Item>
                       <NavDropdown.Item onClick={logOut}>
@@ -83,7 +85,9 @@ const Navigationbar = () => {
                       title={currentUser.username}
                       id="basic-nav-dropdown"
                     >
-                      <NavDropdown.Item href="/profile">
+                      <NavDropdown.Item
+                        href={"/profile/" + currentUser.username}
+                      >
                         Profile
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/auction">
@@ -103,7 +107,9 @@ const Navigationbar = () => {
                       title={currentUser.username}
                       id="basic-nav-dropdown"
                     >
-                      <NavDropdown.Item href="/profile">
+                      <NavDropdown.Item
+                        href={"/profile/" + currentUser.username}
+                      >
                         Profile
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/auction">

@@ -21,7 +21,7 @@ class Router extends React.Component {
           <Route path="/auction" element={<Auction />} />
           <Route path="/login" element={<Loginpage />} />
           <Route path="/signup" element={<Signuppage />} />
-          <Route path="/profile" element={<Profilepage />} />
+          <Route path="/profile/:username" element={<Profilepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/kyc" element={<KYC />} />
           <Route path="/auctioneer" element={<Auctioneer />} />
