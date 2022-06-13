@@ -6,6 +6,10 @@ const kycForm = new Schema({
     type: String,
     required: true,
   },
+  email: {
+    type: String,
+    required: true,
+  },
   phone: {
     type: String,
     required: true,
@@ -14,9 +18,13 @@ const kycForm = new Schema({
     type: String,
     rquired: true,
   },
+  country: {
+    type: String,
+  },
   idImage: {
     type: String,
     required: true,
+    // unique: [true, `kyc already submitted by user`],
   },
   user: {
     type: mongoose.Schema.ObjectId,

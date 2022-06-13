@@ -41,6 +41,9 @@ const userSchema = new Schema({
     default: "USER",
     enum: ["USER", "AUCTIONEER", "ADMIN"],
   },
+  address: {
+    type: String,
+  },
   bio: {
     type: String,
   },
