@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.css";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import user from "../../../api/user";
 
 const Profiledata = () => {
@@ -73,6 +73,7 @@ const Profiledata = () => {
                                 <h6>Most Viewed</h6>
                                 <p className="text-muted">Art</p>
                               </div>
+                              <div><h6>Wanted to be auctioneer? <Link to='/kyc'>Apply From Here</Link></h6></div>
                             </div>
                             <div className="d-flex justify-content-start">
                               <a href="#!">

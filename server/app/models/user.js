@@ -34,7 +34,7 @@ const userSchema = new Schema({
   },
   avatar: {
     type: String,
-    default: "http://localhost:8080/media/avatar/avatar.png",
+    default: "media/avatar/avatar.png",
   },
   role: {
     type: String,

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import user from "../../../api/user";
-import { Form } from "react-bootstrap";
+import { UploadOutlined } from "@ant-design/icons";
+import { Form, Button, Input, Upload } from "antd";
 import { useNavigate } from "react-router-dom";
 
 const Profileupdate = () => {
@@ -49,114 +49,90 @@ const Profileupdate = () => {
   };
 
   const onChangeAvatar = (e) => {
-    const avagar = e.target.files[0];
+    const avatar = e.target.files[0];
     setAvatar(avatar);
   };
 
   return (
     <div className="container-fluid h-100">
-      <div className="row d-flex justify-content-center align-items-center h-100">
-        <div className="card-body p-4">
-          {/* <h6>Information</h6> */}
-          <div className="row pt-1">
-            <div className="col-10">
-              <h6>Information</h6>
-            </div>
-            <div className="col-2">
-              <Link to="/">
-                <i class="fa fa-times" aria-hidden="true"></i>
-              </Link>
-            </div>
-          </div>
 
-          <hr className="mt-0 mb-4" />
-          <div className="row pt-1">
-            <div className="col-6 mb-3">
-              <h6>Full Name</h6>
-              <input
-                name="name"
-                className="col-12"
-                type={"text"}
-                placeholder={currentUser.name}
-                onChange={onChangeName}
-                value={name}
-              />
-            </div>
-            <div className="col-6 mb-3">
-              <h6>Email</h6>
-              <input
-                name="email"
-                className="col-12"
-                type={"email"}
-                placeholder={currentUser.email}
-                onChange={onChangeEmail}
-                value={email}
-              />
-            </div>
-            <div className="col-6 mb-3">
-              <h6>Phone</h6>
-              <input
-                name="phone"
-                className="col-12"
-                type={"number"}
-                placeholder={currentUser.phone}
-                onChange={onChangePhone}
-                value={phone}
-              />
-            </div>
 
-            <div className="col-6 mb-3">
-              <h6>Address</h6>
-              <input
-                name="adreess"
-                className="col-12"
-                type={"text"}
-                placeholder={currentUser.address}
-                onChange={onChangeAddress}
-                value={address}
-              />
-            </div>
+      <Form>
+        <div>Username</div>
+        <Form.Item
+          name="username"
+          onChange={onChangeUsername}
+          value={username}
+        >
+          <Input placeholder={currentUser.username} />
+        </Form.Item>
 
-            <div className="col-6 mb-3">
-              <h6>Joined At</h6>
-              <p className="text-muted">{currentUser.created}</p>
-            </div>
-            <div className="col-6 mb-3">
-              <h6>Username</h6>
-              <input
-                name="username"
-                className="col-12"
-                type={"text"}
-                placeholder={currentUser.username}
-                onChange={onChangeUsername}
-                value={username}
-              />
-            </div>
-            <div className="col-12 mb-3">
-              <h6>Bio</h6>
-              <form>
-                <textarea
-                  placeholder={currentUser.bio}
-                  name="bio"
-                  onChange={onChangeBio}
-                  value={bio}
-                />
-              </form>
-            </div>
-            <div className="col-12 mb-3">
-              <h6>Profile Image</h6>
-              <form>
-                <Form.Control type="file" size="l" onChange={onChangeAvatar} />
-              </form>
-            </div>
-          </div>
+        <div>Full Name</div>
+        <Form.Item
+          name="name"
+          onChange={onChangeName}
+          value={name}
+        >
+          <Input placeholder={currentUser.name} />
+        </Form.Item>
 
-          <hr className="mt-0 mb-4" />
-          <button type="button" className="btn btn-primary btn-block">
-            Save Changes
-          </button>
-        </div>
-      </div>
+        <div>E-mail</div>
+        <Form.Item
+          name="email"
+          onChange={onChangeEmail}
+          value={email}
+        >
+          <Input placeholder={currentUser.email} />
+        </Form.Item>
+
+        <div>Contact No.</div>
+        <Form.Item
+          name="phone" onChange={onChangePhone}
+          value={phone}
+        >
+          <Input placeholder={currentUser.phone} />
+        </Form.Item>
+
+        <div>Address</div>
+        <Form.Item
+          name="address"
+          onChange={onChangeAddress}
+          value={address}
+        >
+          <Input placeholder={currentUser.address} />
+        </Form.Item>
+
+        <div>Role</div>
+        <Form.Item
+        >
+          <Input disabled placeholder={currentUser.role} />
+        </Form.Item>
+      </Form>
+
+      <div>Bio</div>
+      <Form.Item
+        name="bio" onChange={onChangeBio}
+        value={bio}
+      >
+        <textarea placeholder={currentUser.bio} />
+      </Form.Item>
+
+      <div>Profile</div>
+      <Form.Item
+        name="avatar" onChange={onChangeAvatar}
+        value={avatar}
+      >
+        <Upload name="avatar" type="file" htmlFor="file" listType="picture" >
+          <Button>
+            <UploadOutlined /> Click to upload
+          </Button>
+        </Upload>
+      </Form.Item>
+
+      <hr className="mt-0 mb-4" />
+      <button type="button" className="btn btn-primary btn-block">
+        Save Changes
+      </button>
     </div>
   );
 };
