@@ -39,4 +39,34 @@ const kycRequest = async (req, res) => {
   }
 };
 
+const getKYCRequest = async (req, res) => {
+  try {
+    await KYC.find()
+      .then((kycData) => {
+        res.status(200).send({ kycData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {}
+};
+
+const getUcrrentUserKYC = async (req, res) => {
+  try {
+    const user = req.body.user;
+
+    let isKYCAvailable = await KYC.findOne({ user: user });
+
+    if (!isKYCAvailable) {
+      return res.status(400).send({
+        message:
+          "You have not request for kyc!, please request for kyc verification to request for auction",
+      }).next;
+    }
+    res.status(200).send({ isKYCAvailable });
+  } catch (err) {
+    res.status(400).send({ message: err.message });
+  }
+};
+
 module.exports = { kycRequest };
