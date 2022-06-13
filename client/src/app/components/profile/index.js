@@ -73,7 +73,7 @@ const Profiledata = () => {
                               </div>
                               <div className="col-6 mb-3">
                                 <h6>Role</h6>
-                                <p className="text-muted">Admin</p>
+                                <p className="text-muted">{currentUser.role}</p>
                               </div>
 
                               <div className="col-6 mb-3">
