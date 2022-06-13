@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Profiledata from '../../components/profile/profiledata'
 import { Tabs, Tab, Row, Col } from 'react-bootstrap';
 import Profileupdate from '../../components/profile/profileupdate'
 import user from '../../api/user'
-import { Link } from 'react-router-dom';
 const Profilepage = () => {
   const currentUser = user.getCurrentUser()
   return (

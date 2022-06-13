@@ -1,11 +1,9 @@
-import React, { useState } from "react";
-import { NavDropdown } from "react-bootstrap";
+import React from "react";
 import "./style.css";
-import EasyEdit, { Types } from "react-easy-edit"
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import user from "../../../api/user";
 
-const Profiledata = ({ }) => {
+const Profiledata = () => {
   const currentUser = user.getCurrentUser();
   const username = useParams().username;
 
