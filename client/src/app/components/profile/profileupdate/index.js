@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import user from "../../../api/user";
+import { Form } from 'react-bootstrap'
 
 const Profileupdate = () => {
     const currentUser = user.getCurrentUser();
@@ -73,7 +74,14 @@ const Profileupdate = () => {
                         <div className="col-12 mb-3">
                             <h6>Bio</h6>
                             <form>
-                                <textarea  />
+                                <textarea placeholder={currentUser.bio} />
+
+                            </form>
+                        </div>
+                        <div className="col-12 mb-3">
+                            <h6>Profile Image</h6>
+                            <form>
+                                <Form.Control type="file" size="l" />
                             </form>
                         </div>
                     </div>
