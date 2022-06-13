@@ -9,6 +9,7 @@ import Signuppage from "../pages/register";
 import About from "../pages/about";
 import Pagenotfound from "../pages/pagenotfound";
 import KYC from "../pages/kyc";
+import Auctioneer from "../pages/auctioneer";
 
 class Router extends React.Component {
   render() {
@@ -23,6 +24,7 @@ class Router extends React.Component {
           <Route path="/profile" element={<Profilepage />} />
           <Route path="/about" element={<About />} />
           <Route path="/kyc" element={<KYC />} />
+          <Route path="/auctioneer" element={<Auctioneer />} />
           <Route path="*" element={<Pagenotfound />} />
         </Routes>
       </>

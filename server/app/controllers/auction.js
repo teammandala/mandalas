@@ -3,12 +3,11 @@ const router = express.Router();
 const Auction = require("../models/auction");
 
 // router for kyc request
-router.post("/request", async (req, res) => {
-  const { itemName, description, bidStart, bidEnd, seller, startingBid } =
-    req.body;
-  const image = req.file.path;
-
+const auctoinRequest = async (req, res) => {
   try {
+    const { itemName, description, bidStart, bidEnd, seller, startingBid } =
+      req.body;
+    const image = req.file.path;
     const newAuction = new Auction({
       itemName,
       description,
@@ -29,8 +28,8 @@ router.post("/request", async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-});
+};
 
 // router for kyc get all
 
-module.exports = router;
+module.exports = { auctoinRequest };
