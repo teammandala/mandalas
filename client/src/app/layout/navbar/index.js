@@ -33,12 +33,12 @@ const Navigationbar = () => {
   const logOut = () => {
     getUser.logout();
     window.location.reload();
-    navigate("/");
+    navigate.push("/");
   };
 
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar bg="light" expand="lg" sticky="top">
         <Container>
           <Navbar.Brand href="/">Mandala</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
