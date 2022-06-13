@@ -3,6 +3,8 @@ import axios from "axios";
 // api url for auth
 const API_URL = "http://localhost:8080/api/auth/";
 
+const token = localStorage.getItem("token");
+
 // register user
 const register = (username, name, email, phone, password) => {
   const config = {
@@ -67,14 +69,23 @@ const updateUser = (
   avatar
 ) => {
   return axios
-    .post(API_URL + "/profile/" + usernameParams, {
-      username,
-      email,
-      phone,
-      address,
-      bio,
-      avatar,
-    })
+    .put(
+      API_URL + "profile/" + usernameParams,
+      {
+        username,
+        email,
+        phone,
+        address,
+        bio,
+        avatar,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "x-access-token": token,
+        },
+      }
+    )
     .then((res) => {
       localStorage.setItem("user", JSON.stringify(res.data.user));
       return res.data;
