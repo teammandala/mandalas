@@ -69,7 +69,11 @@ const Profileupdate = () => {
                         </div>
                         <div className="col-6 mb-3">
                             <h6>Username</h6>
-                            <p className="text-muted">{currentUser.username}</p>
+                            <input
+                                className="col-12"
+                                type={"text"}
+                                placeholder={currentUser.username}
+                            />
                         </div>
                         <div className="col-12 mb-3">
                             <h6>Bio</h6>
