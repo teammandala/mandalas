@@ -3,18 +3,29 @@ const router = express.Router();
 const KYC = require("../models/kyc");
 
 // router for kyc request
-router.post("/request", async (req, res) => {
-  const { fullName, phone, address, user } = req.body;
-  const idImage = req.file.path;
-
+const kycRequest = async (req, res) => {
   try {
+    const { fullName, email, phone, address, country, user } = req.body;
+    const idImage = req.file.path;
     const newKYC = new KYC({
       fullName,
+      email,
       phone,
       address,
+      country,
       user,
       idImage,
     });
+
+    let kycAlreadyRequested = await KYC.findOne({ user: user });
+    if ((!fullName, !email, !phone, !address, !country, !user, !idImage)) {
+      return res.status(400).send({ message: "all fields are required!" }).next;
+    } else if (kycAlreadyRequested) {
+      return res
+        .status(400)
+        .send({ message: "You have already requested for kyc verification!" })
+        .next;
+    }
 
     await newKYC
       .save()
@@ -26,6 +37,6 @@ router.post("/request", async (req, res) => {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
-});
+};
 
-module.exports = router;
+module.exports = { kycRequest };

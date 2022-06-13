@@ -17,27 +17,7 @@ function getDirPath(dirPath) {
   }
 }
 
-const avatarStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    // cb(null, '../media/images');
-    cb(null, getDirPath("./media/avatar/"));
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
-  },
-});
-
-const auctionStorage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    // cb(null, '../media/images');
-    cb(null, getDirPath("./media/auction/" + getDatePath(new Date())));
-  },
-  filename: function (req, file, cb) {
-    cb(null, uuidv4() + "-" + Date.now() + path.extname(file.originalname));
-  },
-});
-
-const kycStorage = multer.diskStorage({
+const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     // cb(null, '../media/images');
     cb(null, getDirPath("./media/kyc/" + getDatePath(new Date())));
@@ -56,8 +36,6 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-let avatarUpload = multer({ avatarStorage, fileFilter });
-let auctionUpload = multer({ auctionStorage, fileFilter });
-let kycUpload = multer({ kycStorage, fileFilter });
+let upload = multer({ storage, fileFilter });
 
-module.exports = avatarUpload;
+module.exports = upload;
