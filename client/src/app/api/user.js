@@ -57,10 +57,35 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+const updateUser = (
+  usernameParams,
+  username,
+  email,
+  phone,
+  address,
+  bio,
+  avatar
+) => {
+  return axios
+    .post(API_URL + "/profile/" + usernameParams, {
+      username,
+      email,
+      phone,
+      address,
+      bio,
+      avatar,
+    })
+    .then((res) => {
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      return res.data;
+    });
+};
+
 // eslint-disable-next-line
 export default {
   register,
   login,
   getCurrentUser,
   logout,
+  updateUser,
 };
