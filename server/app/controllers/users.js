@@ -93,5 +93,15 @@ const login = async (req, res, next) => {
   }
 };
 
+const profileUpdate = async (req, res) => {
+  try {
+    const { username, name, phone, address, bio } = req.body;
+    const avatar = req.file.path;
+    const tempUser = req.params.username;
+  } catch (err) {
+    res.status(500).send("Server Error");
+    console.error(err);
+  }
+};
 // module.exports = router;
 module.exports = { register, login };
