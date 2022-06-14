@@ -4,7 +4,7 @@
     left: 50%;
     top: -2px;
     margin-left: -25px;
-    background-color: #fff;
+    background-color: rgb(6, 245, 22);
     width: 50px;
     text-align: center;
     height: auto;
@@ -27,9 +27,9 @@ footer.nb-footer .about p {
 font-size: 13px;
 color: #999;
 margin-top: 30px; }
-footer.nb-footer .about .social-media {
-margin-top: 15px; }
-footer.nb-footer .about .social-media ul li a {
+/* footer.nb-footer .about .social-media {
+margin-top: 15px; } */
+/* footer.nb-footer .about .social-media ul li a {
 display: inline-block;
 width: 45px;
 height: 45px;
@@ -37,11 +37,11 @@ line-height: 45px;
 border-radius: 50%;
 font-size: 16px;
 color: #b78c33;
-border: 1px solid rgba(255, 255, 255, 0.3); }
-footer.nb-footer .about .social-media ul li a:hover {
+border: 1px solid rgba(255, 255, 255, 0.3); } */
+/* footer.nb-footer .about .social-media ul li a:hover {
 background: #b78c33;
 color: #fff;
-border-color: #b78c33; }
+border-color: #b78c33; } */
 footer.nb-footer .footer-info-single {
 margin-top: 30px; }
 footer.nb-footer .footer-info-single .title {

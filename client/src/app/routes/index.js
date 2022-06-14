@@ -10,6 +10,8 @@ import About from "../pages/about";
 import Pagenotfound from "../pages/pagenotfound";
 import KYC from "../pages/kyc";
 import Auctioneer from "../pages/auctioneer";
+import Termsandconditions from "../pages/termsandconditions";
+import Policy from "../pages/policy";
 
 class Router extends React.Component {
   render() {
@@ -25,6 +27,8 @@ class Router extends React.Component {
           <Route path="/about" element={<About />} />
           <Route path="/kyc" element={<KYC />} />
           <Route path="/auctioneer" element={<Auctioneer />} />
+          <Route path="/policy" element={<Policy/>}/>
+          <Route path="/termsandconditions" element={<Termsandconditions />} />
           <Route path="*" element={<Pagenotfound />} />
           
         </Routes>
