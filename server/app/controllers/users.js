@@ -95,9 +95,8 @@ const login = async (req, res, next) => {
 
 const profileUpdate = async (req, res) => {
   try {
-    const { username, email, name, phone, address, bio } = req.body;
-    // const avatar = req.file.path;
-    console.log(username, email, name, phone, address, bio);
+    // const { username, email, name, phone, address, bio } = req.body;
+    const avatar = req.file.path;
     const tempUser = req.params.username;
 
     if (!tempUser) {
@@ -107,19 +106,31 @@ const profileUpdate = async (req, res) => {
         .status(400)
         .send({ message: `user with username already exists!` }).next;
     }
-    const user = await User.findByIdAndUpdate(tempUser._id, {
-      username: username,
-      email: email,
-      name: name,
-      phone: phone,
-      address: address,
-      bio: bio,
-      avatar: avatar,
-    })
-      .then(() =>
-        res.status(201).send({ message: `user updated successfully` })
+
+    const updateUser = {
+      username: req.body.username,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.bdoy.address,
+      bio: req.body.bio,
+      avatar,
+    };
+    // remove '', null, undefined
+    Object.keys(updatedUser).forEach(
+      (k) =>
+        !updatedUser[k] && updatedUser[k] !== undefined && delete updatedUser[k]
+    );
+
+    // console.log(req.body, updatedUser);
+    const user = await User.findByIdAndUpdate(
+      tempUser.id,
+      { $set: updatedUser },
+      { new: true }
+    )
+      .then((res) =>
+        res.status(201).send({ user, message: `user updated successfully` })
       )
-      .catch((err) => res.status(400).send({ user, message: err.message }));
+      .catch((err) => res.status(400).send({ message: err.message }));
   } catch (err) {
     res.status(500).send("Server Error");
     console.error(err);
