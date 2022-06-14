@@ -96,12 +96,13 @@ const login = async (req, res, next) => {
 const profileUpdate = async (req, res) => {
   try {
     // const { username, email, name, phone, address, bio } = req.body;
-    const avatar = req.file.path;
+    // const avatar = req.file.path;
     const tempUser = req.params.username;
+    console.log(req.body.username);
 
     if (!tempUser) {
       return res.status(400).send({ message: `user doesn't exist!` }).next;
-    } else if (await User.findOne({ username: username })) {
+    } else if (await User.findOne({ username: req.body.username })) {
       return res
         .status(400)
         .send({ message: `user with username already exists!` }).next;
@@ -121,7 +122,7 @@ const profileUpdate = async (req, res) => {
         !updatedUser[k] && updatedUser[k] !== undefined && delete updatedUser[k]
     );
 
-    // console.log(req.body, updatedUser);
+    console.log(req.body, updatedUser);
     const user = await User.findByIdAndUpdate(
       tempUser.id,
       { $set: updatedUser },
@@ -132,7 +133,7 @@ const profileUpdate = async (req, res) => {
       )
       .catch((err) => res.status(400).send({ message: err.message }));
   } catch (err) {
-    res.status(500).send("Server Error");
+    res.status(500).send(`Server err ${err}`);
     console.error(err);
   }
 };

@@ -72,18 +72,18 @@ const updateUser = (
     .put(
       API_URL + "profile/" + usernameParams,
       {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          "x-access-token": token,
+        },
+      },
+      {
         username,
         email,
         phone,
         address,
         bio,
         avatar,
-      },
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "x-access-token": token,
-        },
       }
     )
     .then((res) => {
