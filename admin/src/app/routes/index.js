@@ -5,6 +5,7 @@ import Contact from "../pages/contact";
 import Home from "../pages/home";
 import User from "../pages/users";
 import Kycrequest from "../pages/kycrequest";
+import Carouseldetails from "../pages/carousel";
 class Router extends React.Component {
   render() {
     return (
@@ -15,6 +16,7 @@ class Router extends React.Component {
           <Route path="/contact" element={<Contact />} />
           <Route path="/auction" element={<Auction />} />
           <Route path="/kycrequest" element={<Kycrequest />} />
+          <Route path="/carousel" element={<Carouseldetails />} />
 
           
         </Routes>

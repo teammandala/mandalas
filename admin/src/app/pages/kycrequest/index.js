@@ -1,8 +1,11 @@
 import React from 'react'
+import Kyc from '../../components/kycrequests'
 
 const Kycrequest = () => {
   return (
-    <div>Kyerequest</div>
+    <div>
+        <Kyc />
+    </div>
   )
 }
 

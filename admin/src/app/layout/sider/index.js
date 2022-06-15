@@ -2,7 +2,7 @@ import React from 'react'
 import {Layout, Menu} from "antd";
 import {useState} from "react";
 
-import {CustomerServiceFilled, CustomerServiceOutlined, HomeOutlined, UserAddOutlined, VideoCameraTwoTone} from "@ant-design/icons"
+import {CustomerServiceFilled, CustomerServiceOutlined, FileImageTwoTone, HomeOutlined, UserAddOutlined, VideoCameraTwoTone} from "@ant-design/icons"
 import Router from '../../routes';
 const { Content, Footer, Sider } = Layout;
 
@@ -29,24 +29,24 @@ const Sidebar = () => {
 
         <Menu.Item key="1">
           <HomeOutlined />
-            <span className="nav-text">Home</span>
-            <a href="/"></a>
+            <span className="nav-text">Home<a href="/"></a></span>
+            
           </Menu.Item>
           <Menu.Item key="2">
           <UserAddOutlined />
-            <span className="nav-text">User</span>
-            <a href="/user"></a>
+            <span className="nav-text">User<a href="/user"></a></span>
+            
           </Menu.Item>
           
           <Menu.Item key="3">
-          <VideoCameraTwoTone />
-            <span className="nav-text">nav 2</span>
+          <FileImageTwoTone />
+            <span className="nav-text">Carousel <a href="/carousel"></a> </span>
           </Menu.Item>
 
           <Menu.Item key="4">
           <CustomerServiceFilled />
-            <span className="nav-text">KYC Requests</span>
-            <a href="kycrequest"></a>
+            <span className="nav-text">KYC Requests<a href="kycrequest"></a></span>
+            
           </Menu.Item>
           
         </Menu>
