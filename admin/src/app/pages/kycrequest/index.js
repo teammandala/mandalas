@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Kyerequest = () => {
+const Kycrequest = () => {
   return (
     <div>Kyerequest</div>
   )
 }
 
-export default Kyerequest
+export default Kycrequest
