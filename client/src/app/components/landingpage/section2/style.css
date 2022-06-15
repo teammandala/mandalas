@@ -6,15 +6,13 @@
     .s2__mob-pic {
         margin-bottom: 4em;
     }
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
         .s2__mob-pic {
         margin-bottom: 0;
         }
-    }
+    } */
     
-    .s2__mob-pic img {
-        max-width: 100%;
-    }
+    
     .s2__des h1 {
         font-size: 2.6em;
         font-weight: 100;
@@ -36,14 +34,18 @@
         padding: 0;
     }
      .s2__list > li {
-        padding: .5em 0;
+        padding: .5rem 0;
+        font-size: medium;
+        
+        font-weight: 500;
+    
     }
     .s2__list i {
         margin-right: 1em;
     }
-    @media (min-width: 768px) {
+    /* @media (min-width: 768px) {
         .flex-align {
             justify-content: center;
             align-items: center;
         }
-    }
+    } */

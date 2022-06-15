@@ -2,7 +2,8 @@ import React from 'react'
 import {Layout, Menu} from "antd";
 import {useState} from "react";
 
-import {UserAddOutlined, VideoCameraTwoTone} from "@ant-design/icons"
+import {HomeOutlined, UserAddOutlined, VideoCameraTwoTone} from "@ant-design/icons"
+import Router from '../../routes';
 const { Content, Footer, Sider } = Layout;
 
 
@@ -25,142 +26,37 @@ const Sidebar = () => {
       >
         <div className="logo" />
         <Menu theme="dark" mode="inline" defaultSelectedKeys={["4"]}>
-          <Menu.Item key="1">
-          <UserAddOutlined />
-            <span className="nav-text">nav 1</span>
+
+        <Menu.Item key="1">
+          <HomeOutlined />
+            <span className="nav-text">Home</span>
+            <a href="/"></a>
           </Menu.Item>
           <Menu.Item key="2">
+          <UserAddOutlined />
+            <span className="nav-text"><a href="/user">User</a></span>
+          </Menu.Item>
+          
+          <Menu.Item key="3">
           <VideoCameraTwoTone />
             <span className="nav-text">nav 2</span>
           </Menu.Item>
-          <Menu.Item key="3">
-            {/* <Icon type="upload" /> */}
-            <span className="nav-text">nav 3</span>
-          </Menu.Item>
-          <Menu.Item key="4">
-            {/* <Icon type="bar-chart" /> */}
-            <span className="nav-text">nav 4</span>
-          </Menu.Item>
-          <Menu.Item key="5">
-            {/* <Icon type="cloud-o" /> */}
-            <span className="nav-text">nav 5</span>
-          </Menu.Item>
-          <Menu.Item key="6">
-            {/* <Icon type="appstore-o" /> */}
-            <span className="nav-text">nav 6</span>
-          </Menu.Item>
-          <Menu.Item key="7">
-            {/* <Icon type="team" /> */}
-            <span className="nav-text">nav 7</span>
-          </Menu.Item>
-          <Menu.Item key="8">
-            {/* <Icon type="shop" /> */}
-            <span className="nav-text">nav 8</span>
-          </Menu.Item>
+          
         </Menu>
       </Sider>
       <Layout>
-        <Content style={{ margin: "24px 16px 0", overflow: "initial" }}>
-          <div style={{ padding: 24, background: "#fff", textAlign: "center" }}>
-            ...
-            <br />
-            Really
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            long
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            ...
-            <br />
-            content
+      <Content >
+          <div >
+          </div>
+        </Content>
+        <Content >
+          <div>
+            {/* routes here */}
+            <Router/>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
-          Ant Design ©2018 Created by Ant UED
+          Mandala Admin
         </Footer>
       </Layout>
     </Layout>

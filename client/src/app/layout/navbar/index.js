@@ -40,7 +40,7 @@ const Navigationbar = () => {
     <>
       <Navbar bg="light" expand="lg" sticky="top">
         <Container>
-          <Navbar.Brand href="/">Mandala</Navbar.Brand>
+          <Navbar.Brand className="brand" href="/">Mandala</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto text-l">
