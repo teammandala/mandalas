@@ -4,7 +4,7 @@ import Auction from "../pages/auction";
 import Contact from "../pages/contact";
 import Home from "../pages/home";
 import User from "../pages/users";
-
+import Kycrequest from "../pages/kycrequest";
 class Router extends React.Component {
   render() {
     return (
@@ -14,6 +14,9 @@ class Router extends React.Component {
           <Route path="/" element={<Home />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/auction" element={<Auction />} />
+          <Route path="/kycrequest" element={<Kycrequest />} />
+
+          
         </Routes>
       </>
     );

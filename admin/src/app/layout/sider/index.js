@@ -2,7 +2,7 @@ import React from 'react'
 import {Layout, Menu} from "antd";
 import {useState} from "react";
 
-import {HomeOutlined, UserAddOutlined, VideoCameraTwoTone} from "@ant-design/icons"
+import {CustomerServiceFilled, CustomerServiceOutlined, HomeOutlined, UserAddOutlined, VideoCameraTwoTone} from "@ant-design/icons"
 import Router from '../../routes';
 const { Content, Footer, Sider } = Layout;
 
@@ -34,12 +34,19 @@ const Sidebar = () => {
           </Menu.Item>
           <Menu.Item key="2">
           <UserAddOutlined />
-            <span className="nav-text"><a href="/user">User</a></span>
+            <span className="nav-text">User</span>
+            <a href="/user"></a>
           </Menu.Item>
           
           <Menu.Item key="3">
           <VideoCameraTwoTone />
             <span className="nav-text">nav 2</span>
+          </Menu.Item>
+
+          <Menu.Item key="4">
+          <CustomerServiceFilled />
+            <span className="nav-text">KYC Requests</span>
+            <a href="kycrequest"></a>
           </Menu.Item>
           
         </Menu>
