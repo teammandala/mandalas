@@ -59,8 +59,8 @@ const ProfileUpdateForm = () => {
       .updateUser(username, email, name, phone, address, bio, avatar)
       .then((response) => {
         window.alert(
-          response.data.message,
-          navigate("/profile"),
+          response.message,
+          navigate(`/profile/${currentUser.username}`),
           window.location.reload()
         );
       })
@@ -71,7 +71,7 @@ const ProfileUpdateForm = () => {
           error.response.status >= 400 &&
           error.response.status <= 500
         ) {
-          window.alert(error.response.data.message);
+          setError(error.response.data.message);
         }
       });
   };

@@ -72,18 +72,20 @@ const updateUser = (username, email, name, phone, address, bio, avatar) => {
         address,
         bio,
         avatar,
+      },
+      {
+        headers: {
+          // "Content-Type": "applicatoin/json",
+          //     Accept: "application/x-www-form-urlencoded",
+          //     mimeType: "multipart/form-data",
+          "x-access-token": token,
+        },
       }
-      // {
-      //   headers: {
-      //     "Content-Type": "multipart/form-dat",
-      //     Accept: "application/x-www-form-urlencoded",
-      //     mimeType: "multipart/form-data",
-      //     "x-access-token": token,
-      //   },
-      // }
     )
     .then((res) => {
-      // localStorage.setItem("user", JSON.stringify(res.data.user));
+      localStorage.clear("user");
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+      // console.log(res.data.user);
       return res.data;
     });
 };
