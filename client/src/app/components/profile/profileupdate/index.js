@@ -3,6 +3,7 @@ import user from "../../../api/user";
 import { UploadOutlined } from "@ant-design/icons";
 import { Form, Button, Input, Upload } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
+const { TextArea } = Input;
 
 const Profileupdate = () => {
   const currentUser = user.getCurrentUser();
@@ -129,11 +130,10 @@ const Profileupdate = () => {
         <Form.Item>
           <Input disabled placeholder={currentUser.role} />
         </Form.Item>
-      </Form>
 
-      <div>Bio</div>
+        <div>Bio</div>
       <Form.Item name="bio" onChange={onChangeBio} value={bio}>
-        <textarea placeholder={currentUser.bio} />
+        <TextArea placeholder={currentUser.bio} />
       </Form.Item>
 
       <div>Profile</div>
@@ -144,6 +144,9 @@ const Profileupdate = () => {
           </Button>
         </Upload>
       </Form.Item>
+      </Form>
+
+     
 
       <hr className="mt-0 mb-4" />
       <button

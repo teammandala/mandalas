@@ -1,5 +1,5 @@
 import React from "react";
-import Router from "../../routes";
+// import Router from "../../routes";
 import Sidebar from "../sider";
 
 class Mid extends React.Component {
@@ -8,7 +8,7 @@ class Mid extends React.Component {
       <>
         <Sidebar />
         <div className="mid">
-          <Router />
+          {/* <Router /> */}
         </div>
       </>
     );
