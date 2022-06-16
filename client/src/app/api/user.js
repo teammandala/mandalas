@@ -59,35 +59,31 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
-const updateUser = (
-  usernameParams,
-  username,
-  email,
-  phone,
-  address,
-  bio,
-  avatar
-) => {
+const updateUser = (username, email, name, phone, address, bio, avatar) => {
+  const currentUser = getCurrentUser();
   return axios
     .put(
-      API_URL + "profile/" + usernameParams,
-      {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "x-access-token": token,
-        },
-      },
+      API_URL + "profile/" + currentUser._id,
       {
         username,
         email,
+        name,
         phone,
         address,
         bio,
         avatar,
       }
+      // {
+      //   headers: {
+      //     "Content-Type": "multipart/form-dat",
+      //     Accept: "application/x-www-form-urlencoded",
+      //     mimeType: "multipart/form-data",
+      //     "x-access-token": token,
+      //   },
+      // }
     )
     .then((res) => {
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      // localStorage.setItem("user", JSON.stringify(res.data.user));
       return res.data;
     });
 };
