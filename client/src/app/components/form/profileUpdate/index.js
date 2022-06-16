@@ -53,7 +53,7 @@ const ProfileUpdateForm = () => {
     setAvatar(avatar);
   };
 
-  const handleKYCRequest = (e) => {
+  const handleProfileUpdate = (e) => {
     e.preventDefault();
     userAPI
       .updateUser(username, email, name, phone, address, bio, avatar)
@@ -127,7 +127,7 @@ const ProfileUpdateForm = () => {
             type="primary"
             htmlType="submit"
             className="update-form-button"
-            onClick={handleKYCRequest}
+            onClick={handleProfileUpdate}
           >
             Update
           </Button>

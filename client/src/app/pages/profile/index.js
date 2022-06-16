@@ -5,6 +5,7 @@ import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
+import AvatarUpdate from "../../components/form/avatarUpdate";
 
 const Profilepage = () => {
   const currentUser = user.getCurrentUser();
@@ -29,6 +30,8 @@ const Profilepage = () => {
                           />
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
+                          <h3>Update Avatar</h3>
+                          <AvatarUpdate />
                         </div>
                       </Col>
                       <Col>
