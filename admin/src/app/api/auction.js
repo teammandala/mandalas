@@ -11,6 +11,20 @@ const getAuctionData = async () => {
   return res;
 };
 
+const auctionStatus = async (id, status) => {
+  console.log(id, status);
+  await axios.put(
+    API_URL + `status/${id}`,
+    { status }
+    // {
+    //   Headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // }
+  );
+};
+
 export default {
   getAuctionData,
+  auctionStatus,
 };

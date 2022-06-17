@@ -1,4 +1,5 @@
 const express = require("express");
+const { findByIdAndUpdate } = require("../models/auction");
 const router = express.Router();
 const Auction = require("../models/auction");
 
@@ -46,4 +47,16 @@ const getAuctions = async (req, res) => {
   }
 };
 
-module.exports = { auctoinRequest, getAuctions };
+const auctionStatus = async (req, res, next) => {
+  try {
+    await Auction.findByIdAndUpdate(req.params.id, {
+      status: req.body.status,
+    }).then((res) => {
+      res.status(200).send({ message: `auction approved!!` });
+    });
+  } catch (err) {
+    res.status(500).sent("server error!!");
+  }
+};
+
+module.exports = { auctoinRequest, getAuctions, auctionStatus };

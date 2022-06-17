@@ -1,135 +1,112 @@
 import React, { useState, useEffect } from "react";
-import { Space, Table, Tag } from "antd";
+import { Table } from "react-bootstrap";
+import { Image, Button, Modal } from "antd";
 import auction from "../../../api/auction";
 
 const AuctionRequestTable = () => {
-  const [auctions, setAuctions] = useState([]);
+  const [data, setData] = useState([]);
+  const [id, setId] = useState("");
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
     auction
       .getAuctionData()
       .then((res) => {
-        const auctionsData = res.data.auctionData;
-        setAuctions(auctionsData);
-        console.log(auctionsData);
+        const data = res.data.auctionData;
+        setData(data);
       })
       .catch((error) => {
         console.log(error);
       });
   }, []);
 
-  const columns = [
-    {
-      title: "itemName",
-      dataIndex: "itemName",
-      key: "itemName",
-      render: (text) => <a>{text}</a>,
-    },
-    {
-      title: "description",
-      dataIndex: "description",
-      key: "description",
-    },
-    {
-      title: "Image",
-      dataIndex: "image",
-      key: "image",
-    },
-    {
-      title: "created",
-      dataIndex: "created",
-      key: "created",
-    },
-    {
-      title: "bidStart",
-      dataIndex: "bidStart",
-      key: "bidStart",
-    },
-    {
-      title: "bidEnd",
-      dataIndex: "bidEnd",
-      key: "bidEnd",
-    },
-    {
-      title: "seller",
-      dataIndex: "seller",
-      key: "seller",
-    },
-    {
-      title: "startingBid",
-      dataIndex: "startingBid",
-      key: "startingBid",
-    },
-    {
-      title: "Status",
-      key: "status",
-      dataIndex: "status",
-      render: (_, { tags }) => (
-        <>
-          {tags.map((tag) => {
-            let color;
+  const showModal = (value) => {
+    // console.log(value.targe.value);
+    // setId(id);
+    setIsModalVisible(true);
+  };
 
-            if (tag === "accepted") {
-              color = "green";
-            } else if (tag === "rejected") {
-              color = "volcano";
-            } else if (tag === "pending") {
-              color = "geekblue";
-            }
+  const handleOk = ({ id }) => {
+    console.log(id);
+    setIsModalVisible(false);
+    // const status = "approved";
+    // auction
+    //   .auctionStatus(id, status)
+    //   .then((res) => {
+    //     window.alert(res.data.message, window.reload);
+    //   })
+    //   .catch((err) => {
+    //     window.alert(err.data.message);
+    //   });
+  };
 
-            return (
-              <Tag color={color} key={tag}>
-                {tag.toUpperCase()}
-              </Tag>
-            );
-          })}
-        </>
-      ),
-    },
-    {
-      title: "Action",
-      key: "action",
-      render: (_, record) => (
-        <Space size="middle">
-          <a>Accept{record.name}</a>
-          <a>Reject</a>
-        </Space>
-      ),
-    },
-  ];
-
-  const data = [
-    {
-      key: "1",
-      name: "John Brown",
-      age: 32,
-      address: "New York No. 1 Lake Park",
-      tags: ["rejected"],
-    },
-    {
-      key: "2",
-      name: "Jim Green",
-      age: 42,
-      address: "London No. 1 Lake Park",
-      tags: ["pending"],
-    },
-    {
-      key: "3",
-      name: "Joe Black",
-      age: 32,
-      address: "Sidney No. 1 Lake Park",
-      tags: ["accepted"],
-    },
-  ];
-
-  // const datas = () => {
-  //   return [{ auctions }];
-  // };
-
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
   return (
     <>
       <div className="auction-request">
-        <Table columns={columns} dataSource={data} />;
+        <Table striped bordered hover>
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Item Name</th>
+              <th>Description</th>
+              <th>Image</th>
+              <th>requested Date</th>
+              <th>bidStart</th>
+              <th>bidEnd</th>
+              <th>seller</th>
+              <th>startingBid</th>
+              <th>status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {data.map((items, index) => {
+              return (
+                <>
+                  <tr key={index}>
+                    <td>{items._id}</td>
+                    <td>{items.itemName}</td>
+                    <td>{items.description}</td>
+                    <td>
+                      <Image
+                        width={200}
+                        src={"http://localhost:8080/" + items.image}
+                      />
+                      {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
+                    </td>
+                    <td>{items.created}</td>
+                    <td>{items.bidStart}</td>
+                    <td>{items.bidEnd}</td>
+                    <td>{items.sellr}</td>
+                    <td>{items.startingBid}</td>
+                    <td>{items.status}</td>
+                    <td>
+                      <Button
+                        type="primary"
+                        onClick={showModal}
+                        value={items._id}
+                      >
+                        Approve
+                      </Button>
+                      <Modal
+                        title="Are You Sure!"
+                        visible={isModalVisible}
+                        onOk={handleOk}
+                        onCancel={handleCancel}
+                      >
+                        <p>Are you sure you want to approve user</p>
+                      </Modal>
+                    </td>
+                  </tr>
+                </>
+              );
+            })}
+          </tbody>
+        </Table>
       </div>
     </>
   );
