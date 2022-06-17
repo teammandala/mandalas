@@ -13,7 +13,7 @@ const avatarUpload = require("../utils/avatarUpload");
 router.post("/api/auth/register", user.register);
 router.post("/api/auth/login", user.login);
 router.put(
-  "/api/auth/profile/:username",
+  "/api/auth/profile/:id",
   user.profileUpdate,
   avatarUpload.single("avatar"),
   isAuth

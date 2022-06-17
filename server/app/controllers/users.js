@@ -93,48 +93,47 @@ const login = async (req, res, next) => {
   }
 };
 
-const profileUpdate = async (req, res) => {
+const profileUpdate = async (req, res, next) => {
   try {
-    // const { username, email, name, phone, address, bio } = req.body;
-    // const avatar = req.file.path;
-    const tempUser = req.params.username;
-    console.log(req.body.username);
+    const tempUser = await User.findById(req.params.id);
+    if (!tempUser) return res.status(404).json({ message: "No such user." });
 
-    if (!tempUser) {
-      return res.status(400).send({ message: `user doesn't exist!` }).next;
-    } else if (await User.findOne({ username: req.body.username })) {
-      return res
-        .status(400)
-        .send({ message: `user with username already exists!` }).next;
+    let avatarPath = null;
+    if (req.file) {
+      avatarPath = req.file.filename;
     }
 
-    const updateUser = {
+    const existingUser = await User.findOne({ username: req.body.username });
+    if (existingUser && existingUser.id !== tempUser.id) {
+      return res.status(400).json({ message: "Username alredy taken." });
+    }
+
+    const updatedUser = {
       username: req.body.username,
       email: req.body.email,
+      name: req.body.name,
       phone: req.body.phone,
-      address: req.bdoy.address,
+      address: req.body.address,
       bio: req.body.bio,
-      avatar,
+      avatar: avatarPath,
     };
     // remove '', null, undefined
     Object.keys(updatedUser).forEach(
       (k) =>
         !updatedUser[k] && updatedUser[k] !== undefined && delete updatedUser[k]
     );
-
     console.log(req.body, updatedUser);
     const user = await User.findByIdAndUpdate(
       tempUser.id,
       { $set: updatedUser },
       { new: true }
-    )
-      .then((res) =>
-        res.status(201).send({ user, message: `user updated successfully` })
-      )
-      .catch((err) => res.status(400).send({ message: err.message }));
+    ).then((user) => {
+      res.status(201).send({ user, message: `user updated successfully` });
+    });
+
+    // res.status(200).json({ user });
   } catch (err) {
-    res.status(500).send(`Server err ${err}`);
-    console.error(err);
+    res.status(500).json({ message: "Something went wrong." });
   }
 };
 // module.exports = router;

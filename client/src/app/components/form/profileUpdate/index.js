@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import user from "../../../api/user";
-import { UploadOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Input, Upload } from "antd";
-import { useNavigate, useParams } from "react-router-dom";
-const { TextArea } = Input;
+import { UploadOutlined } from "@ant-design/icons";
+import "./style.css";
+import userAPI from "../../../api/user";
 
-const Profileupdate = () => {
-  const currentUser = user.getCurrentUser();
-
+const ProfileUpdateForm = () => {
   const navigate = useNavigate();
-  const usernameParams = useParams().username;
+  const currentUser = userAPI.getCurrentUser();
 
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
@@ -55,34 +53,15 @@ const Profileupdate = () => {
     setAvatar(avatar);
   };
 
-  console.log(
-    usernameParams,
-    username,
-    email,
-    name,
-    phone,
-    address,
-    bio,
-    avatar
-  );
-  const handleUserUpdate = (e) => {
+  const handleProfileUpdate = (e) => {
     e.preventDefault();
-    user
-      .updateUser(
-        usernameParams,
-        username,
-        email,
-        name,
-        phone,
-        address,
-        bio,
-        avatar
-      )
+    userAPI
+      .updateUser(username, email, name, phone, address, bio, avatar)
       .then((response) => {
         window.alert(
-          response.data.message,
-          window.location.reload(),
-          navigate("/profile")
+          response.message,
+          navigate(`/profile/${currentUser.username}`),
+          window.location.reload()
         );
       })
       .catch((error) => {
@@ -98,66 +77,64 @@ const Profileupdate = () => {
   };
 
   return (
-    <div className="container-fluid h-100">
-      {error && <div className="error_msg">{error}</div>}
-      <Form>
-        <div>Username</div>
+    <>
+      <Form
+        name="profileUpdate"
+        method="put"
+        initialValues={{ remember: true }}
+        encType="multipart/form-data"
+      >
+        <p className="form-title">Profile Update</p>
+        {error && <div className="error_msg">{error}</div>}
         <Form.Item name="username" onChange={onChangeUsername} value={username}>
           <Input placeholder={currentUser.username} />
         </Form.Item>
 
-        <div>Full Name</div>
-        <Form.Item name="name" onChange={onChangeName} value={name}>
-          <Input placeholder={currentUser.name} />
-        </Form.Item>
-
-        <div>E-mail</div>
         <Form.Item name="email" onChange={onChangeEmail} value={email}>
           <Input placeholder={currentUser.email} />
         </Form.Item>
 
-        <div>Contact No.</div>
+        <Form.Item name="name" onChange={onChangeName} value={name}>
+          <Input placeholder={currentUser.name} />
+        </Form.Item>
+
         <Form.Item name="phone" onChange={onChangePhone} value={phone}>
           <Input placeholder={currentUser.phone} />
         </Form.Item>
 
-        <div>Address</div>
         <Form.Item name="address" onChange={onChangeAddress} value={address}>
           <Input placeholder={currentUser.address} />
         </Form.Item>
 
-        <div>Role</div>
-        <Form.Item>
-          <Input disabled placeholder={currentUser.role} />
+        <Form.Item name="bio" onChange={onChangeBio} value={bio}>
+          <Input.TextArea placeholder={currentUser.bio} />
         </Form.Item>
 
-        <div>Bio</div>
-      <Form.Item name="bio" onChange={onChangeBio} value={bio}>
-        <TextArea placeholder={currentUser.bio} />
-      </Form.Item>
+        <Form.Item
+          name="avatar"
+          onChange={onChangeAvatar}
+          // value={idImage}
+        >
+          <Upload name="avatar" type="file" htmlFor="file" listType="picture">
+            <Button>
+              <UploadOutlined /> Upload Avatar
+            </Button>
+          </Upload>
+        </Form.Item>
 
-      <div>Profile</div>
-      <Form.Item name="avatar" onChange={onChangeAvatar}>
-        <Upload name="avatar" type="file" htmlFor="file" listType="picture">
-          <Button>
-            <UploadOutlined /> Click to upload
+        <Form.Item>
+          <Button
+            type="primary"
+            htmlType="submit"
+            className="update-form-button"
+            onClick={handleProfileUpdate}
+          >
+            Update
           </Button>
-        </Upload>
-      </Form.Item>
+        </Form.Item>
       </Form>
-
-     
-
-      <hr className="mt-0 mb-4" />
-      <button
-        type="button"
-        className="btn btn-primary btn-block"
-        onClick={handleUserUpdate}
-      >
-        Save Changes
-      </button>
-    </div>
+    </>
   );
 };
 
-export default Profileupdate;
+export default ProfileUpdateForm;

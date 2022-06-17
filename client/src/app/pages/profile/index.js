@@ -1,11 +1,11 @@
-
 import React from "react";
 import Profiledata from "../../components/profile/profiledata";
 import { Tabs, Tab, Row, Col } from "react-bootstrap";
-import Profileupdate from "../../components/profile/profileupdate";
 import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
+import ProfileUpdateForm from "../../components/form/profileUpdate";
+import AvatarUpdate from "../../components/form/avatarUpdate";
 
 const Profilepage = () => {
   const currentUser = user.getCurrentUser();
@@ -30,6 +30,8 @@ const Profilepage = () => {
                           />
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
+                          <h3>Update Avatar</h3>
+                          <AvatarUpdate />
                         </div>
                       </Col>
                       <Col>
@@ -49,7 +51,7 @@ const Profilepage = () => {
                               title="Profile Update"
                             >
                               <div className="container-fluid">
-                                <Profileupdate />
+                                <ProfileUpdateForm />
                               </div>
                             </Tab>
                             <Tab eventKey="kyc" title="KYC">
