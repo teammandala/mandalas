@@ -119,7 +119,7 @@ const Navigationbar = () => {
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="*">Admin</NavDropdown.Item>
+                      <NavDropdown.Item href={"/auctioneer/" + currentUser.username}>Auction Request</NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else {

@@ -12,6 +12,7 @@ import Auctionstatus from "../../components/auction/auctionstatus";
 function Auctioneer() {
 
   const [isAuctioneer, setIsAuctioneer] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
   const [isUser, setIsUser] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
@@ -21,6 +22,7 @@ function Auctioneer() {
     if (user) {
       setCurrentUser(user);
       setIsAuctioneer(user.role === "AUCTIONEER");
+      setIsAdmin(user.role==="ADMIN");
     }
   }, []);
 
@@ -66,14 +68,52 @@ function Auctioneer() {
             </div>
 
           )
-        } else {
+        } else if (isAdmin){
           return (
-            <div>
-              <Noaccess />
+            <div  className='container-fluid'>
+              <div className="auctioneer">
+                <Tab.Container id="left-tabs-example" defaultActiveKey="second">
+                  <Row className="p-3">
+                    <Col sm={3}>
+                      <Nav variant="pills" className="flex-column">
+                        <Nav.Item>
+                          <Nav.Link eventKey="first">Auction Request</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <Nav.Link eventKey="second">My Auction</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                          <Nav.Link eventKey="third">My Auction Status</Nav.Link>
+                        </Nav.Item>
+                      </Nav>
+                    </Col>
+                    <Col sm={9}>
+                      <Tab.Content>
+                        <Tab.Pane eventKey="first">
+                          <AuctionForm />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="second">
+                          <Myauctions/>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="third">
+                          <Auctionstatus />
+                        </Tab.Pane>
+                      </Tab.Content>
+                      
+                    </Col>
+                  </Row>
+                </Tab.Container>
+              </div>
             </div>
           )
 
 
+        }else{
+          return(
+            <div>
+              <Noaccess />
+            </div>
+          )
         }
       })()}
 
