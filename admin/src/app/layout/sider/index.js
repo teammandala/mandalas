@@ -38,9 +38,7 @@ const Sidebar = () => {
             <Menu.Item key="2">
               <UserAddOutlined />
               <span className="nav-text">User<a href="/user"></a></span>
-
             </Menu.Item>
-
             <Menu.Item key="3">
               <FileImageTwoTone />
               <span className="nav-text">Carousel <a href="/carousel"></a> </span>

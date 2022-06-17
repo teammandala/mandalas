@@ -21,7 +21,6 @@ class Router extends React.Component {
           <Route path="/carousel" element={<Carouseldetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/noaccess" element={<Noaccess />}/>
-
           
         </Routes>
       </>

@@ -6,15 +6,20 @@ import { useNavigate } from 'react-router-dom'
 
 const Topnavigation = () => {
   const navigate = useNavigate();
+  const [isAuctioneer, setIsAuctioneer] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isUser, setIsUser] = useState(false);
   const [currentUser, setCurrentUser] = useState(undefined);
 
   useEffect(() => {
     const user = getUser.getCurrentUser();
 
+
     if (user) {
       setCurrentUser(user);
       setIsAdmin(user.role === "ADMIN");
+      setIsAuctioneer(user.role === "AUCTIONEER");
+      setIsUser(user.role === "USER");
     }
   }, []);
 
@@ -43,7 +48,24 @@ const Topnavigation = () => {
                   </NavDropdown>
                 </Nav>
               )
-            } else {
+            } else if (isAuctioneer){
+              return(
+                <Nav>
+                <NavDropdown className='ml-auto' title="Admin Login Only" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+              )
+            }else if (isUser){
+              return(
+                <Nav>
+                <NavDropdown className='ml-auto' title="Admin Login Only" id="basic-nav-dropdown">
+                  <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+                </NavDropdown>
+              </Nav>
+                
+              )
+            }else{
               return(
                 <Nav>
                 <NavDropdown className='ml-auto' title="Login Here" id="basic-nav-dropdown">

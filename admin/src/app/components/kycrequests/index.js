@@ -1,4 +1,3 @@
-import { Table, Column, Cell, HeaderCell } from 'rsuite';
 
 import React from 'react'
 
