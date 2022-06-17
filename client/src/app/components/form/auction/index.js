@@ -76,6 +76,7 @@ const AuctionForm = () => {
 
   return (
     <>
+    <div className="auction">
       <Form
         name="auction-form"
         method="post"
@@ -165,6 +166,7 @@ const AuctionForm = () => {
           </Button>
         </Form.Item>
       </Form>
+      </div>
     </>
   );
 };

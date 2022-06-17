@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AuctionForm from "../../components/form/auction";
 // import { Link } from 'react-router-dom';
-// import "./style.css";
+import "./style.css";
 import getUser from '../../api/user';
 import Noaccess from "../noaccess";
 import {Nav, Tab, Row, Col,} from'react-bootstrap'
@@ -29,17 +29,9 @@ function Auctioneer() {
       {(() => {
         if (isAuctioneer) {
           return (
-            <div className="auctioneer-page">
-              {/* <div className="auctioneer-box">
-                <div className="illustration-wrapper">
-                  <h1>Please Provide Right Information!</h1>
-                  <p>for the approval for the auction request</p>
-                </div>
-                <AuctionForm />
-              </div> */}
-
-              <div>
-                <Tab.Container className='container-fluid' id="left-tabs-example" defaultActiveKey="first">
+            <div  className='container-fluid'>
+              <div className="auctioneer">
+                <Tab.Container id="left-tabs-example" defaultActiveKey="second">
                   <Row className="p-3">
                     <Col sm={3}>
                       <Nav variant="pills" className="flex-column">

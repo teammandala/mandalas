@@ -1,12 +1,14 @@
 body {
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue";
 }
+/* .auction{
+    max-width:450px;
+} */
 
 #auction-form {
-    flex: 1 0 100%;
-    max-width: 700px;
-    width: 100%;
-    padding: 60px;
+    min-width: 450px;
+    /* width: 100%; */
+    padding: 10px;
 }
 
 #auction-form p {
@@ -41,6 +43,9 @@ body {
 #auction-form_bidEnd,
 #auction-form_startingBid {
     height: 48px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: black;
 }
 
 #auction-form .ant-btn {
