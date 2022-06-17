@@ -29,9 +29,8 @@ const Topnavigation = () => {
     window.location.reload();
   };
 
-
   return (
-    <Navbar className='navbar' bg="light" expand="lg">
+    <Navbar className='navbar' bg="light" sticky="top" expand="lg">
       <Container>
         <Navbar.Brand className='brand' href="/"><h>Mandala Admin</h></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
