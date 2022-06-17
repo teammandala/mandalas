@@ -12,6 +12,7 @@ import KYC from "../pages/kyc";
 import Auctioneer from "../pages/auctioneer";
 import Termsandconditions from "../pages/termsandconditions";
 import Policy from "../pages/policy";
+import Auctionrequest from "../pages/auctionrequest";
 
 class Router extends React.Component {
   render() {
@@ -30,6 +31,7 @@ class Router extends React.Component {
           <Route path="/policy" element={<Policy/>}/>
           <Route path="/termsandconditions" element={<Termsandconditions />} />
           <Route path="*" element={<Pagenotfound />} />
+          <Route path='/auctionrequest' element={<Auctionrequest />} />
           
         </Routes>
       </>

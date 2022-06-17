@@ -92,8 +92,8 @@ const Navigationbar = () => {
                       >
                         Profile
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/auction">
-                        Auction
+                      <NavDropdown.Item href="/auctionrequest">
+                        Auction Request
                       </NavDropdown.Item>
                       <NavDropdown.Item onClick={logOut}>
                         Logout
