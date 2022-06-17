@@ -92,14 +92,11 @@ const Navigationbar = () => {
                       >
                         Profile
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/auctioneer">
-                        Auction Request
-                      </NavDropdown.Item>
                       <NavDropdown.Item onClick={logOut}>
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="/myauctions">Auction Request</NavDropdown.Item>
+                      <NavDropdown.Item href={"/auctioneer/" + currentUser.username}>Auction Request</NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else if (isAdmin) {

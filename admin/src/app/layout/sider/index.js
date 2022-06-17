@@ -12,7 +12,7 @@ const Sidebar = () => {
   const [collapsed, setCollapsed] = useState(true);
   return (
     <>
-    
+
       <Layout>
         <Sider
           collapsible
@@ -57,13 +57,12 @@ const Sidebar = () => {
         <Layout>
           <Content >
             <div >
-            <Topnavigation />
+              <Topnavigation />
             </div>
           </Content>
           <Content >
             <div>
-              
-              {/* routes here */}
+            {/* routes here */}
               <Router />
             </div>
           </Content>
