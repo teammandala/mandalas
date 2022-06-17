@@ -6,7 +6,7 @@ class Auction extends React.Component {
     return (
       <>
         <div className="Auction">
-          <h1><AuctionForm /></h1>
+          <h1>here are list of auctions</h1>
         </div>
       </>
     );
