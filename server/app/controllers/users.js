@@ -136,5 +136,6 @@ const profileUpdate = async (req, res, next) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
+
 // module.exports = router;
 module.exports = { register, login, profileUpdate };
