@@ -99,7 +99,7 @@ const Navigationbar = () => {
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="*">Auctioneer</NavDropdown.Item>
+                      <NavDropdown.Item href="/auctioneer">Auctioneer</NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else if (isAdmin) {
