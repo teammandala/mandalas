@@ -3,7 +3,6 @@ import { Space, Table, Tag } from "antd";
 import auction from "../../../api/auction";
 
 const AuctionRequestTable = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [auctions, setAuctions] = useState([]);
 
   useEffect(() => {
@@ -130,7 +129,7 @@ const AuctionRequestTable = () => {
   return (
     <>
       <div className="auction-request">
-        <Table columns={columns} loading={isLoading} dataSource={data} />;
+        <Table columns={columns} dataSource={data} />;
       </div>
     </>
   );
