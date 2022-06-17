@@ -34,5 +34,6 @@ router.use(
   auction.auctoinRequest,
   isAuth
 );
+router.get("/api/auction/getdata", auction.getAuctions);
 
 module.exports = router;

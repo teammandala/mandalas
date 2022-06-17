@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
 import { Layout, Menu } from "antd";
 import Topnavigation from "../navbar";
-import { CustomerServiceFilled, CustomerServiceOutlined, FileImageTwoTone, HomeOutlined, UserAddOutlined, VideoCameraTwoTone } from "@ant-design/icons"
-import Router from '../../routes';
-import getUser from '../../api/user';
-import { useNavigate } from 'react-router-dom'
-import Noaccess from '../../pages/noaccess';
-
+import {
+  CustomerServiceFilled,
+  FileImageTwoTone,
+  HomeOutlined,
+  UserAddOutlined,
+  CheckCircleOutlined,
+} from "@ant-design/icons";
+import Router from "../../routes";
+import getUser from "../../api/user";
+import { useNavigate } from "react-router-dom";
+import Noaccess from "../../pages/noaccess";
 
 const { Content, Footer, Sider } = Layout;
 const Sidebar = () => {
@@ -21,7 +26,6 @@ const Sidebar = () => {
   useEffect(() => {
     const user = getUser.getCurrentUser();
 
-
     if (user) {
       setCurrentUser(user);
       setIsAdmin(user.role === "ADMIN");
@@ -30,12 +34,9 @@ const Sidebar = () => {
     }
   }, []);
 
-
-
   return (
     <>
       <Layout>
-
         {(() => {
           if (isAdmin) {
             return (
@@ -48,37 +49,46 @@ const Sidebar = () => {
                   height: "100vh",
                   position: "sticky",
                   top: 0,
-                  left: 0
+                  left: 0,
                 }}
               >
                 <div className="logo" />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
-
-
-
                   <Menu.Item key="1">
                     <HomeOutlined />
-                    <span className="nav-text">Home<a href="/"></a></span>
-
+                    <span className="nav-text">
+                      Home<a href="/"></a>
+                    </span>
                   </Menu.Item>
                   <Menu.Item key="2">
                     <UserAddOutlined />
-                    <span className="nav-text">User<a href="/user"></a></span>
+                    <span className="nav-text">
+                      User<a href="/user"></a>
+                    </span>
                   </Menu.Item>
                   <Menu.Item key="3">
                     <FileImageTwoTone />
-                    <span className="nav-text">Carousel <a href="/carousel"></a> </span>
+                    <span className="nav-text">
+                      Carousel <a href="/carousel"></a>{" "}
+                    </span>
                   </Menu.Item>
 
                   <Menu.Item key="4">
                     <CustomerServiceFilled />
-                    <span className="nav-text">KYC Requests<a href="kycrequest"></a></span>
-
+                    <span className="nav-text">
+                      KYC Requests<a href="kycrequest"></a>
+                    </span>
                   </Menu.Item>
 
+                  <Menu.Item key="5">
+                    <CheckCircleOutlined />
+                    <span className="nav-text">
+                      Auction Requests<a href="/auctionrequest"></a>
+                    </span>
+                  </Menu.Item>
                 </Menu>
               </Sider>
-            )
+            );
           } else {
             return (
               <Sider
@@ -90,52 +100,47 @@ const Sidebar = () => {
                   height: "100vh",
                   position: "sticky",
                   top: 0,
-                  left: 0
+                  left: 0,
                 }}
               >
                 <div className="logo" />
                 <Menu theme="dark" mode="inline" defaultSelectedKeys={[""]}>
-
                   <Menu.Item key="1">
                     <HomeOutlined />
-                    <span className="nav-text">No Access<a href="/"></a></span>
+                    <span className="nav-text">
+                      No Access<a href="/"></a>
+                    </span>
                   </Menu.Item>
                 </Menu>
               </Sider>
-            )
+            );
           }
         })()}
         <Layout>
-          <Content >
-            <div >
+          <Content>
+            <div>
               <Topnavigation />
             </div>
           </Content>
-          <Content >
-
-            {(()=>{
-              if(isAdmin){
-                return(
+          <Content>
+            {(() => {
+              if (isAdmin) {
+                return (
                   <div>
-              {/* routes here */}
-              <Router />
-            </div>
-                )
-              }else{
-                return(
-                  <Noaccess />
-                )
+                    {/* routes here */}
+                    <Router />
+                  </div>
+                );
+              } else {
+                return <Noaccess />;
               }
             })()}
-            
           </Content>
-          <Footer style={{ textAlign: "center" }}>
-            Mandala Admin
-          </Footer>
+          <Footer style={{ textAlign: "center" }}>Mandala Admin</Footer>
         </Layout>
       </Layout>
     </>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;

@@ -31,5 +31,19 @@ const auctoinRequest = async (req, res) => {
 };
 
 // router for kyc get all
+const getAuctions = async (req, res) => {
+  try {
+    await Auction.find()
+      .then((auctionData) => {
+        res.status(200).send({ auctionData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
 
-module.exports = { auctoinRequest };
+module.exports = { auctoinRequest, getAuctions };
