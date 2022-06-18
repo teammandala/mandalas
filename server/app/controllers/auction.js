@@ -49,13 +49,16 @@ const getAuctions = async (req, res) => {
 
 const auctionStatus = async (req, res, next) => {
   try {
-    await Auction.findByIdAndUpdate(req.params.id, {
-      status: req.body.status,
-    }).then((res) => {
-      res.status(200).send({ message: `auction approved!!` });
+    const id = req.params.id;
+    await Auction.findByIdAndUpdate(
+      id,
+      { $set: { status: req.body.status } },
+      { new: true }
+    ).then((auction) => {
+      res.status(201).send({ auction, message: `KYC request successful` });
     });
   } catch (err) {
-    res.status(500).sent("server error!!");
+    res.status(500).json({ message: "Something went wrong." });
   }
 };
 

@@ -12,16 +12,19 @@ const getAuctionData = async () => {
 };
 
 const auctionStatus = async (id, status) => {
-  console.log(id, status);
-  await axios.put(
-    API_URL + `status/${id}`,
-    { status }
-    // {
-    //   Headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // }
+  // console.log(id, status);
+  return await axios.put(
+    API_URL + `status/` + id,
+    { status },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
   );
+  // .then((res) => {
+  //   return res;
+  // });
 };
 
 export default {

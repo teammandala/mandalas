@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
 import auction from "../../../api/auction";
 
 const AuctionRequestTable = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
+  const [message, setMessage] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -20,24 +23,30 @@ const AuctionRequestTable = () => {
       });
   }, []);
 
-  const showModal = (value) => {
-    // console.log(value.targe.value);
-    // setId(id);
+  const showModal = (items) => {
+    setId(items._id);
     setIsModalVisible(true);
   };
 
-  const handleOk = ({ id }) => {
-    console.log(id);
+  const handleOk = () => {
+    // console.log(id);
     setIsModalVisible(false);
-    // const status = "approved";
-    // auction
-    //   .auctionStatus(id, status)
-    //   .then((res) => {
-    //     window.alert(res.data.message, window.reload);
-    //   })
-    //   .catch((err) => {
-    //     window.alert(err.data.message);
-    //   });
+    const status = "approved";
+    auction
+      .auctionStatus(id, status)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
   };
 
   const handleCancel = () => {
@@ -67,7 +76,7 @@ const AuctionRequestTable = () => {
             {data.map((items, index) => {
               return (
                 <>
-                  <tr key={index}>
+                  <tr key={items._id}>
                     <td>{items._id}</td>
                     <td>{items.itemName}</td>
                     <td>{items.description}</td>
@@ -81,15 +90,11 @@ const AuctionRequestTable = () => {
                     <td>{items.created}</td>
                     <td>{items.bidStart}</td>
                     <td>{items.bidEnd}</td>
-                    <td>{items.sellr}</td>
+                    <td>{items.seller}</td>
                     <td>{items.startingBid}</td>
                     <td>{items.status}</td>
                     <td>
-                      <Button
-                        type="primary"
-                        onClick={showModal}
-                        value={items._id}
-                      >
+                      <Button type="primary" onClick={() => showModal(items)}>
                         Approve
                       </Button>
                       <Modal
@@ -98,7 +103,7 @@ const AuctionRequestTable = () => {
                         onOk={handleOk}
                         onCancel={handleCancel}
                       >
-                        <p>Are you sure you want to approve user</p>
+                        <p>Are you sure you want to approve this Auction </p>
                       </Modal>
                     </td>
                   </tr>
