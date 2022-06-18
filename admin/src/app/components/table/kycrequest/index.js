@@ -63,12 +63,17 @@ const KycrequestTable = () => {
 
   const handleReject = () => {
     // console.log(id);
-    setIsApproveModalVisible(false);
+    setIsRejectModalVisible(false);
     const status = "rejected";
+    const role = "USER";
     kyc
       .kycStatus(kycId, status)
       .then((res) => {
-        window.alert(res.data.message, window.location.reload());
+        window.alert(
+          res.data.message,
+          user.kycApprove(id, role),
+          window.location.reload()
+        );
       })
       .catch((error) => {
         if (
@@ -79,7 +84,6 @@ const KycrequestTable = () => {
           window.alert(error.response.data.message);
         }
       });
-    // window.location.reload();
     // window.location.reload();
   };
 
