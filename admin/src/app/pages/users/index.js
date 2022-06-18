@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import AllUser from "../../components/table/allUser";
 
 const User = () => {
   return (
-    <div>User</div>
-  )
-}
+    <div className="use">
+      <AllUser />
+    </div>
+  );
+};
 
-export default User
+export default User;

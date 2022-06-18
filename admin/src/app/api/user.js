@@ -40,11 +40,15 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
+const getAllUser = async () => {
+  return await axios.get(API_URL + "getalluser");
+};
+
 export default {
-    // register,
-    login,
-    getCurrentUser,
-    logout,
-    // updateUser,
-  };
-  
+  // register,
+  login,
+  getCurrentUser,
+  logout,
+  getAllUser,
+  // updateUser,
+};
