@@ -121,6 +121,7 @@ const KycrequestTable = () => {
 
   const handleCancel = () => {
     setIsApproveModalVisible(false);
+    setIsRejectModalVisible(false);
   };
 
   return (
