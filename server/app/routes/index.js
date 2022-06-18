@@ -24,8 +24,8 @@ router.post(
   avatarUpload.single("avatar"),
   isAuth
 );
-
 router.get("/api/auth/getalluser", user.getAllUser);
+router.put("/api/auth/role/:id", user.roleUpdate);
 
 // kyc routes
 router.use(
