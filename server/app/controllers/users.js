@@ -167,5 +167,31 @@ const avatarUpdate = async (req, res, next) => {
   }
 };
 
+const roleUpdate = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    console.log(id, req.body.role);
+    await User.findByIdAndUpdate(
+      id,
+      { $set: { role: req.body.role } },
+      { new: true }
+    ).then((user) => {
+      res.status(201).send({
+        user,
+        message: `user role updated successfully!!`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
 // module.exports = router;
-module.exports = { register, login, profileUpdate, getAllUser, avatarUpdate };
+module.exports = {
+  register,
+  login,
+  profileUpdate,
+  getAllUser,
+  avatarUpdate,
+  roleUpdate,
+};
