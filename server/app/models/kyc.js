@@ -30,6 +30,11 @@ const kycForm = new Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
   },
+  status: {
+    type: String,
+    default: "pending",
+    enum: ["pending", "approved", "rejected"],
+  },
   reqDate: {
     type: Date,
     default: Date.now(),
