@@ -46,4 +46,6 @@ router.put("/api/auction/status/:id", auction.auctionStatus);
 
 router.get("/api/auction/getdata", auction.getAuctions);
 
+router.get("/api/kyc/getdata", kyc.getKYCRequest);
+
 module.exports = router;

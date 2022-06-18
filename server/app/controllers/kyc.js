@@ -69,4 +69,4 @@ const getUcrrentUserKYC = async (req, res) => {
   }
 };
 
-module.exports = { kycRequest };
+module.exports = { kycRequest, getKYCRequest, getUcrrentUserKYC };

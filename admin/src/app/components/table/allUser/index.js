@@ -20,7 +20,7 @@ const AllUser = () => {
 
   return (
     <div className="all-users">
-      <Table striped bordered hover>
+      <Table responsive striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>id</th>
