@@ -44,11 +44,28 @@ const getAllUser = async () => {
   return await axios.get(API_URL + "getalluser");
 };
 
+const kycApprove = async (id, role) => {
+  // console.log(id, status);
+  return await axios.put(
+    API_URL + `role/` + id,
+    { role },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  // .then((res) => {
+  //   return res;
+  // });
+};
+
 export default {
   // register,
   login,
   getCurrentUser,
   logout,
   getAllUser,
+  kycApprove,
   // updateUser,
 };
