@@ -12,6 +12,7 @@ import Router from "../../routes";
 import getUser from "../../api/user";
 import { useNavigate } from "react-router-dom";
 import Noaccess from "../../pages/noaccess";
+import './style.css'
 
 const { Content, Footer, Sider } = Layout;
 const Sidebar = () => {
@@ -35,7 +36,7 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <>
+    <><div>
       <Layout>
         {(() => {
           if (isAdmin) {
@@ -53,7 +54,7 @@ const Sidebar = () => {
                 }}
               >
                 <div className="logo" />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
+                <Menu theme="dark" mode="inline" defaultSelectedKeys={[""]}>
                   <Menu.Item key="1">
                     <HomeOutlined />
                     <span className="nav-text">
@@ -117,16 +118,16 @@ const Sidebar = () => {
           }
         })()}
         <Layout>
-          <Content>
+          <Content className="body-background">
             <div>
               <Topnavigation />
             </div>
           </Content>
-          <Content>
+          <Content className="body-background" >
             {(() => {
               if (isAdmin) {
                 return (
-                  <div>
+                  <div className="body-background container-fluid">
                     {/* routes here */}
                     <Router />
                   </div>
@@ -139,6 +140,7 @@ const Sidebar = () => {
           <Footer style={{ textAlign: "center" }}>Mandala Admin</Footer>
         </Layout>
       </Layout>
+      </div>
     </>
   );
 };

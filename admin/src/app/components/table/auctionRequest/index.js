@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
 import auction from "../../../api/auction";
+import './style.css'
 
 const AuctionRequestTable = () => {
   const navigate = useNavigate();
@@ -80,8 +81,7 @@ const AuctionRequestTable = () => {
   };
   return (
     <>
-      <div className="auction-request">
-        <Table striped bordered hover>
+        <Table responsive className="table_data" striped bordered hover size="sm" variant="dark">
           <thead>
             <tr>
               <th>id</th>
@@ -156,7 +156,6 @@ const AuctionRequestTable = () => {
             })}
           </tbody>
         </Table>
-      </div>
     </>
   );
 };
