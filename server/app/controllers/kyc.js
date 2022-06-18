@@ -69,4 +69,27 @@ const getUcrrentUserKYC = async (req, res) => {
   }
 };
 
-module.exports = { kycRequest, getKYCRequest, getUcrrentUserKYC };
+const kycStatusUpdate = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await KYC.findByIdAndUpdate(
+      id,
+      { $set: { status: req.body.status } },
+      { new: true }
+    ).then((auction) => {
+      res.status(201).send({
+        auction,
+        message: `Kyc status changed to  ${req.body.status} along with the user role`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
+module.exports = {
+  kycRequest,
+  getKYCRequest,
+  getUcrrentUserKYC,
+  kycStatusUpdate,
+};
