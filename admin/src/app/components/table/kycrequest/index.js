@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Table } from "react-bootstrap";
+import { Table,Row } from "react-bootstrap";
 import { Image, Modal, Button } from "antd";
 import kyc from "../../../api/kycrequest";
 import user from "../../../api/user";
@@ -10,6 +10,7 @@ const KycrequestTable = () => {
   const [kycId, setKYCId] = useState("");
   const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
   const [isRejectModalVisible, setIsRejectModalVisible] = useState(false);
+  const [isAdminModalVisible, setIsAdminModalVisible] = useState(false);
 
   useEffect(() => {
     kyc
@@ -32,7 +33,7 @@ const KycrequestTable = () => {
   const handleApprove = () => {
     // console.log(id);
     setIsApproveModalVisible(false);
-    const status = "approved";
+    const status = "auctioneer";
     const role = "AUCTIONEER";
     kyc
       .kycStatus(kycId, status)
@@ -84,8 +85,39 @@ const KycrequestTable = () => {
           window.alert(error.response.data.message);
         }
       });
-    // window.location.reload();
   };
+
+
+  const showAdminModel = (items) => {
+    setKYCId(items._id);
+    setId(items.user);
+    setIsAdminModalVisible(true);
+  };
+  const handleAdmin = () => {
+    // console.log(id);
+    setIsAdminModalVisible(false);
+    const status = "admin";
+    const role = "ADMIN";
+    kyc
+      .kycStatus(kycId, status)
+      .then((res) => {
+        window.alert(
+          res.data.message,
+          user.kycApprove(id, role),
+          window.location.reload()
+        );
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+  };
+
 
   const handleCancel = () => {
     setIsApproveModalVisible(false);
@@ -130,11 +162,12 @@ const KycrequestTable = () => {
                   <td>{items.status}</td>
                   <td>{items.reqDate}</td>
                   <td>
+                    <Row>
                     <Button
                       type="primary"
                       onClick={() => showApproveModal(items)}
-                    >
-                      Approve
+                      block>
+                      Make Auctioneer
                     </Button>
                     <Modal
                       title="Are You Sure!"
@@ -142,14 +175,15 @@ const KycrequestTable = () => {
                       onOk={handleApprove}
                       onCancel={handleCancel}
                     >
-                      <p>Are you sure you want to cange user's role </p>
+                      <p>Are you sure you want to change user's role to Auctioneer? </p>
                     </Modal>
-
+                    </Row>
+                    <Row p={2}>
                     <Button
-                      type="danger"
+                      type=""
                       onClick={() => showRejectModal(items)}
-                    >
-                      Reject
+                      block>
+                      Make User
                     </Button>
                     <Modal
                       title="Are You Sure!"
@@ -159,6 +193,23 @@ const KycrequestTable = () => {
                     >
                       <p>Are you sure you want to Reject this KYC </p>
                     </Modal>
+                    </Row>
+                    <Row>
+                    <Button
+                      type="danger"
+                      onClick={() => showAdminModel(items)}
+                      block>
+                      Make Admin
+                    </Button>
+                    <Modal
+                      title="Are You Sure!"
+                      visible={isAdminModalVisible}
+                      onOk={handleAdmin}
+                      onCancel={handleCancel}
+                    >
+                      <p>Are you sure you want to Make this User Admin? </p>
+                    </Modal>
+                    </Row>
                   </td>
                 </tr>
               </>

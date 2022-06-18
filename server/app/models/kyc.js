@@ -33,7 +33,7 @@ const kycForm = new Schema({
   status: {
     type: String,
     default: "pending",
-    enum: ["pending", "approved", "rejected"],
+    enum: ["pending", "auctioneer", "rejected", "admin"],
   },
   reqDate: {
     type: Date,
