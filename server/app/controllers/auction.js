@@ -55,7 +55,12 @@ const auctionStatus = async (req, res, next) => {
       { $set: { status: req.body.status } },
       { new: true }
     ).then((auction) => {
-      res.status(201).send({ auction, message: `KYC request successful` });
+      res
+        .status(201)
+        .send({
+          auction,
+          message: `kyc status changed to  ${req.body.status}`,
+        });
     });
   } catch (err) {
     res.status(500).json({ message: "Something went wrong." });

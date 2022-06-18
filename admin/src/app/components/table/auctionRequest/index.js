@@ -8,8 +8,8 @@ const AuctionRequestTable = () => {
   const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
-  const [message, setMessage] = useState("");
-  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
+  const [isRejectModalVisible, setIsRejectModalVisible] = useState(false);
 
   useEffect(() => {
     auction
@@ -23,14 +23,14 @@ const AuctionRequestTable = () => {
       });
   }, []);
 
-  const showModal = (items) => {
+  const showApproveModal = (items) => {
     setId(items._id);
-    setIsModalVisible(true);
+    setIsApproveModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleApprove = () => {
     // console.log(id);
-    setIsModalVisible(false);
+    setIsApproveModalVisible(false);
     const status = "approved";
     auction
       .auctionStatus(id, status)
@@ -49,8 +49,34 @@ const AuctionRequestTable = () => {
     // window.location.reload();
   };
 
+  const showRejectModal = (items) => {
+    setId(items._id);
+    setIsRejectModalVisible(true);
+  };
+
+  const handleReject = () => {
+    // console.log(id);
+    setIsRejectModalVisible(false);
+    const status = "rejected";
+    auction
+      .auctionStatus(id, status)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
+  };
+
   const handleCancel = () => {
-    setIsModalVisible(false);
+    setIsApproveModalVisible(false);
   };
   return (
     <>
@@ -94,16 +120,34 @@ const AuctionRequestTable = () => {
                     <td>{items.startingBid}</td>
                     <td>{items.status}</td>
                     <td>
-                      <Button type="primary" onClick={() => showModal(items)}>
+                      <Button
+                        type="primary"
+                        onClick={() => showApproveModal(items)}
+                      >
                         Approve
                       </Button>
                       <Modal
                         title="Are You Sure!"
-                        visible={isModalVisible}
-                        onOk={handleOk}
+                        visible={isApproveModalVisible}
+                        onOk={handleApprove}
                         onCancel={handleCancel}
                       >
                         <p>Are you sure you want to approve this Auction </p>
+                      </Modal>
+
+                      <Button
+                        type="danger"
+                        onClick={() => showRejectModal(items)}
+                      >
+                        Reject
+                      </Button>
+                      <Modal
+                        title="Are You Sure!"
+                        visible={isRejectModalVisible}
+                        onOk={handleReject}
+                        onCancel={handleCancel}
+                      >
+                        <p>Are you sure you want to Reject this Auction </p>
                       </Modal>
                     </td>
                   </tr>
