@@ -170,7 +170,6 @@ const avatarUpdate = async (req, res, next) => {
 const roleUpdate = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(id, req.body.role);
     await User.findByIdAndUpdate(
       id,
       { $set: { role: req.body.role } },
