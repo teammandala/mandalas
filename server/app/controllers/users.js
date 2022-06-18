@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const { find } = require("../models/user");
 
 // route for user registration
 const register = async (req, res, next) => {
@@ -137,5 +138,34 @@ const profileUpdate = async (req, res, next) => {
   }
 };
 
+const getAllUser = async (req, res, next) => {
+  try {
+    await User.find().then((user) => {
+      res.status(200).send({ user });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
+const avatarUpdate = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    console.log(id, req.file.filename);
+    await User.findByIdAndUpdate(
+      id,
+      { $set: { avatar: req.file.path } },
+      { new: true }
+    ).then((user) => {
+      res.status(201).send({
+        user,
+        message: `new avatar uploaded!!`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
 // module.exports = router;
-module.exports = { register, login, profileUpdate };
+module.exports = { register, login, profileUpdate, getAllUser, avatarUpdate };

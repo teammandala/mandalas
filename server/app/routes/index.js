@@ -18,6 +18,14 @@ router.put(
   avatarUpload.single("avatar"),
   isAuth
 );
+router.post(
+  "/api/auth/avatar/:id",
+  user.avatarUpdate,
+  avatarUpload.single("avatar"),
+  isAuth
+);
+
+router.get("/api/auth/getalluser", user.getAllUser);
 
 // kyc routes
 router.use(

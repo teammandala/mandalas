@@ -93,8 +93,8 @@ const updateUser = (username, email, name, phone, address, bio, avatar) => {
 const updateUserAvatar = (avatar) => {
   const currentUser = getCurrentUser();
   return axios
-    .put(
-      API_URL + "profile/" + currentUser._id,
+    .post(
+      API_URL + "avatar/" + currentUser._id,
       {
         avatar,
       },
