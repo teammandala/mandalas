@@ -1,10 +1,10 @@
 import React from 'react'
-import Kyc from '../../components/kycrequests'
+import KycrequestTable from '../../components/table/kycrequest'
 
 const Kycrequest = () => {
   return (
     <div>
-        <Kyc />
+        <KycrequestTable />
     </div>
   )
 }

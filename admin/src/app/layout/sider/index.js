@@ -117,17 +117,17 @@ const Sidebar = () => {
             );
           }
         })()}
-        <Layout>
+        <Layout className="body-background">
           <Content className="body-background">
             <div>
               <Topnavigation />
             </div>
           </Content>
-          <Content className="body-background" >
+          <Content className="body-background"  >
             {(() => {
               if (isAdmin) {
                 return (
-                  <div className="body-background container-fluid">
+                  <div className="body-background container-fluid" >
                     {/* routes here */}
                     <Router />
                   </div>
