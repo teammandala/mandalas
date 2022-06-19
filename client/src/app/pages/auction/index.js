@@ -1,16 +1,9 @@
-import React from "react";
-import AuctionForm from "../../components/form/auction";
+import React from 'react'
 
-class Auction extends React.Component {
-  render() {
-    return (
-      <>
-        <div className="Auction">
-          <h1>here are list of auctions</h1>
-        </div>
-      </>
-    );
-  }
+const Auction = () => {
+  return (
+    <div>Auction</div>
+  )
 }
 
-export default Auction;
+export default Auction
