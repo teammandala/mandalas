@@ -59,7 +59,7 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
-const updateUser = (username, email, name, phone, address, bio, avatar) => {
+const updateUser = (username, email, name, phone, address, bio) => {
   const currentUser = getCurrentUser();
   return axios
     .put(
@@ -71,7 +71,6 @@ const updateUser = (username, email, name, phone, address, bio, avatar) => {
         phone,
         address,
         bio,
-        avatar,
       },
       {
         headers: {
