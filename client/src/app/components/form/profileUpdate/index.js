@@ -15,7 +15,7 @@ const ProfileUpdateForm = () => {
   const [phone, setPhone] = useState("");
   const [bio, setBio] = useState("");
   const [address, setAddress] = useState("");
-  // const [avatar, setAvatar] = useState("");
+  const [avatar, setAvatar] = useState("");
   const [error, setError] = useState("");
 
   const onChangeName = (e) => {
@@ -48,15 +48,15 @@ const ProfileUpdateForm = () => {
     setAddress(address);
   };
 
-  // const onChangeAvatar = (e) => {
-  //   const avatar = e.target.files[0];
-  //   setAvatar(avatar);
-  // };
+  const onChangeAvatar = (e) => {
+    const avatar = e.target.files[0];
+    setAvatar(avatar);
+  };
 
   const handleProfileUpdate = (e) => {
     e.preventDefault();
     userAPI
-      .updateUser(username, email, name, phone, address, bio)
+      .updateUser(username, email, name, phone, address, bio, avatar)
       .then((response) => {
         window.alert(
           response.message,
@@ -110,7 +110,7 @@ const ProfileUpdateForm = () => {
           <Input.TextArea placeholder={currentUser.bio} />
         </Form.Item>
 
-        {/* <Form.Item
+        <Form.Item
           name="avatar"
           onChange={onChangeAvatar}
           // value={idImage}
@@ -120,7 +120,7 @@ const ProfileUpdateForm = () => {
               <UploadOutlined /> Upload Avatar
             </Button>
           </Upload>
-        </Form.Item> */}
+        </Form.Item>
 
         <Form.Item>
           <Button

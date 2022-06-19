@@ -1,12 +1,13 @@
 import React from "react";
-import AuctionForm from "../../components/form/auction";
+import AuctionApprovedCard from "../../components/auction/approvedAuctions";
 
 class Auction extends React.Component {
   render() {
     return (
       <>
         <div className="Auction">
-          <h1>here are list of auctions</h1>
+          <h1>here are list of auctions </h1>
+          <AuctionApprovedCard />
         </div>
       </>
     );

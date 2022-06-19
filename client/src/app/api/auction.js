@@ -33,7 +33,14 @@ const auctionRequest = (
   );
 };
 
+//get all approved auction data
+const getApprovedAuctionData = async () => {
+  const res = await axios.get(API_URL + "getdata");
+  return res;
+};
+
 // eslint-disable-next-line
 export default {
   auctionRequest,
+  getApprovedAuctionData,
 };

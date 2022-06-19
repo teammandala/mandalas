@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
 import auction from "../../../api/auction";
-import './style.css'
+import "./style.css";
 
 const AuctionRequestTable = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
@@ -81,81 +81,89 @@ const AuctionRequestTable = () => {
   };
   return (
     <>
-        <Table responsive className="table_data" striped bordered hover size="sm" variant="dark">
-          <thead>
-            <tr>
-              <th>id</th>
-              <th>Item Name</th>
-              <th>Description</th>
-              <th>Image</th>
-              <th>requested Date</th>
-              <th>bidStart</th>
-              <th>bidEnd</th>
-              <th>seller</th>
-              <th>startingBid</th>
-              <th>status</th>
-              <th>Action</th>
-            </tr>
-          </thead>
+      <Table
+        responsive
+        className="table_data"
+        striped
+        bordered
+        hover
+        size="sm"
+        variant="dark"
+      >
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>Item Name</th>
+            <th>Description</th>
+            <th>Image</th>
+            <th>requested Date</th>
+            <th>bidStart</th>
+            <th>bidEnd</th>
+            <th>seller</th>
+            <th>startingBid</th>
+            <th>status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
-          <tbody>
-            {data.map((items, index) => {
-              return (
-                <>
-                  <tr key={items._id}>
-                    <td>{items._id}</td>
-                    <td>{items.itemName}</td>
-                    <td>{items.description}</td>
-                    <td>
-                      <Image
-                        width={200}
-                        src={"http://localhost:8080/" + items.image}
-                      />
-                      {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
-                    </td>
-                    <td>{items.created}</td>
-                    <td>{items.bidStart}</td>
-                    <td>{items.bidEnd}</td>
-                    <td>{items.seller}</td>
-                    <td>{items.startingBid}</td>
-                    <td>{items.status}</td>
-                    <td>
-                      <Button
-                        type="primary"
-                        onClick={() => showApproveModal(items)}
-                      >
-                        Approve
-                      </Button>
-                      <Modal
-                        title="Are You Sure!"
-                        visible={isApproveModalVisible}
-                        onOk={handleApprove}
-                        onCancel={handleCancel}
-                      >
-                        <p>Are you sure you want to approve this Auction </p>
-                      </Modal>
+        <tbody>
+          {data.map((items, index) => {
+            return (
+              <>
+                <tr key={items._id}>
+                  <td>{items._id}</td>
+                  <td>{items.itemName}</td>
+                  <td>{items.description}</td>
+                  <td>
+                    <Image
+                      width={200}
+                      src={"http://localhost:8080/" + items.image}
+                    />
+                    {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
+                  </td>
+                  <td>{items.created}</td>
+                  <td>{items.bidStart}</td>
+                  <td>{items.bidEnd}</td>
+                  <td>{items.seller}</td>
+                  <td>{items.startingBid}</td>
+                  <td>{items.status}</td>
+                  <td>
+                    <Button
+                      type="primary"
+                      onClick={() => showApproveModal(items)}
+                    >
+                      Approve
+                    </Button>
+                    <Modal
+                      title="Are You Sure!"
+                      visible={isApproveModalVisible}
+                      onOk={handleApprove}
+                      onCancel={handleCancel}
+                    >
+                      <p>Are you sure you want to approve this Auction </p>
+                    </Modal>
 
-                      <Button
-                        type="danger"
-                        onClick={() => showRejectModal(items)}
-                      >
-                        Reject
-                      </Button>
-                      <Modal
-                        title="Are You Sure!"
-                        visible={isRejectModalVisible}
-                        onOk={handleReject}
-                        onCancel={handleCancel}
-                      >
-                        <p>Are you sure you want to Reject this Auction </p>
-                      </Modal>
-                    </td>
-                  </tr>
-                </>
-              );
-            })}
-          </tbody>
-        </Table>
+                    <Button
+                      type="danger"
+                      onClick={() => showRejectModal(items)}
+                    >
+                      Reject
+                    </Button>
+                    <Modal
+                      title="Are You Sure!"
+                      visible={isRejectModalVisible}
+                      onOk={handleReject}
+                      onCancel={handleCancel}
+                    >
+                      <p>Are you sure you want to Reject this Auction </p>
+                    </Modal>
+                  </td>
+                </tr>
+              </>
+            );
+          })}
+        </tbody>
+      </Table>
     </>
   );
 };
