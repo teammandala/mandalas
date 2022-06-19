@@ -14,14 +14,14 @@ router.post("/api/auth/register", user.register);
 router.post("/api/auth/login", user.login);
 router.put(
   "/api/auth/profile/:id",
+  // avatarUpload.single("avatar"),
   user.profileUpdate,
-  avatarUpload.single("avatar"),
   isAuth
 );
 router.post(
   "/api/auth/avatar/:id",
-  user.avatarUpdate,
   avatarUpload.single("avatar"),
+  user.avatarUpdate,
   isAuth
 );
 router.get("/api/auth/getalluser", user.getAllUser);

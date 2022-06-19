@@ -99,10 +99,10 @@ const profileUpdate = async (req, res, next) => {
     const tempUser = await User.findById(req.params.id);
     if (!tempUser) return res.status(404).json({ message: "No such user." });
 
-    let avatarPath = null;
-    if (req.file) {
-      avatarPath = req.file.filename;
-    }
+    // let avatarPath = null;
+    // if (req.file) {
+    //   avatarPath = req.file.filename;
+    // }
 
     const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser && existingUser.id !== tempUser.id) {
@@ -116,14 +116,14 @@ const profileUpdate = async (req, res, next) => {
       phone: req.body.phone,
       address: req.body.address,
       bio: req.body.bio,
-      avatar: avatarPath,
+      // avatar: avatarPath,
     };
     // remove '', null, undefined
     Object.keys(updatedUser).forEach(
       (k) =>
         !updatedUser[k] && updatedUser[k] !== undefined && delete updatedUser[k]
     );
-    console.log(req.body, updatedUser);
+    // console.log(req.body, updatedUser);
     const user = await User.findByIdAndUpdate(
       tempUser.id,
       { $set: updatedUser },
@@ -151,7 +151,7 @@ const getAllUser = async (req, res, next) => {
 const avatarUpdate = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(id, req.file.filename);
+    // console.log(id, req.file.filename);
     await User.findByIdAndUpdate(
       id,
       { $set: { avatar: req.file.path } },
