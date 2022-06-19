@@ -1,5 +1,11 @@
         .s1 {
             font-size: 16px;
+            background:#8c89899c;
+            border-radius: 10px;
+            border-style: groove;
+            border-color: rgb(0, 0, 0);
+            margin-top: 0.5em;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
             
 
         }
@@ -10,6 +16,7 @@
         }
 
         .s1-intro h1 {
+            
             font-size: 3em;
             font-weight: 100;
         }
@@ -29,6 +36,7 @@
         .s1-advice {
             padding: 2em;
             transition: all .5s;
+            margin-bottom: 2em;
 
 
 
