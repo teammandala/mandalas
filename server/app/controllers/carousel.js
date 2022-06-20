@@ -53,4 +53,4 @@ const deleteCarousel = async (req, res, next) => {
   }
 };
 
-module.exports = { carouselRequest, getCarousel };
+module.exports = { carouselRequest, getCarousel, deleteCarousel };
