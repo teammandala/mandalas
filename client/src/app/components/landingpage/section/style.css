@@ -1,13 +1,12 @@
         .s1 {
             font-size: 16px;
-            background:#b9d79f9c;
+            /* background:#b9d79f9c; */
             border-radius: 10px;
             border-style: groove;
             border-color: rgb(0, 0, 0);
             margin-top: 0.5em;
+            /* backdrop-filter: blur(10px); */
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
-            
-
         }
 
         .s1-intro {
