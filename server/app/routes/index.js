@@ -7,6 +7,8 @@ const isAuth = require("../middleware/auth");
 const upload = require("../utils/kycUpload");
 const kycUpload = require("../utils/auctionUpload");
 const avatarUpload = require("../utils/avatarUpload");
+const carouselUpload = require('../utils/carouselUpload');
+const carousel = require('../controllers/carousel');
 
 // user routes
 // router.use("/api/auth", user);
@@ -43,7 +45,17 @@ router.use(
   auction.auctoinRequest,
   isAuth
 );
+
+router.use(
+  "/api/carousel/request",
+  carouselUpload.single("image"),
+  carousel.carouselRequest,
+  isAuth
+);
+
+
 router.put("/api/auction/status/:id", auction.auctionStatus);
+router.get("/api/carousel/getdata", carousel.getCarousel);
 
 router.get("/api/auction/getdata", auction.getAuctions);
 

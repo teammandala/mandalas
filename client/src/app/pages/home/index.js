@@ -6,7 +6,7 @@ class Home extends React.Component {
   render() {
     return (
       <>
-        <div className="cntainer-fluid">
+        <div className="container-fluid">
           <Section />
           <Section2 />
         </div>

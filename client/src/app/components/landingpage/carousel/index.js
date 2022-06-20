@@ -1,34 +1,47 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import {Carousel, CarouselItem} from 'react-bootstrap'
 import './style.css'
 
+import carousel from "../../../api/carousel";
+
+
+
 const Carouselimage = () => {
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    carousel
+      .getCarouselData()
+      .then((res) => {
+        const data = res.data.carouselData;
+        setData(data);
+      })
+      .catch((error) => {
+      });
+      
+  }, []);
   return (
     <div>
       <Carousel>
+      {data.map((items, index)=>{
+        return(
+          
         <CarouselItem class='image_carousel'>
           <img
           className='d-block'
-          src={'https://images.pexels.com/photos/8014587/pexels-photo-8014587.jpeg?cs=srgb&dl=pexels-cup-of-couple-8014587.jpg&fm=jpg'}
+          src={"http://localhost:8080/" + items.image}
           alt='carousel1'
           />
           <Carousel.Caption>
-            <h2>image title</h2>
-            <p class='h5'> this is test carousel</p>
+            <p class="h2">{items.itemName}</p>
+            <p class='h5'>{items.description}</p>
           </Carousel.Caption>
         </CarouselItem>
-        <CarouselItem class='image_carousel'>
-          <img
-          className='d-block'
-          src={'https://images.pexels.com/photos/8382269/pexels-photo-8382269.jpeg?cs=srgb&dl=pexels-pavel-danilyuk-8382269.jpg&fm=jpg'}
-          alt='carousel1'
-          />
-          <Carousel.Caption>
-            <h2>image title</h2>
-            <p class='h5'> this is test carousel</p>
-          </Carousel.Caption>
-        </CarouselItem>
-      </Carousel>
+     
+        )
+      })}
+       </Carousel>
     </div>
   )
 }

@@ -1,9 +1,7 @@
 body {
     font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue";
 }
-/* .auction{
-    max-width:450px;
-} */
+
 
 #auction-form {
     min-width: 450px;
