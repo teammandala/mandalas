@@ -29,8 +29,8 @@ const carouselRequest = async (req, res) => {
 const getCarousel = async (req, res) => {
   try {
     await Carousel.find()
-      .then((auctionData) => {
-        res.status(200).send({ auctionData });
+      .then((carouselData) => {
+        res.status(200).send({ carouselData });
       })
       .catch((err) => {
         res.status(400).send({ message: err.message });
