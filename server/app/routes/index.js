@@ -28,6 +28,7 @@ router.post(
 );
 router.get("/api/auth/getalluser", user.getAllUser);
 router.put("/api/auth/role/:id", user.roleUpdate);
+router.delete("/api/auth/delete/:id", user.deleteUser);
 
 // kyc routes
 router.use(
@@ -64,5 +65,6 @@ router.use(
 router.get("/api/carousel/getdata", carousel.getCarousel);
 
 router.delete("/api/carousel/delete/:id", carousel.deleteCarousel);
+
 
 module.exports = router;
