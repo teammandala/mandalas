@@ -94,10 +94,7 @@ const AuctionApprovedCard = () => {
                 </Col>
               </Row>
             </div>
-          );setIsAdmin(user.role === "ADMIN");
-      setIsAuctioneer(user.role === "AUCTIONEER");
-      setIsUser(user.role === "USER");
-    }
+          );
         } else {
           return (
             <>
