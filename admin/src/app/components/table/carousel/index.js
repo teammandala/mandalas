@@ -10,6 +10,7 @@ const AllCarousel = () => {
 
 
   const [data, setData] = useState([]);
+  const [id, setId] = useState("");
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
 
   useEffect(() => {
@@ -24,12 +25,34 @@ const AllCarousel = () => {
       
   }, []);
 
-  const showDeleteModal=()=>{
+  const showDeleteModal=(items)=>{
+    setId(items._id);
+    console.log(items._id)
     setIsDeleteModalVisible(true);
   };
   const handleCancel = () => {
     setIsDeleteModalVisible(false);
   };
+
+  const handleDelete = (id) =>{
+    // console.log(id)
+    carousel
+    .carouselDelete(id)
+    .then((res)=>{
+      window.alert(res.data.message, window.location.reload())
+    })
+    .catch((error)=>{
+      if(
+        error.response &&
+        error.response.status >= 400 &&
+        error.response.status<=500
+      ){
+        window.alert(error.response.data.message)
+      }
+    })
+    // .console.log(id)
+
+  }
 
 
   return (
@@ -58,12 +81,14 @@ const AllCarousel = () => {
             </td>
             <td>
               <Button type='danger'
-              onClick={()=>showDeleteModal()}>
+              onClick={()=>showDeleteModal(items)}>
                 Delete
               </Button>
               <Modal title="Are You Sure!!!"
               visible={isDeleteModalVisible}
-              onCancel={handleCancel}>
+              onCancel={handleCancel}
+              onOk={handleDelete}>
+                
 
               </Modal>
 

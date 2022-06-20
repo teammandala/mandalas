@@ -30,9 +30,21 @@ const getCarouselData = async () => {
   return res;
 };
 
+const carouselDelete = async(id) =>{
+  return await axios.delete(
+    API_URL+'getdata'+ id,
+    console.log(id),
+    {
+      headers:{
+        "content-Type":"application/json"
+      }
+    }
+  )
+}
 
 // eslint-disable-next-line
 export default {
   carouselRequest,
   getCarouselData,
+  carouselDelete,
 };
