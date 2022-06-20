@@ -24,6 +24,10 @@ app.use(
   "/media/auction",
   express.static(path.join(__dirname, "/media/auction"))
 );
+app.use(
+  "/media/carousel",
+  express.static(path.join(__dirname, "/media/carousel"))
+);
 app.use("/media/kyc", express.static(path.join(__dirname, "/media/kyc")));
 
 // db
