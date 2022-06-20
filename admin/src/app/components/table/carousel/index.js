@@ -17,7 +17,6 @@ const AllCarousel = () => {
       .then((res) => {
         const data = res.data.carouselData;
         setData(data);
-        console.log(data)
       })
       .catch((error) => {
       });
