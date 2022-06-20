@@ -1,11 +1,9 @@
 import React from "react";
-import AuctionApprovedCard from "../../components/auction/approvedAuctions";
-
+import Allauctions from "../../components/allauctions";
 const Auction = () => {
   return (
     <div>
-      Auction
-      <AuctionApprovedCard />
+      <Allauctions />
     </div>
   );
 };
