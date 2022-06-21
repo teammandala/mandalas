@@ -1,6 +1,5 @@
 import React from 'react'
 import './style.css'
-import {Row, Col} from 'react-bootstrap';
 import Login from '../login';
 
 const Noaccess = () => {

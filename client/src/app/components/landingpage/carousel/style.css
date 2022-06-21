@@ -3,7 +3,9 @@
     max-height: 400px;
     width: 100%;
     border-radius: 20px;
-    border-color: black;
-    border-width: 5px;
+    border-color: rgb(108, 104, 104);
+    border-width: 8px;
     border-style:double;
+    
 }
+
