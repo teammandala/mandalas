@@ -3,14 +3,18 @@ import axios from "axios";
 const API_URL = "http://localhost:8080/api/carousel/";
 const token = localStorage.getItem("token");
 
-const carouselRequest = (itemName, description, image) => {
+const carouselRequest = (
+  itemName,
+  description,
+  image
+) => {
   console.log(itemName, description, image);
   return axios.post(
     API_URL + "request",
     {
       itemName,
       description,
-      image,
+      image
     },
     {
       headers: {
@@ -26,13 +30,17 @@ const getCarouselData = async () => {
   return res;
 };
 
-const carouselDelete = async (id) => {
-  return await axios.delete(API_URL + "delete/" + id, console.log(id), {
-    headers: {
-      "content-Type": "application/json",
-    },
-  });
-};
+const carouselDelete = async(id) =>{
+  return await axios.delete(
+    API_URL+'getdata'+ id,
+    console.log(id),
+    {
+      headers:{
+        "content-Type":"application/json"
+      }
+    }
+  )
+}
 
 // eslint-disable-next-line
 export default {

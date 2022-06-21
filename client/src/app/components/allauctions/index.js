@@ -9,8 +9,7 @@ import { Card, Row, Col } from "antd";
 import auction from "../../api/auction";
 const { Meta } = Card;
 
-
-const Allauctions = () => {
+const Upcomingauctions = () => {
   const [data, setData] = useState([]);
   // const [approved, setApproved] = useState([]);
 
@@ -25,47 +24,50 @@ const Allauctions = () => {
         console.log(error);
       });
   }, []);
+  const currentDate = new Date();
 
   return (
     <>
       {data.map((items) => {
-        if(items.status ==="approved"){
-          return (
-            <div className="site-card-wrapper">
-              <Row gutter={16}>
-                <Col span={8}>
-                  <Card
-                    bordered={false}
-                    style={{
-                      width: 300,
-                    }}
-                    cover={
-                      <img
-                        alt="auctionimg"
-                        width={200}
-                        src={"http://localhost:8080/" + items.image}
+        if (items.status === "approved") {
+          // Executes when condition1 is true
+          if (currentDate < new Date(items.bidStart)) {
+            return (
+              <div className="site-card-wrapper">
+                <Row gutter={16}>
+                  <Col span={8}>
+                    <Card
+                      bordered={false}
+                      style={{
+                        width: 300,
+                      }}
+                      cover={
+                        <img
+                          alt="auctionimg"
+                          width={200}
+                          src={"http://localhost:8080/" + items.image}
+                        />
+                      }
+                      actions={[
+                        <SettingOutlined key="setting" />,
+                        <EditOutlined key="edit" />,
+                        <EllipsisOutlined key="ellipsis" />,
+                      ]}
+                    >
+                      <Meta
+                        title={items.itemName}
+                        description={items.startingBid}
                       />
-                    }
-                    actions={[
-                      <SettingOutlined key="setting" />,
-                      <EditOutlined key="edit" />,
-                      <EllipsisOutlined key="ellipsis" />,
-                    ]}
-                  >
-                    <Meta
-                      title={items.itemName}
-                      description={items.startingBid}
-                    />
-                  </Card>
-                </Col>
-              </Row>
-            </div>
-          );
+                    </Card>
+                  </Col>
+                </Row>
+              </div>
+            );
+          }
         }
-        
       })}
     </>
   );
 };
 
-export default Allauctions
+export default Upcomingauctions;

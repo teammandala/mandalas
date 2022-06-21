@@ -184,18 +184,6 @@ const roleUpdate = async (req, res, next) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
-const deleteUser = async (req, res, next) => {
-  try {
-    const id = req.params.id;
-    await User.findByIdAndDelete(id).then(() => {
-      res.status(201).send({
-        message: `user deleted successfully`,
-      });
-    });
-  } catch (err) {
-    res.status(500).json({ message: "Something went wrong." });
-  }
-};
 
 // module.exports = router;
 module.exports = {
@@ -205,5 +193,4 @@ module.exports = {
   getAllUser,
   avatarUpdate,
   roleUpdate,
-  deleteUser,
 };

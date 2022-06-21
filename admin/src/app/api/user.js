@@ -60,14 +60,6 @@ const kycApprove = async (id, role) => {
   // });
 };
 
-const userDelete = async (id) => {
-  return await axios.delete(API_URL + "delete/" + id, console.log(id), {
-    headers: {
-      "content-Type": "application/json",
-    },
-  });
-};
-
 export default {
   // register,
   login,
@@ -75,6 +67,5 @@ export default {
   logout,
   getAllUser,
   kycApprove,
-  userDelete
   // updateUser,
 };
