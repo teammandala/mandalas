@@ -1,12 +1,15 @@
 import React from 'react'
 import './style.css'
+import { Button, Result } from 'antd'
 
 const Noaccess = () => {
   return (
-    <div className='noaccess'>
-        <h1>Sorry You have no Access to This Page</h1>
-        
-    </div>
+    <Result
+    status="403"
+    title="403"
+    subTitle="Sorry, you are not authorized to access this page."
+    extra={<Button href='/' type="primary">Back Home</Button>}
+  />
   )
 }
 
