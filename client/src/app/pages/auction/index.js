@@ -1,9 +1,8 @@
 import React from "react";
-import Allauctions from "../../components/allauctions";
 const Auction = () => {
   return (
     <div>
-      <Allauctions />
+      <h1>auctions</h1>
     </div>
   );
 };

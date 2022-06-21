@@ -6,7 +6,7 @@ import {
   SettingOutlined,
 } from "@ant-design/icons";
 import { Card, Row, Col } from "antd";
-import auction from "../../api/auction";
+import auction from "../../../api/auction";
 const { Meta } = Card;
 
 const Upcomingauctions = () => {

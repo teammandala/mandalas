@@ -2,7 +2,7 @@ import React from "react";
 import Section from "../../components/landingpage/section";
 import Section2 from "../../components/landingpage/section2";
 import { Tab, Tabs } from "react-bootstrap";
-import Upcomingauctions from "../../components/allauctions";
+import Upcomingauctions from "../../components/allauctions/upcommingauctions";
 import Liveauctions from "../../components/allauctions/liveAuction";
 import Pastauctions from "../../components/allauctions/pastAuction";
 class Home extends React.Component {
