@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import './style.css'
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -7,6 +7,7 @@ import {
 } from "@ant-design/icons";
 import { Card, Row, Col } from "antd";
 import auction from "../../../api/auction";
+import {Container} from 'react-bootstrap'
 const { Meta } = Card;
 
 const Liveauctions = () => {
@@ -28,6 +29,8 @@ const Liveauctions = () => {
 
   return (
     <>
+    <Container className='container-fluid'>
+    <Row>
       {data.map((items) => {
         if (items.status === "approved") {
           // Executes when condition1 is true
@@ -38,17 +41,20 @@ const Liveauctions = () => {
           ) {
             return (
               <div className="site-card-wrapper">
-                <Row gutter={16}>
-                  <Col span={8}>
-                    <Card
-                      bordered={false}
+                <div className=" container-fluid">
+                  <Col span={4}>
+                    <Card className="auctions"
+                      // bordered={false}
                       style={{
-                        width: 300,
+                        width: 350,
+                        
                       }}
                       cover={
-                        <img
+                        <img 
+                          
                           alt="auctionimg"
-                          width={200}
+                          width={350}
+                          height={200}
                           src={"http://localhost:8080/" + items.image}
                         />
                       }
@@ -59,17 +65,20 @@ const Liveauctions = () => {
                       ]}
                     >
                       <Meta
-                        title={items.itemName}
+                        title={items.itemName} 
                         description={items.startingBid}
+                        
                       />
                     </Card>
                   </Col>
-                </Row>
+                  </div>
               </div>
             );
           }
         }
       })}
+      </Row>
+      </Container>
     </>
   );
 };
