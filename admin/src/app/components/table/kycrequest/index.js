@@ -10,6 +10,7 @@ const KycrequestTable = () => {
   const [kycId, setKYCId] = useState("");
   const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
   const [isRejectModalVisible, setIsRejectModalVisible] = useState(false);
+  const [isAdminModalVisible, setIsAdminModalVisible] = useState(false);
 
   useEffect(() => {
     kyc
@@ -32,7 +33,7 @@ const KycrequestTable = () => {
   const handleApprove = () => {
     // console.log(id);
     setIsApproveModalVisible(false);
-    const status = "approved";
+    const status = "auctioneer";
     const role = "AUCTIONEER";
     kyc
       .kycStatus(kycId, status)
@@ -60,12 +61,43 @@ const KycrequestTable = () => {
     setId(items.user);
     setIsRejectModalVisible(true);
   };
+  const showAdminModal = (items) => {
+    setKYCId(items._id);
+    setId(items.user);
+    setIsAdminModalVisible(true);
+  };
 
   const handleReject = () => {
     // console.log(id);
     setIsRejectModalVisible(false);
     const status = "rejected";
     const role = "USER";
+    kyc
+      .kycStatus(kycId, status)
+      .then((res) => {
+        window.alert(
+          res.data.message,
+          user.kycApprove(id, role),
+          window.location.reload()
+        );
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
+  };
+
+  const handleAdmin = () => {
+    // console.log(id);
+    setIsAdminModalVisible(false);
+    const status = "admin";
+    const role = "ADMIN";
     kyc
       .kycStatus(kycId, status)
       .then((res) => {
@@ -131,8 +163,9 @@ const KycrequestTable = () => {
                   <td>{items.reqDate}</td>
                   <td>
                     <Button
-                      type="primary"
+                      // type="sucess"
                       onClick={() => showApproveModal(items)}
+                      block
                     >
                       Approve
                     </Button>
@@ -142,12 +175,13 @@ const KycrequestTable = () => {
                       onOk={handleApprove}
                       onCancel={handleCancel}
                     >
-                      <p>Are you sure you want to cange user's role </p>
+                      <p>Are you sure you want to change user's role </p>
                     </Modal>
 
                     <Button
-                      type="danger"
+                      type="primary"
                       onClick={() => showRejectModal(items)}
+                      block
                     >
                       Reject
                     </Button>
@@ -156,8 +190,24 @@ const KycrequestTable = () => {
                       visible={isRejectModalVisible}
                       onOk={handleReject}
                       onCancel={handleCancel}
+                      
                     >
                       <p>Are you sure you want to Reject this KYC </p>
+                    </Modal>
+                    <Button
+                      type="danger"
+                      onClick={() => showAdminModal(items)}
+                      block
+                    >
+                      Make Admin
+                    </Button>
+                    <Modal
+                      title="Are You Sure!"
+                      visible={isAdminModalVisible}
+                      onOk={handleAdmin}
+                      onCancel={handleCancel}
+                    >
+                      <p>Are you sure you want to Make this user admin? </p>
                     </Modal>
                   </td>
                 </tr>
