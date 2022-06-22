@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
+
 import "./style.css";
 import {
   EditOutlined,
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 const { Meta } = Card;
 
 const Liveauctions = () => {
   const [data, setData] = useState([]);
-  // const [approved, setApproved] = useState([]);
+  const navigate = useNavigate();
+  
 
   useEffect(() => {
     auction
@@ -56,16 +59,21 @@ const Liveauctions = () => {
                               src={"http://localhost:8080/" + items.image}
                             />
                           }
-                          actions={[
-                            <SettingOutlined key="setting" />,
-                            <EditOutlined key="edit" />,
-                            <EllipsisOutlined key="ellipsis" />,
-                          ]}
+                          // actions={[
+                          //   <SettingOutlined key="setting" />,
+                          //   <EditOutlined key="edit" />,
+                          //   <EllipsisOutlined key="ellipsis" />,
+                          // ]}
                         >
                           <Meta
                             title={items.itemName}
                             description={items.startingBid}
                           />
+                          <Button type='primary' block
+                          href={"/auctionandbid/" + items._id}
+                          >
+                    Bid Now
+                    </Button>
                         </Card>
                       </Col>
                     </div>

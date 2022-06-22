@@ -49,6 +49,7 @@ const login = (username, password) => {
     });
 };
 
+
 //current user data
 const getCurrentUser = () => {
   return JSON.parse(localStorage.getItem("user"));

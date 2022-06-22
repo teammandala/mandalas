@@ -1,8 +1,13 @@
 import React from 'react'
+import BiddingPage from '../../components/auctionbid'
+
 
 const AuctionBid = () => {
   return (
-    <div>AuctionBid</div>
+  <>
+  <div><BiddingPage /></div>
+  </>
+    
   )
 }
 
