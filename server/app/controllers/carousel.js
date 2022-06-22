@@ -4,13 +4,12 @@ const router = express.Router();
 // router for kyc request
 const carouselRequest = async (req, res) => {
   try {
-    const { itemName, description } =
-      req.body;
+    const { itemName, description } = req.body;
     const image = req.file.path;
     const newCarousel = new Carousel({
       itemName,
       description,
-      image
+      image,
     });
 
     await newCarousel
@@ -41,5 +40,17 @@ const getCarousel = async (req, res) => {
   }
 };
 
+const deleteCarousel = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Carousel.findByIdAndDelete(id).then(() => {
+      res.status(201).send({
+        message: `carousel deleted successfully`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
 
-module.exports = { carouselRequest, getCarousel };
+module.exports = { carouselRequest, getCarousel, deleteCarousel };

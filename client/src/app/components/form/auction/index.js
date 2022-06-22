@@ -58,7 +58,7 @@ const AuctionForm = () => {
       .then((response) => {
         window.alert(
           response.data.message,
-          navigate("/auctioneer/" + currentUser.username),
+          navigate("/"),
           window.location.reload()
         );
       })

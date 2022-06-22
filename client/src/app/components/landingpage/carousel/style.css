@@ -1,11 +1,9 @@
 .d-block
 {
-    max-height: 410px;
-    min-height: 410px;
+    max-height: 400px;
     width: 100%;
     border-radius: 20px;
-    border-color: rgb(108, 104, 104);
-    border-width: 8px;
+    border-color: black;
+    border-width: 5px;
     border-style:double;
-    
 }

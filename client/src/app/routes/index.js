@@ -13,6 +13,7 @@ import Auctioneer from "../pages/auctioneer";
 import Termsandconditions from "../pages/termsandconditions";
 import Policy from "../pages/policy";
 import Noaccess from "../pages/noaccess";
+import AuctionBid from "../pages/Auctiondetail";
 
 class Router extends React.Component {
   render() {
@@ -29,6 +30,7 @@ class Router extends React.Component {
           <Route path="/kyc" element={<KYC />} />
           <Route path="/auctioneer/:username" element={<Auctioneer />} />
           <Route path="/policy" element={<Policy/>}/>
+          <Route path="/auctionandbid" element={<AuctionBid/>} />
           <Route path="/termsandconditions" element={<Termsandconditions />} />
           <Route path="*" element={<Pagenotfound />} />
           <Route path='/noaccess' element={<Noaccess />}/>

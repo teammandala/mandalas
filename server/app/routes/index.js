@@ -7,8 +7,8 @@ const isAuth = require("../middleware/auth");
 const upload = require("../utils/kycUpload");
 const kycUpload = require("../utils/auctionUpload");
 const avatarUpload = require("../utils/avatarUpload");
-const carouselUpload = require('../utils/carouselUpload');
-const carousel = require('../controllers/carousel');
+const carouselUpload = require("../utils/carouselUpload");
+const carousel = require("../controllers/carousel");
 
 // user routes
 // router.use("/api/auth", user);
@@ -28,6 +28,7 @@ router.post(
 );
 router.get("/api/auth/getalluser", user.getAllUser);
 router.put("/api/auth/role/:id", user.roleUpdate);
+router.delete("/api/auth/delete/:id", user.deleteUser);
 
 // kyc routes
 router.use(
@@ -46,6 +47,14 @@ router.use(
   isAuth
 );
 
+router.put("/api/auction/status/:id", auction.auctionStatus);
+
+router.get("/api/auction/getdata", auction.getAuctions);
+
+router.get("/api/kyc/getdata", kyc.getKYCRequest);
+
+// carousel routes
+
 router.use(
   "/api/carousel/request",
   carouselUpload.single("image"),
@@ -53,12 +62,9 @@ router.use(
   isAuth
 );
 
-
-router.put("/api/auction/status/:id", auction.auctionStatus);
 router.get("/api/carousel/getdata", carousel.getCarousel);
 
-router.get("/api/auction/getdata", auction.getAuctions);
+router.delete("/api/carousel/delete/:id", carousel.deleteCarousel);
 
-router.get("/api/kyc/getdata", kyc.getKYCRequest);
 
 module.exports = router;

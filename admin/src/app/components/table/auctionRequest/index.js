@@ -78,7 +78,11 @@ const AuctionRequestTable = () => {
 
   const handleCancel = () => {
     setIsApproveModalVisible(false);
+    setIsRejectModalVisible(false);
   };
+  
+
+  
   return (
     <>
       <Table

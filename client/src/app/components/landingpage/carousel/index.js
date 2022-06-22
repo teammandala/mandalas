@@ -23,11 +23,11 @@ const Carouselimage = () => {
   }, []);
   return (
     <div>
-      <Carousel className='image_carousel'>
+      <Carousel>
       {data.map((items, index)=>{
         return(
           
-        <CarouselItem >
+        <CarouselItem class='image_carousel'>
           <img
           className='d-block'
           src={"http://localhost:8080/" + items.image}
