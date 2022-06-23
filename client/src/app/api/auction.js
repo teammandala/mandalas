@@ -39,8 +39,17 @@ const getApprovedAuctionData = async () => {
   return res;
 };
 
+const getCurrentAuction = async(id) =>{
+  const res= await axios.get(API_URL + "getdata/" + id
+  )
+  console.log(res);
+  return res;
+  
+};
+
 // eslint-disable-next-line
 export default {
   auctionRequest,
   getApprovedAuctionData,
+  getCurrentAuction,
 };

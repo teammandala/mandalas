@@ -4,10 +4,10 @@ import BiddingPage from '../../components/auctionbid'
 
 const AuctionBid = () => {
   return (
-  <>
-  <div><BiddingPage /></div>
-  </>
-    
+    <>
+      <div className='container-fluid'><BiddingPage /></div>
+    </>
+
   )
 }
 

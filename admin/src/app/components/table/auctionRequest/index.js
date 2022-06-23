@@ -23,7 +23,7 @@ const AuctionRequestTable = () => {
         console.log(error);
       });
   }, []);
-
+  
   const showApproveModal = (items) => {
     setId(items._id);
     setIsApproveModalVisible(true);
@@ -47,16 +47,13 @@ const AuctionRequestTable = () => {
           window.alert(error.response.data.message);
         }
       });
-    // window.location.reload();
   };
 
   const showRejectModal = (items) => {
-    setId(items._id);
     setIsRejectModalVisible(true);
   };
 
   const handleReject = () => {
-    // console.log(id);
     setIsRejectModalVisible(false);
     const status = "rejected";
     auction

@@ -1,4 +1,5 @@
 const express = require("express");
+const auction = require("../models/auction");
 const { findByIdAndUpdate } = require("../models/auction");
 const router = express.Router();
 const Auction = require("../models/auction");
@@ -46,6 +47,21 @@ const getAuctions = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+const getCurrentAuction = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Auction.findById(id)
+      .then((currentauctionData) => {
+        res.status(200).send({ currentauctionData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+};
 
 const auctionStatus = async (req, res, next) => {
   try {
@@ -65,4 +81,6 @@ const auctionStatus = async (req, res, next) => {
   }
 };
 
-module.exports = { auctoinRequest, getAuctions, auctionStatus };
+
+
+module.exports = { auctoinRequest, getAuctions, auctionStatus, getCurrentAuction };

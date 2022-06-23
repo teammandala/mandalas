@@ -50,6 +50,7 @@ router.use(
 router.put("/api/auction/status/:id", auction.auctionStatus);
 
 router.get("/api/auction/getdata", auction.getAuctions);
+router.get("/api/auction/getdata/:id", auction.getCurrentAuction);
 
 router.get("/api/kyc/getdata", kyc.getKYCRequest);
 
