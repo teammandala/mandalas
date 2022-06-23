@@ -26,27 +26,27 @@ const Liveauctions = () => {
       });
   }, []);
 
-  const handleAuction = (items) =>{
-    setId(items._id);
+  // const handleAuction = (items) =>{
+  //   setId(items._id);
     
 
-  } 
-  const handleopenAuction=()=>{
-    auction
-    .getCurrentAuction(id)
-    .then((res) => {
-      return res;
-    })
-    // .catch((error) => {
-    //   if (
-    //     error.response &&
-    //     error.response.status >= 400 &&
-    //     error.response.status <= 500
-    //   ) {
-    //     window.alert(error.response.data.message);
-    //   }
-    // });
-  }
+  // } 
+  // const handleopenAuction=()=>{
+  //   auction
+  //   .getCurrentAuction(id)
+  //   .then((res) => {
+  //     return res;
+  //   })
+  //   // .catch((error) => {
+  //   //   if (
+  //   //     error.response &&
+  //   //     error.response.status >= 400 &&
+  //   //     error.response.status <= 500
+  //   //   ) {
+  //   //     window.alert(error.response.data.message);
+  //   //   }
+  //   // });
+  // }
 
   
 
@@ -92,8 +92,9 @@ const Liveauctions = () => {
                             description={items.startingBid}
                           />
                           <Button type='primary' block
-                          onClick={()=>{handleAuction(items);
-                          handleopenAuction();}}
+                          href={"/auctionbid" + items._id}
+                          // onClick={()=>{handleAuction(items);
+                          // handleopenAuction();}}
                           // href={'/auctionandbid'}
                           
       
