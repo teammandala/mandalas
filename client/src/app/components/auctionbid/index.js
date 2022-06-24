@@ -48,9 +48,6 @@ const BiddingPage = () => {
           {data.bids}
         </div>
       </div>
-
-
-
     </>
   )
 

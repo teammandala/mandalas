@@ -17,13 +17,13 @@ router.post("/api/auth/login", user.login);
 router.put(
   "/api/auth/profile/:id",
   user.profileUpdate,
-  avatarUpload.single("avatar"),
+  // avatarUpload.single("avatar"),
   isAuth
 );
 router.post(
   "/api/auth/avatar/:id",
-  user.avatarUpdate,
   avatarUpload.single("avatar"),
+  user.avatarUpdate,
   isAuth
 );
 router.get("/api/auth/getalluser", user.getAllUser);
