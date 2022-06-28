@@ -28,20 +28,7 @@ const contactRequest = async (req, res) => {
   }
 };
 
-const getcontactRequest = async (req, res) => {
-  try {
-    await contact.find()
-      .then((contactData) => {
-        res.status(200).send({ contactData });
-      })
-      .catch((err) => {
-        res.status(400).send({ message: err.message });
-      });
-  } catch (err) {}
-};
-
 
 module.exports = {
   contactRequest,
-  getcontactRequest,
 };
