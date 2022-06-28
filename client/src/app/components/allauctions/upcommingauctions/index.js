@@ -54,11 +54,6 @@ const Upcomingauctions = () => {
                                 src={"http://localhost:8080/" + items.image}
                               />
                             }
-                          // actions={[
-                          //   <SettingOutlined key="setting" />,
-                          //   <EditOutlined key="edit" />,
-                          //   <EllipsisOutlined key="ellipsis" />,
-                          // ]}
                           >
                             <Meta
                               title={items.itemName}
