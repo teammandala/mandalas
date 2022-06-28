@@ -6,6 +6,7 @@ import "./style.css";
 import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
+import Noaccess from "../noaccess";
 
 const Profilepage = () => {
   const currentUser = user.getCurrentUser();
@@ -27,13 +28,11 @@ const Profilepage = () => {
                             src={"http://localhost:8080/" + currentUser.avatar}
                             alt="Avatar"
                             className=" img-fluid my-5 avatar-img"
-                            
                           />
                           <AvatarUpdate />
-                          
+
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
-                          
                         </div>
                       </Col>
                       <Col>
@@ -71,7 +70,7 @@ const Profilepage = () => {
         } else {
           return (
             <div className="no-access">
-              <h1>you do not have access</h1>
+              <Noaccess />
             </div>
           );
         }
