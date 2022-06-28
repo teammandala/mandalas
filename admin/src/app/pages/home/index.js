@@ -19,7 +19,7 @@ const Home = () => {
               <Card.Text>
                 Total Users:
               </Card.Text>
-              <Button href='/user' variant="primary">View</Button>
+              <Button href='/user' variant="secondary">View</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -31,7 +31,7 @@ const Home = () => {
               <Card.Text>
                 Total Kyc Request: 
               </Card.Text>
-              <Button href='/kycrequest' variant="primary">Verify Them</Button>
+              <Button href='/kycrequest' variant="secondary">Verify Them</Button>
             </Card.Body>
           </Card>
         </Col>
@@ -43,7 +43,7 @@ const Home = () => {
               <Card.Text>
                 Total Auction Request: 
               </Card.Text>
-              <Button href='/auctionrequest' variant="primary">Rewiew It</Button>
+              <Button href='/auctionrequest' variant="primary">Review It</Button>
             </Card.Body>
           </Card>
         </Col>
