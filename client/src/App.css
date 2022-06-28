@@ -3,8 +3,8 @@
   
 body {
     background-size: auto;
-    background-color: #d9afd9;
-    background-image: linear-gradient( 12deg, #d3a5d3 19%, #97d9e1 58%, #d88b8b 90%);
+    background: rgb(187,181,81);
+    background: linear-gradient(351deg, rgba(187,181,81,0.9909546582304797) 50%, rgba(122,194,156,1) 50%);
     background-attachment: fixed;
     background-size: cover;
     height: 100%;

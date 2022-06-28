@@ -52,7 +52,7 @@ const Footer = () => {
               <h2 class="title">Security & privacy</h2>
               <ul class="list-unstyled">
                 <li><a href="/termsandconditions" title=""><i class="fa fa-angle-double-right"></i> Terms Of Use</a></li>
-                <li><a href="/policy" title=""><i class="fa fa-angle-double-right"></i> Privacy Policy</a></li>
+                <li><a href="/privacyandpolicy" title=""><i class="fa fa-angle-double-right"></i> Privacy Policy</a></li>
                 <li><a href="*" title=""><i class="fa fa-angle-double-right"></i> Return / Refund Policy</a></li>
                 <li><a href="*" title=""><i class="fa fa-angle-double-right"></i> Store Locations</a></li>
               </ul>

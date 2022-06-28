@@ -1,31 +1,26 @@
-.navbar{
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-    font-weight: 500;   
-    /* border-width: 0.9px;
-    border-color: gray;
-    border-style: groove;  */
-    border-bottom-width: 1px;
-    border-bottom-color: darkgray;
-    border-bottom-style: solid;
+.navbar {
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-bottom-width: 1.5px;
+  border-bottom-color: darkgray;
+  border-bottom-style: solid;
   box-shadow: 0 4px 8px 0 rgba(9, 10, 10, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
-  }
-  
-  @keyframes AnimateBG { 
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
-  }
-.brand{
+  background-color: black;
+  background-size: auto;
+}
+
+.brand {
   font-weight: 600;
   font-size: larger;
   font-family: cursive;
   padding-right: 2rem;
-  
-  
+
+
 }
-h{
+
+h {
   color: rgb(0, 0, 0);
-  
+
 }
