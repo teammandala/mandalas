@@ -16,20 +16,17 @@ class Home extends React.Component {
         <div className="container-fluid">
         <Tabs defaultActiveKey="Live_Auctions" id="uncontrolled-tab-example" className="nav mb-3 nav-pills justify-content-center p-2">
               
-              <Tab  class='tab-text' data-toogle="pill" eventKey="Past_Auctions" title="Past Auctions">
-              <h1>Past Auctions will be here</h1>
+              <Tab  class='tab-text' data-toogle="pill" eventKey="Past_Auctions" title={<h5>Past Auctions</h5>}>
               <Pastauctions />
               </Tab>
 
 
-              <Tab class='tab-text' data-toogle="pill" eventKey="Live_Auctions" title="Live Auctions">
-                <h1>Ongoing Auctions will be here</h1>
+              <Tab class='tab-text' data-toogle="pill" eventKey="Live_Auctions" title={<h5>Live Auctions</h5>}>
                 <Liveauctions />
               </Tab>
 
 
-              <Tab class='tab-text' data-toogle="pill" eventKey="Upcomming_Auctions" title="Upcomming Auctions">
-                <h1>Future Auctions will be here</h1>
+              <Tab class='tab-text' data-toogle="pill" eventKey="Upcomming_Auctions" title={<h5>Future Auctions</h5>}>
                 <Upcomingauctions />
               </Tab>
 

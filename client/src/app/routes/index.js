@@ -29,7 +29,7 @@ class Router extends React.Component {
           <Route path="/about" element={<About />} />
           <Route path="/kyc" element={<KYC />} />
           <Route path="/auctioneer/:username" element={<Auctioneer />} />
-          <Route path="/policy" element={<Policy/>}/>
+          <Route path="/privacyandpolicy" element={<Policy/>}/>
           <Route path="/auctionandbid/:id" element={<AuctionBid/>} />
           <Route path="/termsandconditions" element={<Termsandconditions />} />
           <Route path="*" element={<Pagenotfound />} />
