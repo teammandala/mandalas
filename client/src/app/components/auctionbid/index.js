@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import auction from '../../api/auction'
 import Pagenotfound from '../../pages/pagenotfound';
+import './style.css'
 
 
 
@@ -32,7 +33,8 @@ const BiddingPage = () => {
         <h1>auctions bid</h1>
         <h2>{data.description}</h2>
         <div>
-          <img src={"http://localhost:8080/" + data.image} alt="" />
+          <img className='bid-image'
+          src={"http://localhost:8080/" + data.image} alt="" />
 
         </div>
         <div className='container-fluid'>

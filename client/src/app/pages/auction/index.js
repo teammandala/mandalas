@@ -13,13 +13,13 @@ const Auction = () => {
                     <Col sm={3}>
                       <Nav variant="pills" className="flex-column">
                         <Nav.Item>
-                          <Nav.Link eventKey="first"><h1> Live Auctions</h1></Nav.Link>
+                          <Nav.Link eventKey="first"><h4> Live Auctions</h4></Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second"><h2>Past Auctions</h2></Nav.Link>
+                          <Nav.Link eventKey="second"><h4>Past Auctions</h4></Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="third"><h3>Future Auctions</h3></Nav.Link>
+                          <Nav.Link eventKey="third"><h4>Future Auctions</h4></Nav.Link>
                         </Nav.Item>
                       </Nav>
                     </Col>

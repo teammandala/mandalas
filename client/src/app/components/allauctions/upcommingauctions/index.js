@@ -5,7 +5,7 @@ import {
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Card, Row, Col } from "antd";
+import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
 const { Meta } = Card;
@@ -53,16 +53,22 @@ const Upcomingauctions = () => {
                               src={"http://localhost:8080/" + items.image}
                             />
                           }
-                          actions={[
-                            <SettingOutlined key="setting" />,
-                            <EditOutlined key="edit" />,
-                            <EllipsisOutlined key="ellipsis" />,
-                          ]}
+                          // actions={[
+                          //   <SettingOutlined key="setting" />,
+                          //   <EditOutlined key="edit" />,
+                          //   <EllipsisOutlined key="ellipsis" />,
+                          // ]}
                         >
                           <Meta
                             title={items.itemName}
                             description={items.startingBid}
                           />
+                          <Button type='primary' block
+                          href={`/auctionandbid/${items._id}`}
+
+                          >
+                    Know More
+                    </Button>
                         </Card>
                       </Col>
                     </div>

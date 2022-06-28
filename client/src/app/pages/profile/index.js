@@ -1,6 +1,6 @@
 import React from "react";
 import Profiledata from "../../components/profile/profiledata";
-import { Tabs, Tab, Row, Col } from "react-bootstrap";
+import { Tabs, Tab, Row, Col, Image } from "react-bootstrap";
 import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
@@ -26,12 +26,14 @@ const Profilepage = () => {
                           <img
                             src={"http://localhost:8080/" + currentUser.avatar}
                             alt="Avatar"
-                            className="img-fluid my-5"
+                            className=" img-fluid my-5 avatar-img"
+                            
                           />
+                          <AvatarUpdate />
+                          
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
-                          <h3>Update Avatar</h3>
-                          <AvatarUpdate />
+                          
                         </div>
                       </Col>
                       <Col>

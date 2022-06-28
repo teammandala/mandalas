@@ -60,15 +60,15 @@ const Liveauctions = () => {
                           //   <EllipsisOutlined key="ellipsis" />,
                           // ]}
                         >
-                          <Meta
-                            title={items.itemName}
-                            description={items.startingBid}
+                          <Meta className="p-1"
+                            title={"Product Name: "+items.itemName}
+                            description={"Starting price: " + items.startingBid}
                           />
                           <Button type='primary' block
                           href={`/auctionandbid/${items._id}`}
 
                           >
-                    Bid Now
+                    Enter Live Auction
                     </Button>
                     
                         </Card>
