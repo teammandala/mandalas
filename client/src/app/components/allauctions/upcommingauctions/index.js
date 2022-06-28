@@ -33,37 +33,44 @@ const Upcomingauctions = () => {
               if (currentDate < new Date(items.bidStart)) {
                 return (
                   <div className="site-card-wrapper">
-                    <div className=" container-fluid">
-                      <Col span={4}>
-                        <Card
-                          className="auctions"
-                          // bordered={false}
-                          style={{
-                            width: 350,
-                          }}
-                          cover={
-                            <img
-                              alt="auctionimg"
-                              width={350}
-                              height={200}
-                              src={"http://localhost:8080/" + items.image}
-                            />
-                          }
-                        >
-                          <Meta
-                            title={items.itemName}
-                            description={items.startingBid}
-                          />
-                          <Button
-                            type="primary"
-                            block
-                            href={`/auctionandbid/${items._id}`}
+                    <Container>
+                      <Row>
+                        <Col lg>
+                          <Card
+                            className="auctions"
+                            // bordered={false}
+                            style={{
+                              width: 350,
+                            }}
+                            cover={
+                              <img
+                                alt="auctionimg"
+                                width={350}
+                                height={200}
+                                src={"http://localhost:8080/" + items.image}
+                              />
+                            }
+                          // actions={[
+                          //   <SettingOutlined key="setting" />,
+                          //   <EditOutlined key="edit" />,
+                          //   <EllipsisOutlined key="ellipsis" />,
+                          // ]}
                           >
-                            Know More
-                          </Button>
-                        </Card>
-                      </Col>
-                    </div>
+                            <Meta
+                              title={items.itemName}
+                              description= {"Starting Price: " +items.startingBid}
+                            />
+                            <p>{}</p>
+                            <Button type='primary' block
+                              href={`/auctionandbid/${items._id}`}
+
+                            >
+                             View Details
+                            </Button>
+                          </Card>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
                 );
               }

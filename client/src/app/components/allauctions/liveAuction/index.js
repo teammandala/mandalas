@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 
+=======
+import { useNavigate, Link } from "react-router-dom";
+>>>>>>> cfecfb299e5fcc259282edeabda9a7de65ada576
 import "./style.css";
 import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
@@ -36,38 +40,43 @@ const Liveauctions = () => {
               ) {
                 return (
                   <div className="site-card-wrapper">
-                    <div className=" container-fluid">
-                      <Col span={4}>
-                        <Card
-                          className="auctions"
-                          // bordered={false}
-                          style={{
-                            width: 350,
-                          }}
-                          cover={
-                            <img
-                              alt="auctionimg"
-                              width={350}
-                              height={200}
-                              src={"http://localhost:8080/" + items.image}
-                            />
-                          }
-                        >
-                          <Meta
-                            className="p-1"
-                            title={"Product Name: " + items.itemName}
-                            description={"Starting price: " + items.startingBid}
-                          />
-                          <Button
-                            type="primary"
-                            block
-                            href={`/auctionandbid/${items._id}`}
+                    <Container>
+                      <Row>
+                        <Col lg>
+                          <Card
+                            className="auctions"
+                            // bordered={false}
+                            style={{
+                              width: 300,
+                            }}
+                            cover={
+                              <img
+                                alt="auctionimg"
+                                width={350}
+                                height={200}
+                                src={"http://localhost:8080/" + items.image}
+                              />
+                            }
                           >
-                            Enter Live Auction
-                          </Button>
-                        </Card>
-                      </Col>
-                    </div>
+                            <Meta
+                              className="p-1"
+                              title={"Product Name: " + items.itemName}
+                              description={
+                                "Starting price: " + items.startingBid
+                              }
+                            />
+                            <p>Ends At: {items.bidEnd}</p>
+                            <Button
+                              type="primary"
+                              block
+                              href={`/auctionandbid/${items._id}`}
+                            >
+                              Enter Live Auction
+                            </Button>
+                          </Card>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
                 );
               }

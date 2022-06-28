@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import Profiledata from "../../components/profile/profiledata";
 import { Tabs, Tab, Row, Col, Image } from "react-bootstrap";
+import { EditOutlined } from "@ant-design/icons";
 import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
+import Noaccess from "../noaccess";
 
 const Profilepage = () => {
+  const [show, setShow] = useState(false);
+
+  function changeState() {
+    setShow(!show);
+  }
+
   const currentUser = user.getCurrentUser();
   const username = useParams().username;
 
@@ -27,13 +35,13 @@ const Profilepage = () => {
                             src={"http://localhost:8080/" + currentUser.avatar}
                             alt="Avatar"
                             className=" img-fluid my-5 avatar-img"
-                            
                           />
-                          <AvatarUpdate />
-                          
+
+                          <EditOutlined onClick={changeState} />
+
+                          {show && <AvatarUpdate />}
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
-                          
                         </div>
                       </Col>
                       <Col>
@@ -71,7 +79,7 @@ const Profilepage = () => {
         } else {
           return (
             <div className="no-access">
-              <h1>you do not have access</h1>
+              <Noaccess />
             </div>
           );
         }
