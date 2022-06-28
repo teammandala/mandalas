@@ -1,51 +1,78 @@
+        
         .s1 {
             font-size: 16px;
+            /* background:#b9d79f9c; */
+            border-radius: 10px;
+            border-style: groove;
+            border-color: rgb(0, 0, 0);
+            margin-top: 0.5em;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
+            background-image: url('../../media/auction.png');
+            background-size:contain;
         }
+
         .s1-intro {
             margin-bottom: 2em;
+            filter: blur(0.5px);
         }
+
         .s1-intro h1 {
+            
             font-size: 3em;
             font-weight: 100;
+            
+            color: rgb(0, 0, 0);
         }
+
         .s1-intro h3 {
-            font-size: 1em;
-            font-weight: 200;
+            font-size: 3.5em;
+            font-weight: 40px;
             margin-top: 1em;
+            color: rgb(0, 0, 0);
+
         }
+
         .s1-avatar {
             width: 60px;
-            
+
         }
-        
+
         .s1-advice {
             padding: 2em;
             transition: all .5s;
-            
-            
+            margin-bottom: 2em;
+
+
+
         }
+
         .s1-advice:hover {
-            box-shadow: #f2f0f0 1px 1px 10px, #f2ecec9c 1px 1px 10px;
+            box-shadow: #ff0202 1px 1px 10px, #ff00009c 1px 1px 10px;
+           border-style: groove;
         }
+
         .s1-advice h3 {
-            font-size: 1.1em;
-            margin-top: 2em;
+            font-size: 2rem;
+            margin-top: 2rem;
             letter-spacing: 2px;
+            
+            color: rgb(255, 219, 13);
         }
+
         .s1-advice p {
             margin-top: 2em;
-            font-size: .95em;
+            font-size: 1em;
             line-height: 2;
-            color: dimgray;
+            color: rgb(244, 244, 244);
         }
+
         .s1-advice a {
             font-size: .95em;
             text-decoration: none;
-            color: hsl(120, 2%, 34%);
+            color: hsl(120, 71%, 16%);
             transition: all .5s;
         }
+
         .s1-advice a:hover {
             color: var(--brand-color);
         }
-        
-        

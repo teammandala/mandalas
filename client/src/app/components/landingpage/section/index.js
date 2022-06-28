@@ -7,19 +7,14 @@ const Section = () => {
   return (
     <section className="s1">
       <Container>
-        <Row>
+        <Row className='bgimage'>
           <Col md="12" className="text-center s1-intro p-2">
             <h1>Own Your Interest</h1>
             <h3>We are for all people who loves Rare Collection</h3>
             
           </Col>
           <Col md="6" lg="4" className="text-center s1-advice">
-          <img
-              className="s1-avatar"
-              src=""
-              alt=""
-            />
-            <h3>introducing Auction</h3>
+            <h3>Introducing Auction</h3>
             
             <p>
               Lorem Ipsum is simply dummy text of the printing and typesetting

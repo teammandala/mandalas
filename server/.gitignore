@@ -4,7 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
-
+/media/auction/2022
+/media/avatar/2022
+/media/kyc/2022
+/media/carousel/2022
 # testing
 /coverage
 

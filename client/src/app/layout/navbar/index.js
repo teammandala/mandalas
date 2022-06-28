@@ -40,15 +40,15 @@ const Navigationbar = () => {
     <>
       <Navbar bg="light" expand="lg" sticky="top">
         <Container>
-          <Navbar.Brand href="/">Mandala</Navbar.Brand>
+          <Navbar.Brand className="brand" href="/"><h>Mandala</h></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto text-l">
-              <Nav.Link href="auction">Auction</Nav.Link>
+              <Nav.Link href="/auction">Auction</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
-              <Nav.Link href="/policy">Policy</Nav.Link>
-              <Nav.Link href="/termsandconditions">Terms & Condtions</Nav.Link>
+              {/* <Nav.Link href="/policy">Policy</Nav.Link>
+              <Nav.Link href="/termsandconditions">Terms & Condtions</Nav.Link> */}
             </Nav>
             <Nav>
               <Form className="d-flex">
@@ -92,14 +92,11 @@ const Navigationbar = () => {
                       >
                         Profile
                       </NavDropdown.Item>
-                      <NavDropdown.Item href="/auction">
-                        Auction
-                      </NavDropdown.Item>
                       <NavDropdown.Item onClick={logOut}>
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="*">Auctioneer</NavDropdown.Item>
+                      <NavDropdown.Item href={"/auctioneer/" + currentUser.username}>Auction Request</NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else if (isAdmin) {
@@ -122,7 +119,7 @@ const Navigationbar = () => {
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href="*">Admin</NavDropdown.Item>
+                      <NavDropdown.Item href={"/auctioneer/" + currentUser.username}>Auction Request</NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else {

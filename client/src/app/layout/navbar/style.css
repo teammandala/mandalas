@@ -1,17 +1,15 @@
 .navbar{
     align-items: center;
     justify-content: center;
-    
-  box-shadow: 0 4px 8px 0 rgba(30, 149, 119, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
-    background-size: 300% 300%;
-    background-image: linear-gradient(
-          -45deg, 
-          rgb(79, 96, 104) 0%, 
-          rgb(72, 84, 108) 25%, 
-          rgba(152,68,183,1) 51%, 
-          rgb(97, 255, 53) 100%
-    );  
-    animation: AnimateBG 20s ease infinite;
+    font-size: 1.3rem;
+    font-weight: 500;   
+    /* border-width: 0.9px;
+    border-color: gray;
+    border-style: groove;  */
+    border-bottom-width: 1px;
+    border-bottom-color: darkgray;
+    border-bottom-style: solid;
+  box-shadow: 0 4px 8px 0 rgba(9, 10, 10, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
   }
   
   @keyframes AnimateBG { 
@@ -19,3 +17,15 @@
     50%{background-position:100% 50%}
     100%{background-position:0% 50%}
   }
+.brand{
+  font-weight: 600;
+  font-size: larger;
+  font-family: cursive;
+  padding-right: 2rem;
+  
+  
+}
+h{
+  color: rgb(0, 0, 0);
+  
+}

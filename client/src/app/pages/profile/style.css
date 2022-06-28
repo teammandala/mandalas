@@ -1,3 +1,10 @@
 .profile-back {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.16) !important;
 }
+
+.avatar-img {width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    overflow: hidden;
+  
+}

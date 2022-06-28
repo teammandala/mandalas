@@ -30,6 +30,12 @@ const auctionSchema = new Schema({
     type: mongoose.Schema.ObjectId,
     ref: "User",
   },
+  status: {
+    type: String,
+    default: "pending",
+    enum: ["pending", "approved", "rejected"],
+  },
+
   startingBid: { type: Number, default: 0 },
   bids: [
     {

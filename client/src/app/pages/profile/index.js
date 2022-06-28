@@ -1,11 +1,11 @@
-
 import React from "react";
 import Profiledata from "../../components/profile/profiledata";
-import { Tabs, Tab, Row, Col } from "react-bootstrap";
-import Profileupdate from "../../components/profile/profileupdate";
+import { Tabs, Tab, Row, Col, Image } from "react-bootstrap";
 import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
+import ProfileUpdateForm from "../../components/form/profileUpdate";
+import AvatarUpdate from "../../components/form/avatarUpdate";
 
 const Profilepage = () => {
   const currentUser = user.getCurrentUser();
@@ -26,10 +26,14 @@ const Profilepage = () => {
                           <img
                             src={"http://localhost:8080/" + currentUser.avatar}
                             alt="Avatar"
-                            className="img-fluid my-5"
+                            className=" img-fluid my-5 avatar-img"
+                            
                           />
+                          <AvatarUpdate />
+                          
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
+                          
                         </div>
                       </Col>
                       <Col>
@@ -49,7 +53,7 @@ const Profilepage = () => {
                               title="Profile Update"
                             >
                               <div className="container-fluid">
-                                <Profileupdate />
+                                <ProfileUpdateForm />
                               </div>
                             </Tab>
                             <Tab eventKey="kyc" title="KYC">
