@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const user = require("../controllers/users");
 const kyc = require("../controllers/kyc");
+const contact = require("../controllers/contact");
 const auction = require("../controllers/auction");
 const isAuth = require("../middleware/auth");
 const upload = require("../utils/kycUpload");
@@ -9,23 +10,29 @@ const kycUpload = require("../utils/auctionUpload");
 const avatarUpload = require("../utils/avatarUpload");
 const carouselUpload = require("../utils/carouselUpload");
 const carousel = require("../controllers/carousel");
-
 // user routes
 // router.use("/api/auth", user);
 router.post("/api/auth/register", user.register);
 router.post("/api/auth/login", user.login);
+
 router.put(
   "/api/auth/profile/:id",
   user.profileUpdate,
-  avatarUpload.single("avatar"),
+  // avatarUpload.single("avatar"),
   isAuth
 );
 router.post(
   "/api/auth/avatar/:id",
-  user.avatarUpdate,
   avatarUpload.single("avatar"),
+  user.avatarUpdate,
   isAuth
 );
+router.use(
+  "/api/contact/request",
+  upload.single("idImage"),
+  contact.contactRequest,
+);
+
 router.get("/api/auth/getalluser", user.getAllUser);
 router.put("/api/auth/role/:id", user.roleUpdate);
 router.delete("/api/auth/delete/:id", user.deleteUser);

@@ -5,6 +5,7 @@ import './style.css';
 
 const Section = () => {
   return (
+    <>
     <section className="s1">
       <Container>
         <Row className='bgimage'>
@@ -44,6 +45,7 @@ const Section = () => {
       </Container>
       
     </section>
+    </>
   )
 }
 

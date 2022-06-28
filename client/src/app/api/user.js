@@ -6,7 +6,7 @@ const API_URL = "http://localhost:8080/api/auth/";
 const token = localStorage.getItem("token");
 
 // register user
-const register = (username, name, email, phone, password) => {
+const register = (username, name, email, phone, password, password1) => {
   const config = {
     headers: { "Content-Type": "application/json" },
   };
@@ -19,6 +19,7 @@ const register = (username, name, email, phone, password) => {
       email,
       phone,
       password,
+      password1,
     },
     config
   );
@@ -60,7 +61,7 @@ const logout = () => {
   localStorage.removeItem("user");
 };
 
-const updateUser = (username, email, name, phone, address, bio, avatar) => {
+const updateUser = (username, email, name, phone, address, bio) => {
   const currentUser = getCurrentUser();
   return axios
     .put(
@@ -72,7 +73,6 @@ const updateUser = (username, email, name, phone, address, bio, avatar) => {
         phone,
         address,
         bio,
-        avatar,
       },
       {
         headers: {

@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import { Card, Row, Col, Button, Modal } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
-// import {useNavigate} from "react-router-dom";
 const { Meta } = Card;
 
 const Liveauctions = () => {
   const [data, setData] = useState([]);
-
-  const [id, setId] = useState();
-  const navigate = useNavigate();
 
   useEffect(() => {
     auction
@@ -24,24 +20,6 @@ const Liveauctions = () => {
         console.log(error);
       });
   }, []);
-
-  const handleAuction = (items) => {
-    setId(items._id);
-  };
-  const handleopenAuction = () => {
-    auction.getCurrentAuction(id).then((res) => {
-      return res;
-    });
-    // .catch((error) => {
-    //   if (
-    //     error.response &&
-    //     error.response.status >= 400 &&
-    //     error.response.status <= 500
-    //   ) {
-    //     window.alert(error.response.data.message);
-    //   }
-    // });
-  };
 
   const currentDate = new Date();
 
@@ -81,19 +59,16 @@ const Liveauctions = () => {
                           // ]}
                         >
                           <Meta
-                            title={items.itemName}
-                            description={items.startingBid}
+                            className="p-1"
+                            title={"Product Name: " + items.itemName}
+                            description={"Starting price: " + items.startingBid}
                           />
                           <Button
                             type="primary"
                             block
-                            onClick={() => {
-                              handleAuction(items);
-                              handleopenAuction();
-                            }}
-                            // href={'/auctionandbid'}
+                            href={`/auctionandbid/${items._id}`}
                           >
-                            Bid Now
+                            Enter Live Auction
                           </Button>
                         </Card>
                       </Col>

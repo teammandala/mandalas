@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Input, Upload } from "antd";
-import { UploadOutlined } from "@ant-design/icons";
+import { EditOutlined } from "@ant-design/icons";
 import "./style.css";
 import userAPI from "../../../api/user";
 
@@ -50,9 +50,9 @@ const AvatarUpdate = () => {
           onChange={onChangeAvatar}
           // value={idImage}
         >
-          <Upload name="avatar" type="file" htmlFor="file" listType="picture">
+          <Upload name="avatar" type="file" htmlFor="file" listType="picture" >
             <Button>
-              <UploadOutlined /> Upload Avatar
+              <EditOutlined /> Upload Avatar
             </Button>
           </Upload>
         </Form.Item>

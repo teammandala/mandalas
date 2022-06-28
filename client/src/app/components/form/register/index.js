@@ -12,6 +12,7 @@ const RegisterForm = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [password1, setPassword1] = useState("");
   const [error, setError] = useState("");
 
   const onChangeName = (e) => {
@@ -38,11 +39,15 @@ const RegisterForm = () => {
     const password = e.target.value;
     setPassword(password);
   };
+  const onChangePassword1 = (e) => {
+    const password1 = e.target.value;
+    setPassword1(password1);
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
     user
-      .register(username, name, email, phone, password)
+      .register(username, name, email, phone, password, password1)
       .then((response) => {
         window.alert(response.data.message, navigate("/login"));
       })
@@ -107,6 +112,15 @@ const RegisterForm = () => {
           value={password}
         >
           <Input.Password placeholder="Password" />
+        </Form.Item>
+
+        <Form.Item
+          name="password1"
+          rules={[{ required: true, message: "Please confirm password!" }]}
+          onChange={onChangePassword1}
+          value={password1}
+        >
+          <Input.Password placeholder="Confirm Password" />
         </Form.Item>
 
         <Form.Item>

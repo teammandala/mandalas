@@ -4,11 +4,9 @@ const User = require("../models/user");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { find } = require("../models/user");
-
 // route for user registration
 const register = async (req, res, next) => {
-  const { username, name, email, phone, password } = req.body;
-
+  const { username, name, email, phone, password, password1 } = req.body;
   try {
     let userWithEmail = await User.findOne({ email: email });
     let userWithUsername = await User.findOne({ username: username });
@@ -21,24 +19,30 @@ const register = async (req, res, next) => {
       return res
         .status(400)
         .send({ message: "User with username already exists!" }).next;
-    } else if (!username || !name || !email || !phone || !password) {
+    } else if (!username || !name || !email || !phone || !password ||!password1) {
       return res.status(400).send({ message: "Fields can't be empty!" }).next;
     } else if (password.length < 6) {
       return res
         .status(400)
         .send({ message: "password must be at least 6 character!" }).next;
     }
-
+    else if (password !== password1) {
+      return res
+        .status(400)
+        .send({ message: "password donot match!" }).next;
+    }
     const newUser = new User({
       username,
       name,
       email,
       phone,
       password,
+      password1,
     });
 
     const salt = await bcrypt.genSalt(10);
     newUser.password = await bcrypt.hash(password, salt);
+    newUser.password1 = await bcrypt.hash(password1, salt);
     await newUser
       .save()
       .then(() => res.status(201).send({ message: `registration successful` }))
@@ -99,10 +103,10 @@ const profileUpdate = async (req, res, next) => {
     const tempUser = await User.findById(req.params.id);
     if (!tempUser) return res.status(404).json({ message: "No such user." });
 
-    let avatarPath = null;
-    if (req.file) {
-      avatarPath = req.file.filename;
-    }
+    // let avatarPath = null;
+    // if (req.file) {
+    //   avatarPath = req.file.filename;
+    // }
 
     const existingUser = await User.findOne({ username: req.body.username });
     if (existingUser && existingUser.id !== tempUser.id) {
@@ -116,14 +120,14 @@ const profileUpdate = async (req, res, next) => {
       phone: req.body.phone,
       address: req.body.address,
       bio: req.body.bio,
-      avatar: avatarPath,
+      // avatar: avatarPath,
     };
     // remove '', null, undefined
     Object.keys(updatedUser).forEach(
       (k) =>
         !updatedUser[k] && updatedUser[k] !== undefined && delete updatedUser[k]
     );
-    console.log(req.body, updatedUser);
+    // console.log(req.body, updatedUser);
     const user = await User.findByIdAndUpdate(
       tempUser.id,
       { $set: updatedUser },
@@ -151,7 +155,7 @@ const getAllUser = async (req, res, next) => {
 const avatarUpdate = async (req, res, next) => {
   try {
     const id = req.params.id;
-    console.log(id, req.file.filename);
+    // console.log(id, req.file.filename);
     await User.findByIdAndUpdate(
       id,
       { $set: { avatar: req.file.path } },
