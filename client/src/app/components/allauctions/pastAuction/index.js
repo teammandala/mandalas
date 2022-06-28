@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
-import { Card, Row, Col, Button} from "antd";
+
+import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
 const { Meta } = Card;
@@ -29,7 +25,7 @@ const Pastauctions = () => {
 
   return (
     <>
-      <Container className="container-fluid">
+      <Container>
         <Row>
           {data.map((items) => {
             if (items.status === "approved") {
@@ -53,22 +49,18 @@ const Pastauctions = () => {
                               src={"http://localhost:8080/" + items.image}
                             />
                           }
-                          // actions={[
-                          //   <SettingOutlined key="setting" />,
-                          //   <EditOutlined key="edit" />,
-                          //   <EllipsisOutlined key="ellipsis" />,
-                          // ]}
                         >
                           <Meta
                             title={items.itemName}
                             description={items.startingBid}
                           />
-                          <Button type='primary' block
-                          href={`/auctionandbid/${items._id}`}
-
+                          <Button
+                            type="primary"
+                            block
+                            href={`/auctionandbid/${items._id}`}
                           >
-                    Read More
-                    </Button>
+                            Read More
+                          </Button>
                         </Card>
                       </Col>
                     </div>

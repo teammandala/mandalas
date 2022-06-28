@@ -22,7 +22,7 @@ const BiddingPage = () => {
   }, []);
 
   return (
-    <>
+    <div>
       <div className="container-fluid">
         <h1>auctions bid</h1>
         <h2>{data.description}</h2>
@@ -34,16 +34,44 @@ const BiddingPage = () => {
           />
         </div>
         <div className="container-fluid">
+          <>
+            Item Name {}: {}{" "}
+          </>
           {data.itemName}
           <br />
+          <>
+            Updated {}: {}{" "}
+          </>
           {data.updated}
+          <br />
+          <>
+            Starting Date {}: {}{" "}
+          </>
           {data.bidStart}
+          <br />
+          <>
+            Ending Date {}: {}{" "}
+          </>
           {data.bidEnd}
+          <br />
+          <>
+            Seller Name {}: {}{" "}
+          </>
           {data.seller}
+          <br />
+          <>
+            Starting Price {}: {}{" "}
+          </>
           {data.startingBid}
         </div>
         <div>{data.bids}</div>
       </div>
-    </>
+      <div className="col-md-6">
+        <h>sdhjjhds</h>
+        <h6>sdjksj jkskj</h6>
+      </div>
+    </div>
   );
 };
+
+export default BiddingPage;

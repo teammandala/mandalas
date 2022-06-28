@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+
 import "./style.css";
-import { Card, Row, Col, Button, Modal } from "antd";
+import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
 const { Meta } = Card;
@@ -25,7 +25,7 @@ const Liveauctions = () => {
 
   return (
     <>
-      <Container className="container-fluid">
+      <Container>
         <Row>
           {data.map((items) => {
             if (items.status === "approved") {
@@ -52,11 +52,6 @@ const Liveauctions = () => {
                               src={"http://localhost:8080/" + items.image}
                             />
                           }
-                          // actions={[
-                          //   <SettingOutlined key="setting" />,
-                          //   <EditOutlined key="edit" />,
-                          //   <EllipsisOutlined key="ellipsis" />,
-                          // ]}
                         >
                           <Meta
                             className="p-1"
