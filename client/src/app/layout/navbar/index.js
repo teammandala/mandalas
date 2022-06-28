@@ -40,7 +40,9 @@ const Navigationbar = () => {
     <>
       <Navbar bg="light" expand="lg" sticky="top">
         <Container>
-          <Navbar.Brand className="brand" href="/"><h>Mandala</h></Navbar.Brand>
+          <Navbar.Brand className="brand" href="/">
+            <h>Mandala</h>
+          </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto text-l">
@@ -73,11 +75,10 @@ const Navigationbar = () => {
                       >
                         Profile
                       </NavDropdown.Item>
+                      <NavDropdown.Divider />
                       <NavDropdown.Item onClick={logOut}>
                         Logout
                       </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href="*">Normal User</NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else if (isAuctioneer) {
@@ -96,7 +97,11 @@ const Navigationbar = () => {
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href={"/auctioneer/" + currentUser.username}>Auction Request</NavDropdown.Item>
+                      <NavDropdown.Item
+                        href={"/auctioneer/" + currentUser.username}
+                      >
+                        Auction Request
+                      </NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else if (isAdmin) {
@@ -119,7 +124,11 @@ const Navigationbar = () => {
                         Logout
                       </NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item href={"/auctioneer/" + currentUser.username}>Auction Request</NavDropdown.Item>
+                      <NavDropdown.Item
+                        href={"/auctioneer/" + currentUser.username}
+                      >
+                        Auction Request
+                      </NavDropdown.Item>
                     </NavDropdown>
                   );
                 } else {
