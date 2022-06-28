@@ -16,7 +16,7 @@ class Router extends React.Component {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/user" element={<User />} />
-          <Route path="/contact" element={<Contact />} />
+          <Route path="/contactrequest" element={<Contact />} />
           <Route path="/auction" element={<Auction />} />
           <Route path="/kycrequest" element={<Kycrequest />} />
           <Route path="/carousel" element={<Carouseldetails />} />

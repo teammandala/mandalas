@@ -34,6 +34,7 @@ router.use(
 );
 
 router.get("/api/auth/getalluser", user.getAllUser);
+router.get("/api/auth/getallcontact", user.getAllContact);
 router.put("/api/auth/role/:id", user.roleUpdate);
 router.delete("/api/auth/delete/:id", user.deleteUser);
 

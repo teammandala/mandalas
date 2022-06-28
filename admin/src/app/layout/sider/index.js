@@ -87,6 +87,13 @@ const Sidebar = () => {
                       Auction Requests<a href="/auctionrequest"></a>
                     </span>
                   </Menu.Item>
+
+                  <Menu.Item key="6">
+                    <CheckCircleOutlined />
+                    <span className="nav-text">
+                      Contact Requests<a href="/contactrequest"></a>
+                    </span>
+                  </Menu.Item>
                 </Menu>
               </Sider>
             );
