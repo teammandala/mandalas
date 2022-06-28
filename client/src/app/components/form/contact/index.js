@@ -54,7 +54,7 @@ const ContactForm = () => {
 
   return (
     <>
-     <div className="col-md-3 center">
+     <div className="container-fluid">
       <Form
         name="contact-form"
         method="post"
@@ -65,17 +65,16 @@ const ContactForm = () => {
         {/* {error && <div className="error_msg">{error}</div>} */}
         <Form.Item
           name="fullName"
-          rules={[{ required: true, message: "Please input your Full Name!" }]}
+          rules={[{ required: true, message: "Enter Your Name!" }]}
           onChange={onChangeFullName}
           value={fullName}
         >
           <Input placeholder="Full Name" />
         </Form.Item>
-
         
         <Form.Item
           name="email"
-          rules={[{ required: true, message: "Please input your email!" }]}
+          rules={[{ required: true, message: "Enter your E-Mail!" }]}
           onChange={onChangeEmail}
           value={email}
         >
@@ -86,11 +85,11 @@ const ContactForm = () => {
           
         <Form.Item
           name="message"
-          rules={[{ required: true, message: "Please input your message!" }]}
+          rules={[{ required: true, message: "Message is Empty!" }]}
           onChange={onChangemessage}
           value={message}
         >
-          <Input placeholder="message" />
+          <Input.TextArea placeholder="message" />
         </Form.Item>
    
 
@@ -101,7 +100,7 @@ const ContactForm = () => {
             className="login-form-button"
             onClick={handlecontactRequest}
           >
-            Request
+            Contact
           </Button>
         </Form.Item>
       </Form>
