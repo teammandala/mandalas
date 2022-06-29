@@ -4,11 +4,13 @@ import "./style.css";
 import user from "../../api/user";
 import auction from "../../api/auction";
 import kyc from "../../api/kycrequest";
+import carousel from "../../api/carousel";
 
 const Home = () => {
   const [userCount, setUserCount] = useState("");
   const [auctionCount, setAuctionCount] = useState("");
   const [kycCount, setKYCCount] = useState("");
+  const [carouselCount, setCarouselCount] = useState("");
 
   useEffect(() => {
     user
@@ -40,6 +42,17 @@ const Home = () => {
       .catch((error) => {
         console.log(error);
       });
+
+      carousel
+      .getCarouselData()
+      .then((res) => {
+        const carouselCount = res.data.carouselData.length;
+        setCarouselCount(carouselCount);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
   }, []);
 
   return (
@@ -70,7 +83,7 @@ const Home = () => {
             <Card.Body>
               <Card.Title>KYC</Card.Title>
               <Card.Text>
-                <h1>{auctionCount}</h1>
+                <h1>{kycCount}</h1>
               </Card.Text>
               <Button href="/kycrequest" variant="secondary">
                 Verify Them
@@ -84,7 +97,7 @@ const Home = () => {
             <Card.Body>
               <Card.Title>Auction Request</Card.Title>
               <Card.Text>
-                <h1>{kycCount}</h1>
+                <h1>{auctionCount}</h1>
               </Card.Text>
               <Button href="/auctionrequest" variant="primary">
                 Review It
@@ -97,13 +110,15 @@ const Home = () => {
             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
               <Card.Title>Carousels</Card.Title>
-              <Card.Text>Total Carousels Active:</Card.Text>
+              <Card.Text>
+               <h1>{carouselCount}</h1> </Card.Text>
               <Button href="/carousel" variant="primary">
                 Take Action
               </Button>
             </Card.Body>
           </Card>
         </Col>
+        
       </Row>
     </>
   );
