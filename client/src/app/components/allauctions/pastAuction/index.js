@@ -38,8 +38,8 @@ const Pastauctions = () => {
                 return (
                   <div className="site-card-wrapper">
                     <Container>
-                      <Row >
-                        <Col lg >
+                      <Row>
+                        <Col lg>
                           <Card
                             className="auctions"
                             // bordered={false}
@@ -54,21 +54,22 @@ const Pastauctions = () => {
                                 src={"http://localhost:8080/" + items.image}
                               />
                             }
-                          // actions={[
-                          //   <SettingOutlined key="setting" />,
-                          //   <EditOutlined key="edit" />,
-                          //   <EllipsisOutlined key="ellipsis" />,
-                          // ]}
+                            // actions={[
+                            //   <SettingOutlined key="setting" />,
+                            //   <EditOutlined key="edit" />,
+                            //   <EllipsisOutlined key="ellipsis" />,
+                            // ]}
                           >
                             <Meta
                               title={items.itemName}
                               description={items.startingBid}
                             />
-                            <Button type='primary' block
+                            <Button
+                              type="primary"
+                              block
                               href={`/auctionandbid/${items._id}`}
-
                             >
-                             View Details
+                              View Details
                             </Button>
                           </Card>
                         </Col>
