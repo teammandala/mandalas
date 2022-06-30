@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-<<<<<<< HEAD
-
-=======
 import {
   EditOutlined,
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
->>>>>>> cfecfb299e5fcc259282edeabda9a7de65ada576
 import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";

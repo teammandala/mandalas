@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
-<<<<<<< HEAD
-
-=======
 import { useNavigate, Link } from "react-router-dom";
->>>>>>> cfecfb299e5fcc259282edeabda9a7de65ada576
 import "./style.css";
 import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
