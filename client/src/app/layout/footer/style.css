@@ -19,6 +19,21 @@ footer.nb-footer {
 background: #222;
 border-top: 4px solid #b78c33; 
 vertical-align: bottom;
+  /* ff 3.6+ */
+  background:-moz-radial-gradient(circle at 5% 25%, rgba(105, 105, 8, 1) 40%, rgba(71, 72, 4, 1) 58%);
+
+  /* safari 5.1+,chrome 10+ */
+  background:-webkit-radial-gradient(circle at 5% 25%, rgba(105, 105, 8, 1) 40%, rgba(71, 72, 4, 1) 58%);
+
+  /* opera 11.10+ */
+  background:-o-radial-gradient(circle at 5% 25%, rgba(105, 105, 8, 1) 40%, rgba(71, 72, 4, 1) 58%);
+
+  /* ie 10+ */
+  background:-ms-radial-gradient(circle at 5% 25%, rgba(105, 105, 8, 1) 40%, rgba(71, 72, 4, 1) 58%);
+
+  /* global 92%+ browsers support */
+  background:radial-gradient(circle at 5% 25%, rgba(105, 105, 8, 1) 40%, rgba(71, 72, 4, 1) 58%);
+
 }
 footer.nb-footer .about {
 margin: 0 auto;
@@ -66,7 +81,26 @@ footer.nb-footer .copyright {
 margin-top: 15px;
 background: #111;
 padding: 7px 0;
-color: #999; }
+color: #999; 
+/* ff 3.6+ */
+background:-moz-linear-gradient(90deg, rgba(105, 105, 8, 1) 0%, rgba(70, 72, 3, 1) 0%); 
+
+/* safari 5.1+,chrome 10+ */
+background:-webkit-linear-gradient(90deg, rgba(105, 105, 8, 1) 0%, rgba(70, 72, 3, 1) 0%);
+
+/* opera 11.10+ */
+background:-o-linear-gradient(90deg, rgba(105, 105, 8, 1) 0%, rgba(70, 72, 3, 1) 0%);
+
+/* ie 6-9 */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#464803', endColorstr='#696908', GradientType=0 );
+
+/* ie 10+ */
+background:-ms-linear-gradient(90deg, rgba(105, 105, 8, 1) 0%, rgba(70, 72, 3, 1) 0%);
+
+/* global 94%+ browsers support */
+background:linear-gradient(90deg, rgba(105, 105, 8, 1) 0%, rgba(70, 72, 3, 1) 0%);
+
+}
 footer.nb-footer .copyright p {
 margin: 0;
 padding: 0; }

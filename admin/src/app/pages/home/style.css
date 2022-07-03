@@ -1,3 +1,7 @@
+.dashboard{
+  
+  
+}
 .Card1{
     
   box-shadow: 0 4px 8px 0 rgba(9, 10, 10, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
@@ -24,6 +28,13 @@
     
     box-shadow: 0 4px 8px 0 rgba(9, 10, 10, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
     background-color: rgb(107, 86, 176);
+    border-width: 1.5px;
+    border-color: black;
+  }
+
+.analysis{
+    padding-top: 10px;
+   
     border-width: 1.5px;
     border-color: black;
   }

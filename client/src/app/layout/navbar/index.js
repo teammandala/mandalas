@@ -38,7 +38,7 @@ const Navigationbar = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg" sticky="top">
+      <Navbar className="gradient-bg" bg="light" expand="lg" sticky="top">
         <Container>
           <Navbar.Brand className="brand" href="/">
             <h>Mandala</h>
@@ -53,15 +53,7 @@ const Navigationbar = () => {
               <Nav.Link href="/termsandconditions">Terms & Condtions</Nav.Link> */}
             </Nav>
             <Nav>
-              <Form className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  bg="light"
-                  aria-label="Search"
-                />
-              </Form>
+              
               {(() => {
                 if (isUser) {
                   return (
