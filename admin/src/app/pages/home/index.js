@@ -56,7 +56,7 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="dashboard">
+    <>
       <Row xs={1} md={2} className="g-4">
         <Col className="container-fluid">
           <h1>Welcome to Mandala's Admin Dashboard</h1>
@@ -120,35 +120,7 @@ const Home = () => {
         </Col>
         
       </Row>
-      <Row className="analysis">
-      <Col lg>
-          <Card className="Card5">
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Body>
-              <Card.Title>Carousels</Card.Title>
-              <Card.Text>
-               <h1>{carouselCount}</h1> </Card.Text>
-              <Button href="/carousel" variant="primary">
-                Take Action
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col lg>
-          <Card className="Card6">
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
-            <Card.Body>
-              <Card.Title>Carousels</Card.Title>
-              <Card.Text>
-               <h1>{carouselCount}</h1> </Card.Text>
-              <Button href="/carousel" variant="primary">
-                Take Action
-              </Button>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </div>
+    </>
   );
 };
 

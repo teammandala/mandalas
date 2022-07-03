@@ -36,9 +36,8 @@ const Sidebar = () => {
   }, []);
 
   return (
-    <>
-    <div>
-      <>
+    <><div>
+      <Layout>
         {(() => {
           if (isAdmin) {
             return (
@@ -140,7 +139,7 @@ const Sidebar = () => {
           </Content>
           <Footer style={{ textAlign: "center" }}>Mandala Admin</Footer>
         </Layout>
-      </>
+      </Layout>
       </div>
     </>
   );
