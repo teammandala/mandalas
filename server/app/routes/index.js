@@ -34,7 +34,7 @@ router.use(
 );
 
 router.get("/api/auth/getalluser", user.getAllUser);
-router.get("/api/auth/getallcontact", user.getAllContact);
+router.get("/api/contact/getallcontact", user.getAllContact);
 router.put("/api/auth/role/:id", user.roleUpdate);
 router.delete("/api/auth/delete/:id", user.deleteUser);
 
@@ -56,6 +56,8 @@ router.use(
 );
 
 router.put("/api/auction/status/:id", auction.auctionStatus);
+
+router.put("/api/contact/status/:id", contact.contactStatus);
 
 router.get("/api/auction/getdata", auction.getAuctions);
 router.get("/api/auction/getdata/:id", auction.getCurrentAuction);

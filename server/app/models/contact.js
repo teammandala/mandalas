@@ -18,7 +18,11 @@ const ContactForm = new Schema({
     default: "pending",
     enum: ["pending", "resolved"],
   },
+  requested:{
+    type: Date,
+    default: Date.now,
 
+  },
   message : {
     type: String,
     required: true,

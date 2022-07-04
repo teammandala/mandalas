@@ -139,9 +139,9 @@ const Home = () => {
                   <h1>{contactCount}</h1>{" "}
                 </Card.Text>
                 <Button href="/contactrequest" variant="primary">
-                  Take Action
+                  Help Customers
                 </Button>
-              </Card.Body>
+              </Card.Body> 
             </Card>
           </Col>
         </Row>

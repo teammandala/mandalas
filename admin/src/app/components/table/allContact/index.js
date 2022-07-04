@@ -6,7 +6,7 @@ import contact from "../../../api/contact";
 const AllContact = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
-  const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [isSolvedModalVisible, setIsSolvedModalVisible] = useState(false);
 
 
   useEffect(() => {
@@ -21,33 +21,34 @@ const AllContact = () => {
       });
   }, []);
 
-  const showDeleteModal = (items) => {
+  const showSolvedModal = (items) => {
     setId(items._id);
     // console.log(items._id);
-    setIsDeleteModalVisible(true);
+    setIsSolvedModalVisible(true);
   };
   const handleCancel = () => {
-    setIsDeleteModalVisible(false);
+    setIsSolvedModalVisible(false);
   };
 
-  // const handleDelete = () => {
-  //   setIsDeleteModalVisible(false);
-  //   // console.log(id)
-  //   contact
-  //     .contactDelete(id)
-  //     .then((res) => {
-  //       window.alert(res.data.message, window.location.reload());
-  //     })
-  //     .catch((error) => {
-  //       if (
-  //         error.response &&
-  //         error.response.status >= 400 &&
-  //         error.response.status <= 500
-  //       ) {
-  //         window.alert(error.response.data.message);
-  //       }
-  //     });
-  //   // .console.log(id)
+  const handleSolved = () => {
+    setIsSolvedModalVisible(false);
+    const status = "resloved";
+    contact
+      .contactStatus(id, status)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
+  };
   // };
 
 
@@ -62,6 +63,7 @@ const AllContact = () => {
             <th>email</th>
             <th>message</th>
             <th>Status</th>
+            <th>Contacted Date</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -75,16 +77,19 @@ const AllContact = () => {
                   <td>{items.email}</td>
                   <td>{items.message}</td>
                   <td>{items.status}</td>
+                  <td>{items.requested}</td>
                   <td>
-                  <Button type="danger" onClick={() => showDeleteModal(items)}>
-                    Delete
+                  <Button type="primary" onClick={() => showSolvedModal(items)} 
+                  block>
+                    Solve
                   </Button>
                   <Modal
                     title="Are You Sure!!!"
-                    visible={isDeleteModalVisible}
+                    visible={isSolvedModalVisible}
                     onCancel={handleCancel}
-                    // onOk={handleDelete}
+                    onOk={handleSolved}
                   ></Modal>
+                  
                   </td>
                 </tr>
               </>
