@@ -1,15 +1,12 @@
 import React from "react";
+import AllContact from "../../components/table/allContact";
 
-class Contact extends React.Component {
-  render() {
-    return (
-      <>
-        <div className="contact">
-          <h1>Contact</h1>
-        </div>
-      </>
-    );
-  }
-}
+const Contact = () => {
+  return (
+    <div className="contact">
+      <AllContact />
+    </div>
+  );
+};
 
 export default Contact;

@@ -78,7 +78,7 @@ const ContactForm = () => {
           onChange={onChangeEmail}
           value={email}
         >
-          <Input placeholder="example@example.com" />
+          <Input placeholder="Email: example@example.com" />
         </Form.Item>
 
        
@@ -89,7 +89,7 @@ const ContactForm = () => {
           onChange={onChangemessage}
           value={message}
         >
-          <Input.TextArea placeholder="message" />
+          <Input.TextArea placeholder="Your Message: Enter Here" />
         </Form.Item>
    
 
