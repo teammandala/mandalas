@@ -30,25 +30,25 @@ const AllContact = () => {
     setIsDeleteModalVisible(false);
   };
 
-  const handleDelete = () => {
-    setIsDeleteModalVisible(false);
-    // console.log(id)
-    contact
-      .contactDelete(id)
-      .then((res) => {
-        window.alert(res.data.message, window.location.reload());
-      })
-      .catch((error) => {
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          window.alert(error.response.data.message);
-        }
-      });
-    // .console.log(id)
-  };
+  // const handleDelete = () => {
+  //   setIsDeleteModalVisible(false);
+  //   // console.log(id)
+  //   contact
+  //     .contactDelete(id)
+  //     .then((res) => {
+  //       window.alert(res.data.message, window.location.reload());
+  //     })
+  //     .catch((error) => {
+  //       if (
+  //         error.response &&
+  //         error.response.status >= 400 &&
+  //         error.response.status <= 500
+  //       ) {
+  //         window.alert(error.response.data.message);
+  //       }
+  //     });
+  //   // .console.log(id)
+  // };
 
 
 
@@ -61,6 +61,7 @@ const AllContact = () => {
             <th>full name</th>
             <th>email</th>
             <th>message</th>
+            <th>Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -73,6 +74,7 @@ const AllContact = () => {
                   <td>{items.fullName}</td>
                   <td>{items.email}</td>
                   <td>{items.message}</td>
+                  <td>{items.status}</td>
                   <td>
                   <Button type="danger" onClick={() => showDeleteModal(items)}>
                     Delete
@@ -81,7 +83,7 @@ const AllContact = () => {
                     title="Are You Sure!!!"
                     visible={isDeleteModalVisible}
                     onCancel={handleCancel}
-                    onOk={handleDelete}
+                    // onOk={handleDelete}
                   ></Modal>
                   </td>
                 </tr>

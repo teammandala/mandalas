@@ -7,7 +7,7 @@
   border-bottom-color: darkgray;
   border-bottom-style: solid;
   box-shadow: 0 4px 8px 0 rgba(9, 10, 10, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
-  background-color: black;
+  background-color: rgb(39, 206, 186);
   background-size: auto;
 }
 
@@ -16,6 +16,7 @@
   font-size: larger;
   font-family: cursive;
   padding-right: 2rem;
+  
 
 
 }
