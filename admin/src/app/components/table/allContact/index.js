@@ -88,7 +88,9 @@ const AllContact = () => {
                     visible={isSolvedModalVisible}
                     onCancel={handleCancel}
                     onOk={handleSolved}
-                  ></Modal>
+                  >
+                    <p>This Action can be undone. Work Wisely</p>
+                  </Modal>
                   
                   </td>
                 </tr>

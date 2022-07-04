@@ -10,6 +10,7 @@ import contact from "../../api/contact";
 const Home = () => {
   const [userCount, setUserCount] = useState("");
   const [auctionCount, setAuctionCount] = useState("");
+  const [approvedauctionCount, setApprovedAuctionCount] = useState("");
   const [kycCount, setKYCCount] = useState("");
   const [carouselCount, setCarouselCount] = useState("");
   const [contactCount, setContactCount] = useState("");
@@ -25,6 +26,7 @@ const Home = () => {
         console.log(error);
       });
 
+
     auction
       .getAuctionData()
       .then((res) => {
@@ -34,6 +36,16 @@ const Home = () => {
       .catch((error) => {
         console.log(error);
       });
+
+      // auction
+      // .getAuctionData()
+      // .then((res) => {
+      //   const approvedauctionCount = res.data.auctionData.length;
+      //   setApprovedAuctionCount(approvedauctionCount);
+      // })
+      // .catch((error) => {
+      //   console.log(error);
+      // });
 
     kyc
       .getKycData()
@@ -107,7 +119,9 @@ const Home = () => {
             <Card.Body>
               <Card.Title>Auction Request</Card.Title>
               <Card.Text>
-                <h1>{auctionCount}</h1>
+                <h1>Total Auctions: {auctionCount}</h1>
+                {/* <h3>Approved Auction: {approvedauctionCount}</h3>
+                <h3>Pending Auction: {approvedauctionCount}</h3> */}
               </Card.Text>
               <Button href="/auctionrequest" variant="primary">
                 Review It
@@ -141,7 +155,7 @@ const Home = () => {
                 <Button href="/contactrequest" variant="primary">
                   Help Customers
                 </Button>
-              </Card.Body> 
+              </Card.Body>
             </Card>
           </Col>
         </Row>
