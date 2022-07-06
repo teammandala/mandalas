@@ -28,7 +28,26 @@ const contactRequest = async (req, res) => {
   }
 };
 
+const contactStatus = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await contact.findByIdAndUpdate(
+      id,
+      { $set: { status: req.body.status } },
+      { new: true }
+    ).then((contact) => {
+      res.status(201).send({
+        contact,
+        message: `Contact status changed to  ${req.body.status}`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
 
 module.exports = {
   contactRequest,
+  contactStatus,
 };

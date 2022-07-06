@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
-import auction from "../../../api/auction";
+import auction from "../../../../api/auction";
 import "./style.css";
-
+import moment from "moment";
 const AuctionRequestTable = () => {
-  // const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
@@ -50,6 +49,7 @@ const AuctionRequestTable = () => {
   };
 
   const showRejectModal = (items) => {
+    setId(items._id);
     setIsRejectModalVisible(true);
   };
 
@@ -81,7 +81,7 @@ const AuctionRequestTable = () => {
 
   
   return (
-    <>
+    <><div class='text1'>Auction</div>
       <Table
         responsive
         className="table_data"
@@ -103,6 +103,8 @@ const AuctionRequestTable = () => {
             <th>seller</th>
             <th>startingBid</th>
             <th>status</th>
+            <th>User Contact</th>
+            <th>Delivery Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -122,12 +124,14 @@ const AuctionRequestTable = () => {
                     />
                     {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
                   </td>
-                  <td>{items.created}</td>
-                  <td>{items.bidStart}</td>
-                  <td>{items.bidEnd}</td>
-                  <td>{items.seller}</td>
+                  <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                  <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                  <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                  <td>{items.seller.name}</td>
                   <td>{items.startingBid}</td>
                   <td>{items.status}</td>
+                  <td>{items.usercontactstatus}</td>
+                  <td>{items.deliverystatus}</td>
                   <td>
                     <Button
                       type="primary"

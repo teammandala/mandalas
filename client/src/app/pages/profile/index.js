@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
 import Profiledata from "../../components/profile/profiledata";
-import { Tabs, Tab, Row, Col, Image } from "react-bootstrap";
+import { Tabs, Tab, Row, Col , Button} from "react-bootstrap";
+import { EditOutlined,} from "@ant-design/icons";
 import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
-
+import Noaccess from "../noaccess";
 const Profilepage = () => {
+  const [show, setShow] = useState(false);
+
+  function changeState() {
+    setShow(!show);
+  }
+
   const currentUser = user.getCurrentUser();
   const username = useParams().username;
+
+ 
 
   return (
     <div>
@@ -17,9 +26,9 @@ const Profilepage = () => {
         if (currentUser && currentUser.username === username) {
           return (
             <div className="container-fluid p-3">
-              <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="row d-flex justify-content-center align-items-center h-100 ">
                 <div className="col col-lg-6 mb-lg-0">
-                  <div className="card mb-3 gradient-custom profile-back">
+                  <div className="card mb-3 profile-back">
                     <Row>
                       <Col>
                         <div className="container-fluid text-center text-white">
@@ -27,13 +36,15 @@ const Profilepage = () => {
                             src={"http://localhost:8080/" + currentUser.avatar}
                             alt="Avatar"
                             className=" img-fluid my-5 avatar-img"
-                            
                           />
-                          <AvatarUpdate />
-                          
+                          <EditOutlined
+                            className="edit-icon"
+                            onClick={changeState}
+                          />
+
+                          {show && <AvatarUpdate />}
                           <h5>{currentUser.name}</h5>
                           <p>{currentUser.role}</p>
-                          
                         </div>
                       </Col>
                       <Col>
@@ -56,8 +67,19 @@ const Profilepage = () => {
                                 <ProfileUpdateForm />
                               </div>
                             </Tab>
-                            <Tab eventKey="kyc" title="KYC">
-                              <h1>this is kyc you have requested</h1>
+                            <Tab
+                              eventKey="kyc"
+                              title="Be Auctioneer"
+                            >
+                              <Button href={`/profile/${currentUser.username}/${currentUser._id}`}> More Details</Button>
+                            </Tab>
+                            <Tab
+                              eventKey="mybids"
+                              title="My Bids"
+                            >
+                              <div className="container-fluid">
+                              <Button href={`/profile/bids/${currentUser.username}/${currentUser._id}`}> View</Button>
+                              </div>
                             </Tab>
                           </Tabs>
                         </div>
@@ -71,7 +93,7 @@ const Profilepage = () => {
         } else {
           return (
             <div className="no-access">
-              <h1>you do not have access</h1>
+              <Noaccess />
             </div>
           );
         }

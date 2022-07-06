@@ -35,6 +35,22 @@ const auctionSchema = new Schema({
     default: "pending",
     enum: ["pending", "approved", "rejected"],
   },
+  usercontactstatus:{
+    type: String,
+    default: "not-contacted",
+    enum: ["not-contacted", "contacted"],
+  },
+  auctioneercontactstatus:{
+    type: String,
+    default: "not-contacted",
+    enum: ["not-contacted", "contacted"],
+  },
+
+  deliverystatus:{
+    type: String,
+    default: "no actions taken",
+    enum: [ "no actions taken","packed", "shipped", "delivered"],
+  },
 
   startingBid: { type: Number, default: 0 },
   bids: [

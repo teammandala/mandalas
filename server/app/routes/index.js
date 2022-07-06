@@ -10,6 +10,7 @@ const kycUpload = require("../utils/auctionUpload");
 const avatarUpload = require("../utils/avatarUpload");
 const carouselUpload = require("../utils/carouselUpload");
 const carousel = require("../controllers/carousel");
+const bid = require("../controllers/bidding");
 // user routes
 // router.use("/api/auth", user);
 router.post("/api/auth/register", user.register);
@@ -30,13 +31,16 @@ router.post(
 router.use(
   "/api/contact/request",
   upload.single("idImage"),
-  contact.contactRequest,
+  contact.contactRequest
 );
 
 router.get("/api/auth/getalluser", user.getAllUser);
-router.get("/api/auth/getallcontact", user.getAllContact);
+router.get("/api/contact/getallcontact", user.getAllContact);
 router.put("/api/auth/role/:id", user.roleUpdate);
 router.delete("/api/auth/delete/:id", user.deleteUser);
+
+// bid routes
+router.post("/api/bid/update/:id", bid.userBid);
 
 // kyc routes
 router.use(
@@ -46,8 +50,11 @@ router.use(
   isAuth
 );
 router.put("/api/kyc/status/:id", kyc.kycStatusUpdate);
+router.get("/api/kyc/getdata/:id", kyc.getCurrentUserKYC);
 
-// auctio routes
+router.get("/api/kyc/getdata", kyc.getKYCRequest);
+
+// auction routes
 router.use(
   "/api/auction/request",
   kycUpload.single("image"),
@@ -56,13 +63,16 @@ router.use(
 );
 
 router.put("/api/auction/status/:id", auction.auctionStatus);
+router.put("/api/auction/usercontactstatus/:id", auction.usercontactStatus);
 
+router.put("/api/auction/deliverystatus/:id", auction.deliveryStatus);
+
+router.put("/api/contact/status/:id", contact.contactStatus);
 router.get("/api/auction/getdata", auction.getAuctions);
 router.get("/api/auction/getdata/:id", auction.getCurrentAuction);
-
-router.get("/api/kyc/getdata", kyc.getKYCRequest);
-
-// carousel routes
+router.get("/api/auction/getmyauction/:id", auction.auctionBySeller);
+router.get("/api/auction/getmybidding/:id", auction.listByBidder);
+router.delete("/api/auction/delete/:id", auction.deleteAuction);
 
 router.use(
   "/api/carousel/request",
@@ -74,6 +84,5 @@ router.use(
 router.get("/api/carousel/getdata", carousel.getCarousel);
 
 router.delete("/api/carousel/delete/:id", carousel.deleteCarousel);
-
 
 module.exports = router;

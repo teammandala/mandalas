@@ -22,13 +22,23 @@ const auctionStatus = async (id, status) => {
       },
     }
   );
-  // .then((res) => {
-  //   return res;
-  // });
+};
+const auctiondeliveryStatus = async (id, deliverystatus) => {
+  // console.log(id, status);
+  return await axios.put(
+    API_URL + `deliverystatus/` + id,
+    { deliverystatus },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getAuctionData,
   auctionStatus,
+  auctiondeliveryStatus,
 };

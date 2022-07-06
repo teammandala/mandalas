@@ -51,9 +51,10 @@ const getKYCRequest = async (req, res) => {
   } catch (err) {}
 };
 
-const getUcrrentUserKYC = async (req, res) => {
+
+const getCurrentUserKYC = async (req, res) => {
   try {
-    const user = req.body.user;
+    const user = req.params.id;
 
     let isKYCAvailable = await KYC.findOne({ user: user });
 
@@ -68,6 +69,7 @@ const getUcrrentUserKYC = async (req, res) => {
     res.status(400).send({ message: err.message });
   }
 };
+
 
 const kycStatusUpdate = async (req, res, next) => {
   try {
@@ -90,6 +92,6 @@ const kycStatusUpdate = async (req, res, next) => {
 module.exports = {
   kycRequest,
   getKYCRequest,
-  getUcrrentUserKYC,
+  getCurrentUserKYC,
   kycStatusUpdate,
 };

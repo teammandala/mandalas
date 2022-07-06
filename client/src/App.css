@@ -3,9 +3,9 @@
   
 body {
     background-size: auto;
-    background: rgb(187,181,81);
-    background: linear-gradient(351deg, rgba(187,181,81,0.9909546582304797) 50%, rgba(122,194,156,1) 50%);
-    background-attachment: fixed;
+    background: rgb(207,207,162);
+    background: linear-gradient(8deg, rgba(207,207,162,1) 47%, rgba(109,180,231,1) 68%);
+     background-attachment: fixed;
     background-size: cover;
     height: 100%;
     /* filter: blur(4px); */

@@ -3,4 +3,123 @@
     min-width: 500px;
     max-height: 400px;
     min-height: 400px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634),
+    0 6px 20px 0 rgba(166, 103, 103, 0.424);
 }
+.auction-bid{
+    /* display: flex; */
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    max-width: 1000px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634),
+    0 6px 20px 0 rgba(166, 103, 103, 0.424);
+    overflow: hidden;
+    margin: 10px auto;
+    border-radius: 12px;
+    border-style: groove;
+    border-color: rgb(0, 0, 0);
+    border-width: .5px;
+    background: rgb(131,172,181);
+    background: linear-gradient(238deg, rgba(131,172,181,1) 47%, rgb(94, 146, 168) 47%);
+}
+.bid{
+        flex: 1 0 100%;
+        max-width: 480px;
+        width: 100%;
+        padding: 20px;
+   
+    
+}
+.Scroll {
+    display: block;
+    border: 0px solid red;
+    padding: 5px;
+    margin-top: 5px;
+    width: 100%;
+    height: 100px;
+    overflow-y: scroll;
+    background-color: bisque;
+border-radius: 5px;
+border-width: 4px;
+border-style: groove;
+border-color: blanchedalmond;
+height: 200px;
+width: 100%;
+padding: 20px;
+margin:0 auto;
+margin-top: 10px;
+
+}
+.notlogined h4{
+    color: rgb(102, 32, 41);
+}
+.closed{
+    color: rgb(14, 21, 148);
+}
+.itemname h1{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    text-shadow: rgb(92, 0, 0) 0px 0px 10px;
+    font-size: 60px;
+}
+.price h2{
+    color: rgb(111, 60, 60);
+    font-weight: 400;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.start h3{
+    color: rgb(111, 60, 60);
+    font-weight: 400;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.end h3{
+    color: rgb(111, 60, 60);
+    font-weight: 400;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.seller p{
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: slategrey 0px 0px 10px;
+}
+
+.description h4{
+    color: rgb(5, 6, 21);
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.description {
+    margin: 20px;
+    box-shadow: rgb(59, 63, 67) 0px 0px 10px;
+    background-color: rgb(123, 152, 177);
+    border-radius: 4px;
+    border-width: 4px;
+    
+    /* padding: 20px; */
+}
+.desc{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: slategrey 0px 0px 10px;
+
+}
+.timer{
+    box-shadow: yellowgreen 0px 0px 10px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(123, 177, 142);
+}
+.timer h{
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(32, 26, 26) 0px 0px 10px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
+

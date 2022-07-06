@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import moment from 'moment'
 import {
   EditOutlined,
   EllipsisOutlined,
   SettingOutlined,
 } from "@ant-design/icons";
-import { Card, Row, Col, Button} from "antd";
+import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
 const { Meta } = Card;
@@ -37,41 +38,48 @@ const Pastauctions = () => {
               if (currentDate > new Date(items.bidEnd)) {
                 return (
                   <div className="site-card-wrapper">
-                    <div className=" container-fluid">
-                      <Col span={4}>
-                        <Card
-                          className="auctions"
-                          // bordered={false}
-                          style={{
-                            width: 350,
-                          }}
-                          cover={
-                            <img
-                              alt="auctionimg"
-                              width={350}
-                              height={200}
-                              src={"http://localhost:8080/" + items.image}
-                            />
-                          }
+                    <Container>
+                      <Row >
+                        <Col lg >
+                          <Card
+                            className="auctions"
+                            // bordered={false}
+                            style={{
+                              width: 300,
+                            }}
+                            cover={
+                              <img
+                                alt="auctionimg"
+                                width={350}
+                                height={200}
+                                src={"http://localhost:8080/" + items.image}
+                              />
+                            }
                           // actions={[
                           //   <SettingOutlined key="setting" />,
                           //   <EditOutlined key="edit" />,
                           //   <EllipsisOutlined key="ellipsis" />,
                           // ]}
-                        >
-                          <Meta
-                            title={items.itemName}
-                            description={items.startingBid}
-                          />
-                          <Button type='primary' block
-                          href={`/auctionandbid/${items._id}`}
-
                           >
-                    Read More
-                    </Button>
-                        </Card>
-                      </Col>
-                    </div>
+                            <Meta
+                              className="p-1"
+                              title={"Product Name: " + items.itemName}
+                              description={
+                                "Starting price: " + items.startingBid
+                              }
+                            />
+                            <p>Ended At: {moment(items.bidEnd).format("DD/MM/YYYY")}</p>
+                            <Button
+                              type="primary"
+                              block
+                              href={`/auctionandbid/${items._id}`}
+                            >
+                             Watch History
+                            </Button>
+                          </Card>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
                 );
               }

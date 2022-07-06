@@ -1,78 +1,264 @@
-        
-        .s1 {
-            font-size: 16px;
-            /* background:#b9d79f9c; */
-            border-radius: 10px;
-            border-style: groove;
-            border-color: rgb(0, 0, 0);
-            margin-top: 0.5em;
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
-            background-image: url('../../media/auction.png');
-            background-size:contain;
-        }
+/* .herosection {
+  font-size: 16px;
+  border-radius: 10px;
+  border-style: groove;
+  border-color: rgb(0, 0, 0);
+  margin-top: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634),
+    0 6px 20px 0 rgba(166, 103, 103, 0.424);
+  background-image: url("../../media/auction1.png");
+  background-size: cover;
+  overflow: visible;
+  min-height: 600px;
+}
+.hero-text{
+  display: flex;
+  flex-flow: column;
+  gap: 4rem;
+  position: relative;
+  top: 27%;
+}
+.hero-title{
+  color: rgb(13, 199, 183);
+  font-size: 4.5rem;
+  filter: drop-shadow(0 0 .4rem black);
+}
+.hero-btns{
+  display: flex;
+  gap: 2rem;
+}
+.btn-desciption-box{
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 1.7rem;
+  
+}
+.btn-desciption-box .btn{
+  font-size: 1.9rem;
+  width: 22rem;
+  text-align: center;
+  padding: 1.2rem;
+  border-radius: 25px;
+  color: rgb(221, 228, 10);
+}
+.btn-desciption-box .btn-alt:hover{
+  background-color: #11ce00;
+  border: 2px solid #bacc00;
+}
+.btn-desciption-box a{
+  width: fit-content;
+  font-size: 1.6rem;
+  color: white;
+}
+.hero-login-box{
+  margin-top: 2.5rem;
+  font-size: 1.6rem;
+  display: flex;
+  flex-flow: column;
+  gap: .8rem;
+  position: relative;
+}
+.hero-login-box p{
+  color: rgb(56, 127, 78);
+}
+.hero-login-box a{
+  color: gold;
+}
+.ri-arrow-right-s-line{
+  position: absolute;
+  top: 3.2rem;
+  left: 12.5rem;
+  font-size: 2rem;
+  color: gold;
+  transition: transform ease-in-out .2s;
+}
+.hero-login-box a:hover + .ri-arrow-right-s-line{
+  transform: translateX(.3rem)
+}
+.herosection{
+  display: flex;
+  justify-content: center;
+}
+.hero-text{
+  position: static;
+  align-items: center;
+  margin: auto 0;
+}
 
-        .s1-intro {
-            margin-bottom: 2em;
-            filter: blur(0.5px);
-        }
+.hero-text {
+    display: flex;
+    flex-flow: column;
+    gap: 4rem;
+    position: relative;
+    top: 27%;
+}
 
-        .s1-intro h1 {
-            
-            font-size: 3em;
-            font-weight: 100;
-            
-            color: rgb(0, 0, 0);
-        }
+.hero-title {
+    color: rgb(13, 199, 183);
+    font-size: 4.5rem;
+    filter: drop-shadow(0 0 0.4rem black);
+}
 
-        .s1-intro h3 {
-            font-size: 3.5em;
-            font-weight: 40px;
-            margin-top: 1em;
-            color: rgb(0, 0, 0);
+.hero-btns {
+    display: flex;
+    gap: 2rem;
+}
 
-        }
+.btn-desciption-box {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    gap: 1.7rem;
+}
 
-        .s1-avatar {
-            width: 60px;
+.btn-desciption-box .btn {
+    font-size: 1.9rem;
+    width: 22rem;
+    text-align: center;
+    padding: 1.2rem;
+    border-radius: 25px;
+    color: rgb(221, 228, 10);
+}
 
-        }
+.btn-desciption-box .btn-alt:hover {
+    background-color: #11ce00;
+    border: 2px solid #bacc00;
+}
 
-        .s1-advice {
-            padding: 2em;
-            transition: all .5s;
-            margin-bottom: 2em;
+.btn-desciption-box a {
+    width: fit-content;
+    font-size: 1.6rem;
+    color: white;
+}
 
+.hero-login-box {
+    margin-top: 2.5rem;
+    font-size: 1.6rem;
+    display: flex;
+    flex-flow: column;
+    gap: 0.8rem;
+    position: relative;
+}
 
+.hero-login-box p {
+    color: rgb(56, 127, 78);
+}
 
-        }
+.hero-login-box a {
+    color: gold;
+}
 
-        .s1-advice:hover {
-            box-shadow: #ff0202 1px 1px 10px, #ff00009c 1px 1px 10px;
-           border-style: groove;
-        }
+.ri-arrow-right-s-line {
+    position: absolute;
+    top: 3.2rem;
+    left: 12.5rem;
+    font-size: 2rem;
+    color: gold;
+    transition: transform ease-in-out 0.2s;
+}
 
-        .s1-advice h3 {
-            font-size: 2rem;
-            margin-top: 2rem;
-            letter-spacing: 2px;
-            
-            color: rgb(255, 219, 13);
-        }
+.hero-login-box a:hover+.ri-arrow-right-s-line {
+    transform: translateX(0.3rem);
+}
 
-        .s1-advice p {
-            margin-top: 2em;
-            font-size: 1em;
-            line-height: 2;
-            color: rgb(244, 244, 244);
-        }
+.herosection {
+    display: flex;
+    justify-content: center;
+}
 
-        .s1-advice a {
-            font-size: .95em;
-            text-decoration: none;
-            color: hsl(120, 71%, 16%);
-            transition: all .5s;
-        }
+.hero-text {
+    position: static;
+    align-items: center;
+    margin: auto 0;
+}
 
-        .s1-advice a:hover {
-            color: var(--brand-color);
-        }
+.hero-title {
+    text-align: center;
+}
+
+.hero-login-box {
+    align-items: center;
+}
+
+.ri-arrow-right-s-line {
+    left: 20rem;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.s1 {
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 4px;
+  /* border-style: groove; */
+  /* margin-top: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
+  background-image: url('../../media/auction.png');
+  background-size:contain;
+  background-color: #29829b;
+}
+
+.s1-intro {
+    margin-bottom: 2em;
+    filter: blur(0.5px);
+}
+
+.s1-intro h1 {
+    font-size: 3em;
+    font-weight: 100;
+    color: rgb(16, 69, 119);
+}
+
+.s1-intro h3 {
+    font-size: 3.5em;
+    font-weight: 40px;
+    margin-top: 1em;
+    color: rgb(0, 0, 0);
+    text-shadow: slategray 1px 1px 10px;
+}
+
+.s1-avatar {
+    width: 60px;
+}
+
+.s1-advice {
+    padding: 2em;
+    transition: all 0.5s;
+    margin-bottom: 2em;
+}
+
+.s1-advice:hover {
+    box-shadow: #ff0202 1px 1px 10px, #ff00009c 1px 1px 10px;
+    border-style: groove;
+}
+
+.s1-advice h3 {
+    font-size: 2.5rem;
+    margin-top: 2rem;
+    letter-spacing: 2px;
+    color: rgb(0, 0, 0);
+    text-shadow: #0000009c 1px 1px 10px;
+    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.s1-advice p {
+    margin-top: 2em;
+    font-size: 1em;
+    line-height: 2;
+    color: rgb(244, 244, 244);
+}
+
+.s1-advice a {
+    font-size: 0.95em;
+    text-decoration: none;
+    color: hsl(120, 71%, 16%);
+    transition: all 0.5s;
+}
+
+.s1-advice a:hover {
+  color: var(--brand-color);
+} */

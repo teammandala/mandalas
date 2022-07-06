@@ -1,7 +1,9 @@
 import React from "react";
+import './style.css'
 
 const Policy = () => {
   return (
+    <div className="container-fluid p-3 privacy">
     <div className="privacy-policy">
       <h1>Privacy Policy for Mandala</h1>
 
@@ -209,6 +211,7 @@ const Policy = () => {
         contact us immediately and we will do our best efforts to promptly
         remove such information from our records.
       </p>
+    </div>
     </div>
   );
 };

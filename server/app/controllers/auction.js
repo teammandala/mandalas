@@ -35,7 +35,10 @@ const auctoinRequest = async (req, res) => {
 // router for kyc get all
 const getAuctions = async (req, res) => {
   try {
-    await Auction.find()
+    const ad = await Auction.find()
+    
+    .populate("bids.bidder", "username email phone name", User)
+    .populate("seller", "username email phone name", User)
       .then((auctionData) => {
         res.status(200).send({ auctionData });
       })
@@ -50,7 +53,11 @@ const getAuctions = async (req, res) => {
 const getCurrentAuction = async (req, res) => {
   try {
     const id = req.params.id;
-    await Auction.findById(id)
+    // console.log(Auction.findById(id).populate("bids.bidder"));
+    const ad = await Auction.findById(id)
+      .populate("bids.bidder", "username email phone name", User)
+      .populate("seller", "username email phone name", User)
+      .exec()
       .then((currentauctionData) => {
         res.status(200).send({ currentauctionData });
       })
@@ -80,7 +87,97 @@ const auctionStatus = async (req, res, next) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
+const usercontactStatus = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Auction.findByIdAndUpdate(
+      id,
+      { $set: { usercontactstatus: req.body.usercontactstatus } },
+      { new: true }
+    ).then((auction) => {
+      res.status(201).send({
+        auction,
+        message: `Auction status changed to  ${req.body.usercontactstatus}`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+const deliveryStatus = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Auction.findByIdAndUpdate(
+      id,
+      { $set: { deliverystatus: req.body.deliverystatus } },
+      { new: true }
+    ).then((auction) => {
+      res.status(201).send({
+        auction,
+        message: `Auction status changed to  ${req.body.deliverystatus}`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
 
+const auctionBySeller = async (req, res, next) => {
+  try {
+    let auctions = await Auction.find({ seller: req.params.id })
+      .populate("seller", "name", User)
+      .populate("bids.bidder", "username email phone name", User)
+      .populate("")
+      .then((currentauctionData) => {
+        res.status(200).send({ currentauctionData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
 
+const deleteAuction = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Auction.findByIdAndDelete(id).then(() => {
+      res.status(201).send({
+        message: `Auction deleted successfully`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
 
-module.exports = { auctoinRequest, getAuctions, auctionStatus, getCurrentAuction };
+const listByBidder = async (req, res) => {
+  try {
+    let auctions = await Auction.find({ "bids.bidder": req.params.id })
+      .populate("seller", "username email phone name", User)
+      .populate("bids.bidder", "username email phone name", User)
+      .then((currentauctionData) => {
+        res.status(200).send({ currentauctionData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err),
+    });
+  }
+};
+
+module.exports = {
+  auctoinRequest,
+  getAuctions,
+  auctionStatus,
+  getCurrentAuction,
+  auctionBySeller,
+  deleteAuction,
+  listByBidder,
+  usercontactStatus,
+  deliveryStatus,
+};

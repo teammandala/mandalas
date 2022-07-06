@@ -8,6 +8,7 @@ import {
 import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
+import moment from 'moment'
 const { Meta } = Card;
 
 const Upcomingauctions = () => {
@@ -37,41 +38,43 @@ const Upcomingauctions = () => {
               if (currentDate < new Date(items.bidStart)) {
                 return (
                   <div className="site-card-wrapper">
-                    <div className=" container-fluid">
-                      <Col span={4}>
-                        <Card
-                          className="auctions"
-                          // bordered={false}
-                          style={{
-                            width: 350,
-                          }}
-                          cover={
-                            <img
-                              alt="auctionimg"
-                              width={350}
-                              height={200}
-                              src={"http://localhost:8080/" + items.image}
-                            />
-                          }
-                          // actions={[
-                          //   <SettingOutlined key="setting" />,
-                          //   <EditOutlined key="edit" />,
-                          //   <EllipsisOutlined key="ellipsis" />,
-                          // ]}
-                        >
-                          <Meta
-                            title={items.itemName}
-                            description={items.startingBid}
-                          />
-                          <Button type='primary' block
-                          href={`/auctionandbid/${items._id}`}
-
+                    <Container>
+                      <Row>
+                        <Col lg>
+                          <Card
+                            className="auctions"
+                            // bordered={false}
+                            style={{
+                              width: 350,
+                            }}
+                            cover={
+                              <img
+                                alt="auctionimg"
+                                width={350}
+                                height={200}
+                                src={"http://localhost:8080/" + items.image}
+                              />
+                            }
                           >
-                    Know More
-                    </Button>
-                        </Card>
-                      </Col>
-                    </div>
+                            <Meta
+                              className="p-1"
+                              title={"Product Name: " + items.itemName}
+                              description={
+                                "Starting price: " + items.startingBid
+                              }
+                            />
+                            <p>Starts At: {moment(items.bidStart).format("DD/MM/YYYY")}</p>
+                            <Button
+                              type="primary"
+                              block
+                              href={`/auctionandbid/${items._id}`}
+                            >
+                             Know More
+                            </Button>
+                          </Card>
+                        </Col>
+                      </Row>
+                    </Container>
                   </div>
                 );
               }

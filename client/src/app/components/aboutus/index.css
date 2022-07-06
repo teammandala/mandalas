@@ -1,0 +1,141 @@
+
+#header {
+  width: 100%;
+}
+
+#header h1 {
+  margin: 10px;
+  font-size: 48px;
+  font-weight: 700;
+  color: black;
+}
+
+#header h2 {
+  color: #484848;
+  font-size: 24px;
+}
+
+#header .btn-get-started {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #3498db;
+  border: 2px solid #3498db;
+  text-decoration: none;
+}
+
+#header .btn-get-started:hover {
+  background: #3498db;
+  color: #fff;
+}
+
+.header-img {
+  text-align: right;
+}
+
+#header .animated {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@-webkit-keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+.header-img1{
+  box-shadow: #484848 0px 0px 10px;
+  border-radius: 1em;
+  background: rgb(209,121,1);
+  background: radial-gradient(circle, rgba(209,121,1,1) 44%, rgba(209,187,1,1) 50%, rgba(182,150,36,1) 50%, rgba(42,39,33,1) 56%);
+}
+.teams{
+  font-size: 16px;
+  /* background:#b9d79f9c; */
+  border-radius: 10px;
+  border-style: groove;
+  border-color: rgb(255, 255, 255);
+  margin-top: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
+  padding: 10px;
+  margin: 10px;
+  background: rgb(209,214,31);
+background: linear-gradient(8deg, rgba(209,214,31,1) 47%, rgba(34,193,195,1) 47%, rgba(16,16,5,1) 47%);
+}
+s1-avatar {
+  width: 60px;
+
+}
+
+.s1-advice {
+  box-shadow: #000000 1px 1px 10px, #0000009c 1px 1px 1px;
+  padding: 2em;
+  transition: all .5s;
+  margin-bottom: 2em;
+  margin-right: 4em;
+  margin-left: 4em;
+  border-radius: 10px;
+
+
+
+}
+
+.s1-advice:hover {
+  box-shadow: #000000 1px 1px 10px, #0000009c 1px 1px 10px;
+ border-style: groove;
+}
+
+.s1-advice h3 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  letter-spacing: 2px;
+
+  color: rgb(0, 0, 0);
+  text-shadow: #0000009c 1px 1px 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.s1-advice p {
+  margin-top: 2em;
+  font-size: 1em;
+  line-height: 2;
+  color: rgb(244, 244, 244);
+}
+
+.s1-advice a {
+  font-size: .95em;
+  text-decoration: none;
+  color: hsl(120, 71%, 16%);
+  transition: all .5s;
+}
+
+.s1-advice a:hover {
+  color: var(--brand-color);
+}
+.section{
+  margin-top: 10px;
+  box-shadow: #484848 0px 0px 10px;
+}
+.mem h1{
+  text-shadow: #3498db 1px 1px 10px;
+  font-size: 1.5rem;
+  font-size: 50px;
+  font-family: 'Courier New', Courier, monospace;
+  color: #484848;
+  text-align: center;
+}

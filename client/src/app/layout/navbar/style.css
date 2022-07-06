@@ -7,7 +7,7 @@
   border-bottom-color: darkgray;
   border-bottom-style: solid;
   box-shadow: 0 4px 8px 0 rgba(9, 10, 10, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
-  background-color: black;
+  background-color:#4267B2;
   background-size: auto;
 }
 
@@ -16,6 +16,7 @@
   font-size: larger;
   font-family: cursive;
   padding-right: 2rem;
+  
 
 
 }
@@ -24,3 +25,29 @@ h {
   color: rgb(0, 0, 0);
 
 }
+
+/* .gradient-bg{ */
+  /* ff 3.6+ */
+  /* background:-moz-radial-gradient(circle at 5% 25%, rgba(119, 119, 11, 1) 0%, rgba(237, 238, 130, 1) 100%);
+
+  /* safari 5.1+,chrome 10+ */
+  /* background:-webkit-radial-gradient(circle at 5% 25%, rgba(119, 119, 11, 1) 0%, rgba(237, 238, 130, 1) 100%); */
+
+  /* opera 11.10+ */
+  /* background:-o-radial-gradient(circle at 5% 25%, rgba(119, 119, 11, 1) 0%, rgba(237, 238, 130, 1) 100%); */
+
+  /* ie 10+ */
+  /* background:-ms-radial-gradient(circle at 5% 25%, rgba(119, 119, 11, 1) 0%, rgba(237, 238, 130, 1) 100%); */
+
+  /* global 92%+ browsers support */
+  /* background:radial-gradient(circle at 5% 25%, rgba(119, 119, 11, 1) 0%, rgba(237, 238, 130, 1) 100%); */ */
+/* } */
+
+.btn{
+  color: #DDDDDD;
+  font-size: 1.4rem;
+  padding: 1rem 1.5rem;
+  background-color: #009100;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: all ease-in-out .2s;}

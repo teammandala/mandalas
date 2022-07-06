@@ -3,6 +3,8 @@ import { Table } from "react-bootstrap";
 import { Image, Modal, Button } from "antd";
 import kyc from "../../../api/kycrequest";
 import user from "../../../api/user";
+import moment from "moment";
+import './style.css'
 
 const KycrequestTable = () => {
   const [data, setData] = useState([]);
@@ -125,6 +127,7 @@ const KycrequestTable = () => {
 
   return (
     <div>
+      <div class='text1'>Kyc Requests </div>
       <Table responsive variant="dark" striped bordered hover>
         <thead>
           <tr>
@@ -149,7 +152,17 @@ const KycrequestTable = () => {
                   <td>{items._id}</td>
                   <td>{items.fullName}</td>
                   <td>{items.phone}</td>
-                  <td>{items.email}</td>
+                  <td>
+                    <Button
+                      type="secondary"
+                      htmlType="submit"
+                      onClick={() =>
+                        (window.location = `mailto:${items.email}`)
+                      }
+                    >
+                      Send E-Mail to: {items.email}
+                    </Button>
+                  </td>
                   <td>{items.address}</td>
                   <td>{items.country}</td>
                   <td>
@@ -160,7 +173,7 @@ const KycrequestTable = () => {
                   </td>
                   <td>{items.user}</td>
                   <td>{items.status}</td>
-                  <td>{items.reqDate}</td>
+                  <td>{moment(items.reqDate).format("YYYY/MM/DD-HH:MM:SS")}</td>
                   <td>
                     <Button
                       // type="sucess"
@@ -190,7 +203,6 @@ const KycrequestTable = () => {
                       visible={isRejectModalVisible}
                       onOk={handleReject}
                       onCancel={handleCancel}
-                      
                     >
                       <p>Are you sure you want to Reject this KYC </p>
                     </Modal>
