@@ -47,7 +47,7 @@ const LoginForm = () => {
         <p>Login to the Mandala</p>
         {error && <div className="error_msg">{error}</div>}
         <Form.Item
-          name="username"
+          name="username"          
           rules={[{ required: true, message: "Please input your username!" }]}
           onChange={onChangeUsername}
           value={username}
