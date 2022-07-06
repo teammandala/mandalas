@@ -38,7 +38,7 @@ const Navigationbar = () => {
 
   return (
     <>
-      <Navbar bg="light" expand="lg" sticky="top">
+      <Navbar expand="lg" sticky="top">
         <Container>
           <Navbar.Brand className="brand" href="/">
             <h>Mandala</h>
@@ -49,19 +49,9 @@ const Navigationbar = () => {
               <Nav.Link href="/auction">Auction</Nav.Link>
               <Nav.Link href="/about">About Us</Nav.Link>
               <Nav.Link href="/contact">Contact</Nav.Link>
-              {/* <Nav.Link href="/policy">Policy</Nav.Link>
-              <Nav.Link href="/termsandconditions">Terms & Condtions</Nav.Link> */}
             </Nav>
             <Nav>
-              <Form className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  bg="light"
-                  aria-label="Search"
-                />
-              </Form>
+              
               {(() => {
                 if (isUser) {
                   return (

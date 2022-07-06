@@ -155,6 +155,15 @@ const getAllUser = async (req, res, next) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
+const getAllContact = async (req, res, next) => {
+  try {
+    await contact.find().then((contact) => {
+      res.status(200).send({ contact });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
 
 const avatarUpdate = async (req, res, next) => {
   try {
@@ -197,7 +206,7 @@ const deleteUser = async (req, res, next) => {
     const id = req.params.id;
     await User.findByIdAndDelete(id).then(() => {
       res.status(201).send({
-        message: `user deleted successfully`,
+        message: `deleted successfully`,
       });
     });
   } catch (err) {
@@ -211,6 +220,7 @@ module.exports = {
   login,
   profileUpdate,
   getAllUser,
+  getAllContact,
   avatarUpdate,
   roleUpdate,
   deleteUser,

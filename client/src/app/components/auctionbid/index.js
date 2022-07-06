@@ -9,6 +9,7 @@ import auction from "../../api/auction";
 import Pagenotfound from "../../pages/pagenotfound";
 import { makeStyles } from "@material-ui/core/styles";
 import "./style.css";
+import moment from "moment";
 import Timer from "../../components/auctionbid/timer";
 
 const io = require("socket.io-client");
@@ -98,29 +99,11 @@ const BiddingPage = (props) => {
           />
         </div>
         <div className="container-fluid">
-          <>
-            Item Name {}: {}{" "}
-          </>
           {data.itemName}
           <br />
-          <>
-            Updated {}: {}{" "}
-          </>
           {data.updated}
-          <br />
-          <>
-            Starting Date {}: {}{" "}
-          </>
-          {data.bidStart}
-          <br />
-          <>
-            Ending Date {}: {}{" "}
-          </>
-          {data.bidEnd}
-          <br />
-          <>
-            Seller Name {}: {}{" "}
-          </>
+          {moment(data.bidStart).format("DD/MM/YYYY")}
+          {moment(data.bidEnd).format("DD/MM/YYYY")}
           {data.seller}
           <br />
           <>
