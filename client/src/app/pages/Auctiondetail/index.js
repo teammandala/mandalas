@@ -1,5 +1,6 @@
 import React from 'react'
 import BiddingPage from '../../components/auctionbid'
+import Auction from '../../components/auctionbid/auction'
 import './style.css'
 
 const AuctionBid = () => {

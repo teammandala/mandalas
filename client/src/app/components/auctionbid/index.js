@@ -9,6 +9,10 @@ import auction from "../../api/auction";
 import Pagenotfound from "../../pages/pagenotfound";
 import { makeStyles } from "@material-ui/core/styles";
 import "./style.css";
+import Timer from "../../components/auctionbid/timer";
+
+const io = require("socket.io-client");
+const socket = io();
 
 const useStyles = makeStyles((theme) => ({
   bidHistory: {
@@ -35,6 +39,7 @@ const BiddingPage = (props) => {
   const id = useParams().id;
 
   const [bid, setBid] = useState("");
+  const [justEnded, setJustEnded] = useState(false);
 
   useEffect(() => {
     auction
@@ -48,6 +53,37 @@ const BiddingPage = (props) => {
         console.log(error);
       });
   }, []);
+
+  useEffect(() => {
+    socket.on("new bid", (playload) => {
+      props.updateBids(playload);
+    });
+    return () => {
+      socket.off("new bid");
+    };
+  });
+  const handleChange = (event) => {
+    setBid(event.target.value);
+  };
+
+  const placeBid = () => {
+    let newBid = {
+      bid: bid,
+      time: new Date(),
+      bidder: data.user,
+    };
+    socket.emit("new bid", {
+      room: data._id,
+      bidInfo: newBid,
+    });
+    setBid("");
+  };
+  const update = () => {
+    setJustEnded(true);
+  };
+
+  const minBid =
+    data.bids && data.bids.length > 0 ? data.bids[0].bid : data.startingBid;
 
   return (
     <Row>
@@ -96,25 +132,35 @@ const BiddingPage = (props) => {
       </Col>
 
       <Col>
-        <div className={classes.placeForm}>
-          <TextField
-            label="Your Bid ($)"
-            // value={bid}
-            type="number"
-            margin="normal"
-            helperText={`Enter $${Number(2) + 1} or more`}
-            className={classes.marginInput}
-          />
-          <br />
-          <Button
-            variant="contained"
-            className={classes.marginBtn}
-            color="secondary"
-          >
-            Place Bid
-          </Button>
-          <br />
-        </div>
+        {!data.justEnded && new Date() < new Date(data.bidEnd) && (
+          <>
+            <Timer endTime={data.bidEnd} update={update} />
+            <div className={classes.placeForm}>
+              <TextField
+                label="Your Bid ($)"
+                value={bid}
+                onChange={handleChange}
+                type="number"
+                margin="normal"
+                helperText={`Enter $${Number(minBid) + 1} or more`}
+                className={classes.marginInput}
+              />
+              <br />
+              <Button
+                variant="contained"
+                className={classes.marginBtn}
+                color="secondary"
+                disabled={bid < minBid + 1}
+                onClick={placeBid}
+              >
+                Place Bid
+              </Button>
+
+              <br />
+            </div>
+          </>
+        )}
+
         <div className={classes.bidHistory}>
           <Typography variant="h6">All Bids</Typography>
           <br />
@@ -135,6 +181,23 @@ const BiddingPage = (props) => {
               </Typography>
             </Grid>
           </Grid>
+          {data.bids?.map((item, index) => {
+            return (
+              <Grid container spacing={4} key={index}>
+                <Grid item xs={3} sm={3}>
+                  <Typography variant="body2">${item.bid}</Typography>
+                </Grid>
+                <Grid item xs={5} sm={5}>
+                  <Typography variant="body2">
+                    {new Date(item.time).toLocaleString()}
+                  </Typography>
+                </Grid>
+                <Grid item xs={4} sm={4}>
+                  <Typography variant="body2">{item.bidder.name}</Typography>
+                </Grid>
+              </Grid>
+            );
+          })}
         </div>
       </Col>
     </Row>

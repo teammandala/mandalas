@@ -39,15 +39,25 @@ const getApprovedAuctionData = async () => {
   return res;
 };
 
+const getCurrentAuction = async (id) => {
+  return await axios.get(API_URL + "getdata/" + id);
+};
 
-const getCurrentAuction = async (id) =>{
-  return await axios.get(
-    API_URL + "getdata/" + id)
-  
+const read = async (params, signal) => {
+  try {
+    let response = await fetch("/api/auction/" + params.auctionId, {
+      method: "GET",
+      signal: signal,
+    });
+    return response.json();
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export default {
   auctionRequest,
   getApprovedAuctionData,
   getCurrentAuction,
+  read,
 };

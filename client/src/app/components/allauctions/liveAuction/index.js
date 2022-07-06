@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
+import Timer from "../../auctionbid/timer";
 const { Meta } = Card;
 
 const Liveauctions = () => {
   const [data, setData] = useState([]);
+  const [justEnded, setJustEnded] = useState(false);
 
   useEffect(() => {
     auction
@@ -20,6 +21,10 @@ const Liveauctions = () => {
         console.log(error);
       });
   }, []);
+
+  const update = () => {
+    setJustEnded(true);
+  };
 
   const currentDate = new Date();
 
@@ -61,7 +66,10 @@ const Liveauctions = () => {
                                 "Starting price: " + items.startingBid
                               }
                             />
-                            <p>Ends At: {items.bidEnd}</p>
+                            <p>
+                              Ends At:{" "}
+                              <Timer endTime={data.bidEnd} update={update} />
+                            </p>
                             <Button
                               type="primary"
                               block

@@ -19,17 +19,21 @@ const register = async (req, res, next) => {
       return res
         .status(400)
         .send({ message: "User with username already exists!" }).next;
-    } else if (!username || !name || !email || !phone || !password ||!password1) {
+    } else if (
+      !username ||
+      !name ||
+      !email ||
+      !phone ||
+      !password ||
+      !password1
+    ) {
       return res.status(400).send({ message: "Fields can't be empty!" }).next;
     } else if (password.length < 6) {
       return res
         .status(400)
         .send({ message: "password must be at least 6 character!" }).next;
-    }
-    else if (password !== password1) {
-      return res
-        .status(400)
-        .send({ message: "password donot match!" }).next;
+    } else if (password !== password1) {
+      return res.status(400).send({ message: "password donot match!" }).next;
     }
     const newUser = new User({
       username,

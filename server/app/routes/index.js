@@ -30,7 +30,7 @@ router.post(
 router.use(
   "/api/contact/request",
   upload.single("idImage"),
-  contact.contactRequest,
+  contact.contactRequest
 );
 
 router.get("/api/auth/getalluser", user.getAllUser);
@@ -46,7 +46,7 @@ router.use(
 );
 router.put("/api/kyc/status/:id", kyc.kycStatusUpdate);
 
-// auctio routes
+// auction routes
 router.use(
   "/api/auction/request",
   kycUpload.single("image"),
@@ -61,6 +61,9 @@ router.get("/api/auction/getdata/:id", auction.getCurrentAuction);
 
 router.get("/api/kyc/getdata", kyc.getKYCRequest);
 
+// router.put("/api/auction/bidding/:id", auction.updateBid);
+router.post("/auction/bidding/:id", auction.auctionByID);
+
 // carousel routes
 
 router.use(
@@ -73,6 +76,5 @@ router.use(
 router.get("/api/carousel/getdata", carousel.getCarousel);
 
 router.delete("/api/carousel/delete/:id", carousel.deleteCarousel);
-
 
 module.exports = router;

@@ -113,7 +113,10 @@ const Navigationbar = () => {
                     >
                       <NavDropdown.Item
                         href={"/profile/" + currentUser.username}
-                      >
+                      >                        href={"/auctioneer/" + currentUser.username}
+                      href={"/auctioneer/" + currentUser.username}
+                      href={"/auctioneer/" + currentUser.username}
+
                         Profile
                       </NavDropdown.Item>
                       <NavDropdown.Item href="/auction">
