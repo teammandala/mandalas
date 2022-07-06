@@ -46,6 +46,7 @@ router.use(
   isAuth
 );
 router.put("/api/kyc/status/:id", kyc.kycStatusUpdate);
+router.get("/api/kyc/getdata/:id", kyc.getCurrentUserKYC);
 
 // auctio routes
 router.use(

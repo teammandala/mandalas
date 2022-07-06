@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
 import Noaccess from "../noaccess";
+import KycData from "../../components/profile/kycdata";
 
 const Profilepage = () => {
   const [show, setShow] = useState(false);
@@ -65,7 +66,7 @@ const Profilepage = () => {
                               </div>
                             </Tab>
                             <Tab eventKey="kyc" title="KYC">
-                              <h1>this is kyc you have requested</h1>
+                              <KycData />
                             </Tab>
                           </Tabs>
                         </div>

@@ -51,7 +51,6 @@ const Navigationbar = () => {
               <Nav.Link href="/contact">Contact</Nav.Link>
             </Nav>
             <Nav>
-              
               {(() => {
                 if (isUser) {
                   return (
@@ -128,7 +127,7 @@ const Navigationbar = () => {
                       title="Account"
                       id="basic-nav-dropdown"
                     >
-                      <NavDropdown.Item href="/login">Login</NavDropdown.Item>
+                      <NavDropdown.Item  href="/login">Login</NavDropdown.Item>
                       <NavDropdown.Item href="/signup">Signup</NavDropdown.Item>
                       <NavDropdown.Divider />
                       <NavDropdown.Item href="*">

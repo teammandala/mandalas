@@ -37,15 +37,15 @@ const Home = () => {
         console.log(error);
       });
 
-      // auction
-      // .getAuctionData()
-      // .then((res) => {
-      //   const approvedauctionCount = res.data.auctionData.length;
-      //   setApprovedAuctionCount(approvedauctionCount);
-      // })
-      // .catch((error) => {
-      //   console.log(error);
-      // });
+      auction
+      .getAuctionData()
+      .then((res) => {
+        const approvedauctionCount = res.data.auctionData.length;
+        setApprovedAuctionCount(approvedauctionCount);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     kyc
       .getKycData()
@@ -84,14 +84,13 @@ const Home = () => {
           <h1>Welcome to Mandala's Admin Dashboard</h1>
         </Col>
       </Row>
-      <Row p-3>
-        <Col lg>
+      <Row xs={1} md={2} className="g-4 ">
+        <Col lg className="container-fluid">
           <Card className="Card1">
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
               <Card.Title>Total Users</Card.Title>
               <Card.Text>
-                <h1>{userCount}</h1>
+                <h1>Total: {userCount}</h1>
               </Card.Text>
               <Button href="/user" variant="secondary">
                 View
@@ -99,13 +98,12 @@ const Home = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col lg>
+        <Col lg className="container-fluid">
           <Card className="Card2">
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
               <Card.Title>KYC</Card.Title>
               <Card.Text>
-                <h1>{kycCount}</h1>
+                <h1>Total: {kycCount}</h1>
               </Card.Text>
               <Button href="/kycrequest" variant="secondary">
                 Verify Them
@@ -113,15 +111,13 @@ const Home = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col lg>
+        <Col lg className="container-fluid">
           <Card className="Card3">
-            {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
             <Card.Body>
               <Card.Title>Auction Request</Card.Title>
               <Card.Text>
-                <h1>Total Auctions: {auctionCount}</h1>
-                {/* <h3>Approved Auction: {approvedauctionCount}</h3>
-                <h3>Pending Auction: {approvedauctionCount}</h3> */}
+                <h1>Total: {auctionCount}</h1>
+                approvedauctionCount: {approvedauctionCount}
               </Card.Text>
               <Button href="/auctionrequest" variant="primary">
                 Review It
@@ -129,14 +125,12 @@ const Home = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Row p-3>
-          <Col lg>
+          <Col lg className="container-fluid">
             <Card className="Card4">
-              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
               <Card.Body>
                 <Card.Title>Carousels</Card.Title>
                 <Card.Text>
-                  <h1>{carouselCount}</h1>{" "}
+                  <h1>Total: {carouselCount}</h1>{" "}
                 </Card.Text>
                 <Button href="/carousel" variant="primary">
                   Take Action
@@ -144,13 +138,12 @@ const Home = () => {
               </Card.Body>
             </Card>
           </Col>
-          <Col lg>
+          <Col lg className="container-fluid">
             <Card className="Card5">
-              {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
               <Card.Body>
                 <Card.Title>Contacts</Card.Title>
                 <Card.Text>
-                  <h1>{contactCount}</h1>{" "}
+                  <h1>Total: {contactCount}</h1>{" "}
                 </Card.Text>
                 <Button href="/contactrequest" variant="primary">
                   Help Customers
@@ -159,7 +152,7 @@ const Home = () => {
             </Card>
           </Col>
         </Row>
-      </Row>
+      {/* </Row> */}
     </>
   );
 };
