@@ -37,7 +37,10 @@ const Profilepage = () => {
                             alt="Avatar"
                             className=" img-fluid my-5 avatar-img"
                           />
-                          <EditOutlined onClick={changeState} />
+                          <EditOutlined
+                            className="edit-icon"
+                            onClick={changeState}
+                          />
 
                           {show && <AvatarUpdate />}
                           <h5>{currentUser.name}</h5>
@@ -64,7 +67,11 @@ const Profilepage = () => {
                                 <ProfileUpdateForm />
                               </div>
                             </Tab>
-                            <Tab eventKey="kyc" onClick={`${currentUser.username}`} title="KYC">
+                            <Tab
+                              eventKey="kyc"
+                              onClick={`${currentUser.username}`}
+                              title="KYC"
+                            >
                               <KycData />
                             </Tab>
                           </Tabs>
