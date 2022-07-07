@@ -10,6 +10,7 @@
   background-image: url("../../media/auction1.png");
   background-size: cover;
   overflow: visible;
+  min-height: 600px;
 }
 .hero-text{
   display: flex;
@@ -60,7 +61,7 @@
   position: relative;
 }
 .hero-login-box p{
-  color: white;
+  color: rgb(56, 127, 78);
 }
 .hero-login-box a{
   color: gold;

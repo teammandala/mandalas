@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
 import "./style.css";
 
 const Section = () => {
@@ -12,12 +12,18 @@ const Section = () => {
           </h1>
           <div class="hero-btns">
               <div class="btn-desciption-box">
-              <a  class="btn" href="/login">Search</a>
-              <a href="">Simular un prestamo</a>
-
+              <a  class="btn"><Form className="d-flex">
+                <FormControl
+                  type="search"
+                  placeholder="Search"
+                  className="me-2"
+                  bg="light"
+                  aria-label="Search"
+                />
+              </Form></a>
+              <a href="">Own what you Love</a>
               <div class="btn-desciption-box">
-              <a class="btn btn-alt" href="#">Quiero Invertir</a>
-              <a href="">Simular una inversion</a>
+              <a class="btn btn-alt" href="about">About Us</a>
               </div>
               </div>
             <div class="hero-login-box">
