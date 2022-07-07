@@ -1,4 +1,3 @@
-const { findByIdAndUpdate } = require("../models/auction");
 const Auction = require("../models/auction");
 
 const userBid = async (req, res, next) => {
@@ -7,22 +6,29 @@ const userBid = async (req, res, next) => {
     const bid = req.body.bid;
     const time = req.body.time;
 
-    const bids = [
-      {
-        bidder: bidder,
-        bid: bid,
-        time: time,
-      },
-    ];
+    const bidUp = {
+      bidder,
+      bid,
+      time,
+    };
 
-    await Auction.findByIdAndUpdate(req.params.id, { $set: bids }).then(
-      (bid) => {
-        res.status(201).send({
-          bid,
-          message: `bid updated successfully!!`,
-        });
-      }
-    );
+    const currentAuction = Auction.findById(req.params.id);
+    const bidUpdate = currentAuction.bids.push(bidUp);
+
+    // const bids = [
+    //   {
+    //     bidder: bidder,
+    //     bid: bid,
+    //     time: time,
+    //   },
+    // ];
+
+    await bidUpdate.save().then((bid) => {
+      res.status(201).send({
+        bid,
+        message: `bid updated successfully!!`,
+      });
+    });
   } catch (err) {
     console.error(err.message);
     res.status(500).send(`Server Error: ${err.message}`);
