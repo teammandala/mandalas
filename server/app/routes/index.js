@@ -40,7 +40,7 @@ router.put("/api/auth/role/:id", user.roleUpdate);
 router.delete("/api/auth/delete/:id", user.deleteUser);
 
 // bid routes
-router.put("/api/bid/update/:id", bid.userBid);
+router.post("/api/bid/update/:id", bid.userBid);
 
 // kyc routes
 router.use(
