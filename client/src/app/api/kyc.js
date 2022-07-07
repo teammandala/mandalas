@@ -34,8 +34,10 @@ const kycRequest = (
 
 const getCurrentKyc = async (id) =>{
   return await axios.get(
+    console.log(id),
     API_URL + "getdata/" + id);  
 };
+
 // eslint-disable-next-line
 export default {
   kycRequest,
