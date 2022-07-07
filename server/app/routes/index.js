@@ -10,6 +10,7 @@ const kycUpload = require("../utils/auctionUpload");
 const avatarUpload = require("../utils/avatarUpload");
 const carouselUpload = require("../utils/carouselUpload");
 const carousel = require("../controllers/carousel");
+const bid = require("../controllers/bidding");
 // user routes
 // router.use("/api/auth", user);
 router.post("/api/auth/register", user.register);
@@ -30,13 +31,16 @@ router.post(
 router.use(
   "/api/contact/request",
   upload.single("idImage"),
-  contact.contactRequest,
+  contact.contactRequest
 );
 
 router.get("/api/auth/getalluser", user.getAllUser);
 router.get("/api/contact/getallcontact", user.getAllContact);
 router.put("/api/auth/role/:id", user.roleUpdate);
 router.delete("/api/auth/delete/:id", user.deleteUser);
+
+// bid routes
+router.put("/api/bid/update/:id", bid.userBid);
 
 // kyc routes
 router.use(
@@ -77,6 +81,5 @@ router.use(
 router.get("/api/carousel/getdata", carousel.getCarousel);
 
 router.delete("/api/carousel/delete/:id", carousel.deleteCarousel);
-
 
 module.exports = router;
