@@ -12,8 +12,8 @@ import Bidsdata from "../bidsdata";
 const BiddingPage = () => {
   const [data, setData] = useState([]);
   const [bid, setBid] = useState("");
+  const [currentUser, setCurrentUser] = useState(undefined);
   const id = useParams().id;
-  const currentUser = user.getCurrentUser();
 
   useEffect(() => {
     auction
@@ -21,10 +21,17 @@ const BiddingPage = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
       });
+
+    const cuser = user.getCurrentUser();
+
+    if (cuser) {
+      setCurrentUser(cuser);
+    }
   }, []);
 
   const onChangeBid = (e) => {
@@ -34,9 +41,10 @@ const BiddingPage = () => {
 
   const handleBid = (e) => {
     e.preventDefault();
-    console.log(id, currentUser._id, bid);
+    const bidder = currentUser._id;
+    console.log(id, bidder, bid);
     bidding
-      .bidUpdate(id, currentUser.id, bid)
+      .bidUpdate(id, bidder, bid)
       .then((response) => {
         window.alert(response.data.message);
         window.location.reload();

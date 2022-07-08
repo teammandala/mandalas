@@ -14,7 +14,7 @@ const Bidsdata = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data.bids);
-        console.log(data);
+        // console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -34,7 +34,7 @@ const Bidsdata = () => {
             return (
               <>
                 <tr>
-                  <td>{datas._id}</td>
+                  <td>{datas.bidder.username}</td>
                   <td>{datas.bid}</td>
                 </tr>
               </>

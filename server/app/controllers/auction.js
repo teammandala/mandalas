@@ -50,9 +50,11 @@ const getAuctions = async (req, res) => {
 const getCurrentAuction = async (req, res) => {
   try {
     const id = req.params.id;
-    await Auction.findById(id)
-      // .populate("bids.bidder", "_id username")
-      // .populate("seller", "_id username")
+    // console.log(Auction.findById(id).populate("bids.bidder"));
+    const ad = await Auction.findById(id)
+      .populate("bids.bidder", "username", User)
+      .populate("seller", "username", User)
+      .exec()
       .then((currentauctionData) => {
         res.status(200).send({ currentauctionData });
       })
