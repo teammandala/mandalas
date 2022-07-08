@@ -21,6 +21,7 @@ const BiddingPage = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
+        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -117,7 +118,7 @@ const BiddingPage = () => {
             </div>
             <div className="row">
               <p>
-                Sold by: <strong>{data.seller}</strong>{" "}
+                Sold by: <strong>{data.seller.username}</strong>{" "}
               </p>
             </div>
           </div>
