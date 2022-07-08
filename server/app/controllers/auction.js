@@ -85,9 +85,25 @@ const auctionStatus = async (req, res, next) => {
   }
 };
 
+const auctionBySeller = async (req, res, next) => {
+  try {
+    let auctions = await Auction.find({ seller: req.params.id })
+      .populate("seller", "name", User)
+      .then((currentauctionData) => {
+        res.status(200).send({ currentauctionData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
 module.exports = {
   auctoinRequest,
   getAuctions,
   auctionStatus,
   getCurrentAuction,
+  auctionBySeller,
 };

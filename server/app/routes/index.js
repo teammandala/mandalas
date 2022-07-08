@@ -52,7 +52,9 @@ router.use(
 router.put("/api/kyc/status/:id", kyc.kycStatusUpdate);
 router.get("/api/kyc/getdata/:id", kyc.getCurrentUserKYC);
 
-// auctio routes
+router.get("/api/kyc/getdata", kyc.getKYCRequest);
+
+// auction routes
 router.use(
   "/api/auction/request",
   kycUpload.single("image"),
@@ -66,8 +68,7 @@ router.put("/api/contact/status/:id", contact.contactStatus);
 
 router.get("/api/auction/getdata", auction.getAuctions);
 router.get("/api/auction/getdata/:id", auction.getCurrentAuction);
-
-router.get("/api/kyc/getdata", kyc.getKYCRequest);
+router.get("/api/auction/getmyauction/:id", auction.auctionBySeller);
 
 // carousel routes
 
