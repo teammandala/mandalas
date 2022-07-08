@@ -30,11 +30,14 @@ const BiddingPage = () => {
         <h4>{data.description}</h4>
         </div>
         <div className="row">
+          <div className="col">
           <img
             className="bid-image"
             src={"http://localhost:8080/" + data.image}
             alt=""
           />
+          </div>
+          
         <div className="bid row">
           <Form >
             <Form.Item
@@ -51,7 +54,9 @@ const BiddingPage = () => {
           </Form>
             
           </div>
-          <div>{data.bids}</div>
+          <div className="Scroll row">
+            <p>this is scrollbox</p>
+          </div>
         
           
 
