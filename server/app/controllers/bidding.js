@@ -1,29 +1,17 @@
+const { findByIdAndUpdate } = require("../models/auction");
 const Auction = require("../models/auction");
 
 const userBid = async (req, res, next) => {
   try {
-    const bidder = req.body.bidder;
-    const bid = req.body.bid;
-    const time = req.body.time;
-
-    const bidUp = {
-      bidder,
-      bid,
-      time,
+    const bid = {
+      bidder: req.body.bidder,
+      bid: req.body.bid,
+      time: Date.now(),
     };
 
-    const currentAuction = Auction.findById(req.params.id);
-    const bidUpdate = currentAuction.bids.push(bidUp);
-
-    // const bids = [
-    //   {
-    //     bidder: bidder,
-    //     bid: bid,
-    //     time: time,
-    //   },
-    // ];
-
-    await bidUpdate.save().then((bid) => {
+    const auction = await Auction.findById(req.params.id);
+    auction.bids.push(bid);
+    await auction.save().then((bid) => {
       res.status(201).send({
         bid,
         message: `bid updated successfully!!`,
