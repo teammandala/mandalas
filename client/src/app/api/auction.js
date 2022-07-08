@@ -12,7 +12,6 @@ const auctionRequest = (
   seller,
   startingBid
 ) => {
-  console.log(bidStart, bidEnd);
   return axios.post(
     API_URL + "request",
     {
@@ -39,11 +38,8 @@ const getApprovedAuctionData = async () => {
   return res;
 };
 
-
-const getCurrentAuction = async (id) =>{
-  return await axios.get(
-    API_URL + "getdata/" + id)
-  
+const getCurrentAuction = async (id) => {
+  return await axios.get(API_URL + "getdata/" + id);
 };
 
 export default {
