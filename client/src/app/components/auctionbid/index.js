@@ -4,7 +4,6 @@ import auction from "../../api/auction";
 import moment from "moment";
 import bidding from "../../api/bidding";
 import user from "../../api/user";
-import Pagenotfound from "../../pages/pagenotfound";
 import "./style.css";
 import { Button, Form, Input } from "antd";
 import Bidsdata from "../bidsdata";
