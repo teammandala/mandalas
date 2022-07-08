@@ -83,7 +83,7 @@ const BiddingPage = () => {
             </div>
             <div className="row">
               <p>
-                Sold by: <strong>{data.seller}</strong>{" "}
+                Sold by: <strong>{seller}</strong>
               </p>
             </div>
           </div>
@@ -123,30 +123,7 @@ const BiddingPage = () => {
         </div>
         {/* <div>{data.bids}</div> */}
 
-        <div className="container-fluid">
-          <div className="row">
-            <div className="row">
-              <h1>Product Name: {data.itemName}</h1>
-            </div>
-            <div className="col">
-              <h3>Last Updated: {data.updated}</h3>
-            </div>
-            <div className="col">
-              <h2>Starting Price: {data.startingBid}</h2>
-            </div>
-            <div className="col">
-              <h3>Started: {moment(data.bidStart).format("DD/MM/YYYY")}</h3>
-            </div>
-            <div className="col">
-              <h3>Ends At: {moment(data.bidEnd).format("DD/MM/YYYY")}</h3>
-            </div>
-            <div className="row">
-              <p>
-                Sold by: <strong>{seller}</strong>
-              </p>
-            </div>
-          </div>
-        </div>
+        
       </div>
     </>
   );
