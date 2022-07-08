@@ -3,11 +3,16 @@ import kyc from "../../../api/kyc";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import "./style.css";
 import { Button } from "react-bootstrap";
+import user from "../../../api/user";
+import Noaccess from "../../../pages/noaccess";
 
 const KycData = () => {
   const [data, setData] = useState([]);
   const id = useParams().id;
   const navigate = useNavigate();
+  const currentUser = user.getCurrentUser();
+  
+  const username = useParams().username;
 
   useEffect(() => {
     kyc
@@ -24,6 +29,9 @@ const KycData = () => {
   return (
     <>
       <div className="container-fluid">
+      {(() => {
+        if (currentUser && currentUser.username === username) {
+          return (
         <div className="container-fluid p-4 ">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="card kycdata">
@@ -79,7 +87,15 @@ const KycData = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>);
+        } else {
+          return (
+            <div className="no-access">
+              <Noaccess/>
+            </div>
+          );
+        }
+      })()}
       </div>
     </>
   );
