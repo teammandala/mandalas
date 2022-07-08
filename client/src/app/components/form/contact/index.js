@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Form, Button, Input, Upload } from "antd";
 import "./style.css";
 import contact from "../../../api/contact";
+import { ManOutlined } from "@ant-design/icons";
 
 const ContactForm = () => {
   const navigate = useNavigate();
@@ -49,7 +50,7 @@ const ContactForm = () => {
 
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid contact">
         <Form
           name="contact-form"
           method="post"
@@ -95,6 +96,17 @@ const ContactForm = () => {
             </Button>
           </Form.Item>
         </Form>
+        <div>
+          <Button type="primary"
+          
+          htmlType="submit"
+              onClick={() => (window.location = "mailto:yourmail@gmail.com")}
+            >
+              
+            
+            Mail us At : support@mandala.com
+          </Button>
+        </div>
       </div>
     </>
   );

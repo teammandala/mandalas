@@ -9,11 +9,8 @@ function Contact() {
       <div className="contact-page">
         <div className="contact-box">
           <div className="illustration-wrapper">
-            <h1>Contact Us</h1>
-            <br />
-            <h4>Our Email</h4>
-          </div>
           <ContactForm />
+          </div>
         </div>
       </div>
     </>

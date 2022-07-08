@@ -7,10 +7,12 @@ body {
     max-width: 480px;
     width: 100%;
     padding: 60px;
+    
 }
 
 #contact-form p {
     margin-bottom: 30px;
+    height: 20px;
 }
 
 #contact-form p.form-title {
@@ -28,6 +30,7 @@ body {
 
 .ant-form-item-control-input-content {
     text-align: left;
+    
 }
 
 #contact-form .ant-input-affix-wrapper {
@@ -53,9 +56,8 @@ body {
 .illustration-wrapper {
     display: flex;
     align-items: flex-end;
-    max-width: 800px;
-    min-height: 100%;
-    background-color: #fffdf2;
+    width: 800px;
+    background-color: #40bacc;
 }
 
 .illustration-wrapper img {
@@ -75,4 +77,10 @@ body {
     #contact-form {
         max-width: 100%;
     }
+}
+.contact{
+    background-color: #318390;
+    background-size:cover;
+    box-shadow: rgba(red, green, blue, alpha) 0px 0px 40px;
+    background-image: url('../../media/contactus.png');
 }
