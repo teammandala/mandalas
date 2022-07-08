@@ -1,26 +1,51 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
+import auction from "../../api/auction";
+import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Modal, Button } from "antd";
 
-
 const Bidsdata = () => {
+  const [data, setData] = useState([]);
+  const id = useParams().id;
+
+  useEffect(() => {
+    auction
+      .getCurrentAuction(id)
+      .then((res) => {
+        const data = res.data.currentauctionData;
+        setData(data.bids);
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
   return (
     <>
-    <Table responsive stripped borderes hover varient="dark">
+      <Table responsive stripped borderes hover varient="dark">
         <thead>
-            <tr>
-                <th>Bidder</th>
-                <th>Bid</th>
-            </tr>
+          <tr>
+            <th>Bidder</th>
+            <th>Bid</th>
+          </tr>
         </thead>
         <tbody>
-            <td>sagar prasad chaulagain</td>
-            <td>2000</td>
+          {/* <td>sagar prasad chaulagain</td>
+          <td>2000</td> */}
+          {data.map((datas) => {
+            return (
+              <>
+                <tr>
+                  <td>{datas._id}</td>
+                  <td>{datas.bid}</td>
+                </tr>
+              </>
+            );
+          })}
         </tbody>
-
-    </Table>
+      </Table>
     </>
-  )
-}
+  );
+};
 
-export default Bidsdata
+export default Bidsdata;

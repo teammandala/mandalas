@@ -51,6 +51,8 @@ const getCurrentAuction = async (req, res) => {
   try {
     const id = req.params.id;
     await Auction.findById(id)
+      // .populate("bids.bidder", "_id username")
+      // .populate("seller", "_id username")
       .then((currentauctionData) => {
         res.status(200).send({ currentauctionData });
       })
@@ -81,6 +83,9 @@ const auctionStatus = async (req, res, next) => {
   }
 };
 
-
-
-module.exports = { auctoinRequest, getAuctions, auctionStatus, getCurrentAuction };
+module.exports = {
+  auctoinRequest,
+  getAuctions,
+  auctionStatus,
+  getCurrentAuction,
+};

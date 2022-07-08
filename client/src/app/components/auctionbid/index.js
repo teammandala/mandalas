@@ -21,7 +21,6 @@ const BiddingPage = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
@@ -67,30 +66,28 @@ const BiddingPage = () => {
               src={"http://localhost:8080/" + data.image}
               alt=""
             />
-            </div>
+          </div>
 
-
-            <div className="bid row">
-              <Form>
-                <Form.Item label="amount">
-                  <Input
-                    type="number"
-                    placeholder="enter amount"
-                    value={bid}
-                    onChange={onChangeBid}
-                  />
-                </Form.Item>
-                <Form.Item>
-                  <Button type="primary" onClick={handleBid} htmlType="submit">
-                    Bid
-                  </Button>
-                </Form.Item>
-              </Form>
-            </div>
-          
+          <div className="bid row">
+            <Form>
+              <Form.Item label="amount">
+                <Input
+                  type="number"
+                  placeholder="enter amount"
+                  value={bid}
+                  onChange={onChangeBid}
+                />
+              </Form.Item>
+              <Form.Item>
+                <Button type="primary" onClick={handleBid} htmlType="submit">
+                  Bid
+                </Button>
+              </Form.Item>
+            </Form>
+          </div>
         </div>
         <div className="Scroll row">
-            <Bidsdata id={id} />
+          <Bidsdata id={id} />
         </div>
         {/* <div>{data.bids}</div> */}
 
