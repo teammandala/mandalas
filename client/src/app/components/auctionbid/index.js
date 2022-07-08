@@ -23,7 +23,6 @@ const BiddingPage = () => {
         const data = res.data.currentauctionData;
         setData(data);
         setSeller(data.seller.username);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
