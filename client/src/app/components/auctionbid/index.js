@@ -7,6 +7,7 @@ import user from "../../api/user";
 import Pagenotfound from "../../pages/pagenotfound";
 import "./style.css";
 import { Button, Form, Input } from "antd";
+import Bidsdata from "../bidsdata";
 
 const BiddingPage = () => {
   const [data, setData] = useState([]);
@@ -89,8 +90,7 @@ const BiddingPage = () => {
           
         </div>
         <div className="Scroll row">
-            <p>
-            </p>
+            <Bidsdata id={id} />
         </div>
         {/* <div>{data.bids}</div> */}
 
