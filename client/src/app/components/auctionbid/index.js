@@ -117,9 +117,7 @@ const BiddingPage = () => {
               <h3>Ends At: {moment(data.bidEnd).format("DD/MM/YYYY")}</h3>
             </div>
             <div className="row">
-              <p>
-                Sold by: <strong>{data.seller.username}</strong>{" "}
-              </p>
+              <p>{/* Sold by: <strong>{data.seller.username}</strong> */}</p>
             </div>
           </div>
         </div>
