@@ -36,7 +36,7 @@ const Bidsdata = () => {
             return (
               <>
                 <tr>
-                  <td>{datas._id}</td>
+                  <td>{datas.bidder}</td>
                   <td>{datas.bid}</td>
                 </tr>
               </>
