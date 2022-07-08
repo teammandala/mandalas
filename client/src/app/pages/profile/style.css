@@ -1,5 +1,11 @@
 .profile-back {
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.16) !important;
+    background-color: #fff !important;
+    
+    background-color: transparent;
+    width: 100%;
+    
+    background: linear-gradient(238deg, rgb(131, 181, 167) 47%, rgb(80, 88, 91) 47%);
 }
 
 .avatar-img {

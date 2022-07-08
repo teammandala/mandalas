@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Profiledata from "../../components/profile/profiledata";
-import { Tabs, Tab, Row, Col, Image } from "react-bootstrap";
-import { EditOutlined } from "@ant-design/icons";
+import { Tabs, Tab, Row, Col , Button} from "react-bootstrap";
+import { EditOutlined,} from "@ant-design/icons";
 import user from "../../api/user";
 import "./style.css";
 import { useParams } from "react-router-dom";
@@ -9,7 +9,6 @@ import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
 import Noaccess from "../noaccess";
 import KycData from "../../components/profile/kycdata";
-
 const Profilepage = () => {
   const [show, setShow] = useState(false);
 
@@ -20,15 +19,17 @@ const Profilepage = () => {
   const currentUser = user.getCurrentUser();
   const username = useParams().username;
 
+ 
+
   return (
     <div>
       {(() => {
         if (currentUser && currentUser.username === username) {
           return (
             <div className="container-fluid p-3">
-              <div className="row d-flex justify-content-center align-items-center h-100">
+              <div className="row d-flex justify-content-center align-items-center h-100 ">
                 <div className="col col-lg-6 mb-lg-0">
-                  <div className="card mb-3 gradient-custom profile-back">
+                  <div className="card mb-3 profile-back">
                     <Row>
                       <Col>
                         <div className="container-fluid text-center text-white">
@@ -69,10 +70,17 @@ const Profilepage = () => {
                             </Tab>
                             <Tab
                               eventKey="kyc"
-                              onClick={`${currentUser.username}`}
-                              title="KYC"
+                              title="Be Auctioneer"
                             >
-                              <KycData />
+                              <Button href={`/profile/${currentUser.username}/${currentUser._id}`}> More Details</Button>
+                            </Tab>
+                            <Tab
+                              eventKey="mybids"
+                              title="My Bids"
+                            >
+                              <div className="container-fluid">
+                                mybids data
+                              </div>
                             </Tab>
                           </Tabs>
                         </div>

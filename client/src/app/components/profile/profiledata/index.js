@@ -15,8 +15,8 @@ const Profiledata = () => {
           return (
               <div className="container-fluid h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="card">
-                          <div className="card-body">
+                    <div className="card profiledata">
+                          <div className="card-body ">
                             <h6>Information</h6>
                             <hr className="mt-0 mb-4" />
                             <div className="row pt-1">
@@ -73,7 +73,7 @@ const Profiledata = () => {
                                 <h6>Most Viewed</h6>
                                 <p className="text-muted">Art</p>
                               </div>
-                              <div><h6>Wanted to be auctioneer? <Link to='/kyc'>Apply From Here</Link></h6></div>
+                              
                             </div>
                             <div className="d-flex justify-content-start">
                               <a href="#!">

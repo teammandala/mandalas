@@ -37,16 +37,7 @@ const Home = () => {
         console.log(error);
       });
 
-      auction
-      .getAuctionData()
-      .then((res) => {
-        const approvedauctionCount = res.data.auctionData.length;
-        setApprovedAuctionCount(approvedauctionCount);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
+      
     kyc
       .getKycData()
       .then((res) => {
@@ -117,7 +108,6 @@ const Home = () => {
               <Card.Title>Auction Request</Card.Title>
               <Card.Text>
                 <h1>Total: {auctionCount}</h1>
-                approvedauctionCount: {approvedauctionCount}
               </Card.Text>
               <Button href="/auctionrequest" variant="primary">
                 Review It

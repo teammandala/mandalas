@@ -22,9 +22,6 @@ const auctionStatus = async (id, status) => {
       },
     }
   );
-  // .then((res) => {
-  //   return res;
-  // });
 };
 
 // eslint-disable-next-line import/no-anonymous-default-export
