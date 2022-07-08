@@ -4,13 +4,13 @@ import auction from "../../api/auction";
 import moment from "moment";
 import bidding from "../../api/bidding";
 import user from "../../api/user";
-import Pagenotfound from "../../pages/pagenotfound";
 import "./style.css";
 import { Button, Form, Input } from "antd";
 import Bidsdata from "../bidsdata";
 
 const BiddingPage = () => {
   const [data, setData] = useState([]);
+  const [seller, setSeller] = useState("");
   const [bid, setBid] = useState("");
   const [currentUser, setCurrentUser] = useState(undefined);
   const id = useParams().id;
@@ -21,7 +21,7 @@ const BiddingPage = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        console.log(data);
+        setSeller(data.seller.username);
       })
       .catch((error) => {
         console.log(error);
@@ -123,7 +123,30 @@ const BiddingPage = () => {
         </div>
         {/* <div>{data.bids}</div> */}
 
-        
+        <div className="container-fluid">
+          <div className="row">
+            <div className="row">
+              <h1>Product Name: {data.itemName}</h1>
+            </div>
+            <div className="col">
+              <h3>Last Updated: {data.updated}</h3>
+            </div>
+            <div className="col">
+              <h2>Starting Price: {data.startingBid}</h2>
+            </div>
+            <div className="col">
+              <h3>Started: {moment(data.bidStart).format("DD/MM/YYYY")}</h3>
+            </div>
+            <div className="col">
+              <h3>Ends At: {moment(data.bidEnd).format("DD/MM/YYYY")}</h3>
+            </div>
+            <div className="row">
+              <p>
+                Sold by: <strong>{seller}</strong>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

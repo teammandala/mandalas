@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import auction from "../../api/auction";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import { Modal, Button } from "antd";
 
 const Bidsdata = () => {
   const [data, setData] = useState([]);
