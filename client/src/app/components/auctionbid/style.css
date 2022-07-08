@@ -27,7 +27,7 @@
         flex: 1 0 100%;
         max-width: 480px;
         width: 100%;
-        padding: 60px;
+        padding: 20px;
    
     
 }
@@ -46,4 +46,7 @@ border-style: groove;
 border-color: blanchedalmond;
 height: 200px;
 width: 100%;
+padding: 20px;
+margin:0 auto;
+margin-top: 10px;
 }
