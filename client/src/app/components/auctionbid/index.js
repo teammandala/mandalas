@@ -11,6 +11,7 @@ import Bidsdata from "../bidsdata";
 
 const BiddingPage = () => {
   const [data, setData] = useState([]);
+  const [seller, setSeller] = useState("");
   const [bid, setBid] = useState("");
   const [currentUser, setCurrentUser] = useState(undefined);
   const id = useParams().id;
@@ -21,6 +22,7 @@ const BiddingPage = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
+        setSeller(data.seller.username);
         console.log(data);
       })
       .catch((error) => {
@@ -117,7 +119,9 @@ const BiddingPage = () => {
               <h3>Ends At: {moment(data.bidEnd).format("DD/MM/YYYY")}</h3>
             </div>
             <div className="row">
-              <p>{/* Sold by: <strong>{data.seller.username}</strong> */}</p>
+              <p>
+                Sold by: <strong>{seller}</strong>
+              </p>
             </div>
           </div>
         </div>
