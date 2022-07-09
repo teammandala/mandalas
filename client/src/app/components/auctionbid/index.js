@@ -31,7 +31,8 @@ const BiddingPage = () => {
         const data = res.data.currentauctionData;
         setData(data);
         setSeller(data.seller.username);
-        setBidData(data.bids);
+        setBidData(data.bids.sort().reverse());
+        console.log(data.bids);
       })
       .catch((error) => {
         console.log(error);
@@ -77,7 +78,7 @@ const BiddingPage = () => {
 
   const currentDate = new Date();
   const minBid =
-    data.bids && data.bids.length > 0 ? data.bids[0].bid : data.startingBid;
+    data.bids && data.bids.length > 0 ? bidData[0].bid : data.startingBid;
 
   return (
     <>
@@ -127,7 +128,7 @@ const BiddingPage = () => {
                   return (
                     <Form>
                       <Timer endTime={data.bidEnd} update={update} />
-                      {bidData == null ? (
+                      {bidData !== null ? (
                         <p>{` Last bid: $ ${data.bids[0].bid}`}</p>
                       ) : (
                         <p>{` Starting bid: $ ${data.startingBid}`}</p>
