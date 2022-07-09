@@ -113,6 +113,24 @@ const deleteAuction = async (req, res, next) => {
   }
 };
 
+const listByBidder = async (req, res) => {
+  try {
+    let auctions = await Auction.find({ "bids.bidder": req.params.id })
+      .populate("seller", "username", User)
+      .populate("bids.bidder", "username")
+      .then((currentauctionData) => {
+        res.status(200).send({ currentauctionData });
+      })
+      .catch((err) => {
+        res.status(400).send({ message: err.message });
+      });
+  } catch (err) {
+    return res.status(400).json({
+      error: errorHandler.getErrorMessage(err),
+    });
+  }
+};
+
 module.exports = {
   auctoinRequest,
   getAuctions,
@@ -120,4 +138,5 @@ module.exports = {
   getCurrentAuction,
   auctionBySeller,
   deleteAuction,
+  listByBidder,
 };
