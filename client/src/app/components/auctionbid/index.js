@@ -77,9 +77,6 @@ const BiddingPage = () => {
               <h1>Product Name: {data.itemName}</h1>
             </div>
             <div className="col">
-              <h3>Last Updated: {data.updated}</h3>
-            </div>
-            <div className="col">
               <h2>Starting Price: {data.startingBid}</h2>
             </div>
             <div className="col">

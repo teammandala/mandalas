@@ -4,6 +4,8 @@ import "./style.css";
 import { Card, Row, Col, Button, Modal } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
+
+import moment from 'moment'
 const { Meta } = Card;
 
 const Liveauctions = () => {
@@ -41,7 +43,6 @@ const Liveauctions = () => {
                         <Col lg>
                           <Card
                             className="auctions"
-                            // bordered={false}
                             style={{
                               width: 300,
                             }}
@@ -61,7 +62,7 @@ const Liveauctions = () => {
                                 "Starting price: " + items.startingBid
                               }
                             />
-                            <p>Ends At: {items.bidEnd}</p>
+                            <p>Ends At: {moment(items.bidEnd).format("DD/MM/YYYY")}</p>
                             <Button
                               type="primary"
                               block

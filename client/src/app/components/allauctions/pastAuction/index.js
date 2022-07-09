@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
+import moment from 'moment'
 import {
   EditOutlined,
   EllipsisOutlined,
@@ -61,14 +62,19 @@ const Pastauctions = () => {
                           // ]}
                           >
                             <Meta
-                              title={items.itemName}
-                              description={items.startingBid}
+                              className="p-1"
+                              title={"Product Name: " + items.itemName}
+                              description={
+                                "Starting price: " + items.startingBid
+                              }
                             />
-                            <Button type='primary' block
+                            <p>Ended At: {moment(items.bidEnd).format("DD/MM/YYYY")}</p>
+                            <Button
+                              type="primary"
+                              block
                               href={`/auctionandbid/${items._id}`}
-
                             >
-                             View Details
+                             Watch History
                             </Button>
                           </Card>
                         </Col>

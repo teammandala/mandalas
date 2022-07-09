@@ -8,6 +8,7 @@ import {
 import { Card, Row, Col, Button } from "antd";
 import auction from "../../../api/auction";
 import { Container } from "react-bootstrap";
+import moment from 'moment'
 const { Meta } = Card;
 
 const Upcomingauctions = () => {
@@ -56,15 +57,19 @@ const Upcomingauctions = () => {
                             }
                           >
                             <Meta
-                              title={items.itemName}
-                              description= {"Starting Price: " +items.startingBid}
+                              className="p-1"
+                              title={"Product Name: " + items.itemName}
+                              description={
+                                "Starting price: " + items.startingBid
+                              }
                             />
-                            <p>{}</p>
-                            <Button type='primary' block
+                            <p>Starts At: {moment(items.bidStart).format("DD/MM/YYYY")}</p>
+                            <Button
+                              type="primary"
+                              block
                               href={`/auctionandbid/${items._id}`}
-
                             >
-                             View Details
+                             Know More
                             </Button>
                           </Card>
                         </Col>
