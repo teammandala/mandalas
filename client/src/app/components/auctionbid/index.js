@@ -142,6 +142,17 @@ const BiddingPage = () => {
                           <p>{` Starting bid: Rs ${data.startingBid}`}</p>
                         )}
                       </div>
+                      <div className="winner">
+                        <p>
+                          {bidData.length > 0 ? (
+                            <p>
+                              {`Auction Winner: ${data.bids[0].bidder.username}`}
+                            </p>
+                          ) : (
+                            <p>{` Starting bid: Rs ${data.startingBid}`}</p>
+                          )}
+                        </p>
+                      </div>
                       <Form.Item label="Enter Price">
                         <Input
                           type="number"
