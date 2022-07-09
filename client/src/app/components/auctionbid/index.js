@@ -125,15 +125,11 @@ const BiddingPage = () => {
                   return (
                     <Form>
                       <Timer endTime={data.bidEnd} update={update} />
-                      {() => {
-                        if (data.bids[0].bid) {
-                          return <>{` Last bid: $ ${data.bids[0].bid}`}</>;
-                        } else {
-                          return (
-                            <>{` Bid Starting Price: $ ${data.startingBid}`}</>
-                          );
-                        }
-                      }}
+                      {data.bids.bid ? (
+                        <p>{` Last bid: $ ${data.bids[0].bid}`}</p>
+                      ) : (
+                        <p>{` Starting bid: $ ${data.startingBid}`}</p>
+                      )}
                       <Form.Item label="amount">
                         <Input
                           type="number"
