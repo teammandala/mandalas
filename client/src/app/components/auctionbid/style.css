@@ -54,4 +54,7 @@ margin-top: 10px;
 .notlogined h4{
     color: rgb(102, 32, 41);
 }
+.closed{
+    color: rgb(14, 21, 148);
+}
 

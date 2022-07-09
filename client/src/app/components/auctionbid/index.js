@@ -33,7 +33,7 @@ const BiddingPage = () => {
     if (cuser) {
       setCurrentUser(cuser);
     }
-    if (cuser){
+    if (cuser) {
       setCurrentUser(cuser);
       setIsUser(cuser);
     }
@@ -66,10 +66,12 @@ const BiddingPage = () => {
       });
   };
 
+  const currentDate = new Date();
+
   return (
     <>
       <div className="container-fluid auction-bid">
-      <div className="container-fluid">
+        <div className="container-fluid">
           <div className="row">
             <div className="row">
               <h1>Product Name: {data.itemName}</h1>
@@ -106,50 +108,53 @@ const BiddingPage = () => {
           </div>
 
           <div className="bid row">
-
-            {(() =>{
-              if (isUser){
-                return(
-                  <Form>
-              <Form.Item label="amount">
-                <Input
-                  type="number"
-                  placeholder="enter amount"
-                  value={bid}
-                  onChange={onChangeBid}
-                />
-              </Form.Item>
-              <Form.Item>
-                <Button type="primary" onClick={handleBid} htmlType="submit">
-                  Bid
-                </Button>
-              </Form.Item>
-            </Form>
-                )
-              }else{
-                return(
+            {(() => {
+              if (isUser) {
+                if (
+                  currentDate > new Date(data.bidStart) &&
+                  currentDate < new Date(data.bidEnd)
+                ) {
+                  return (
+                    <Form>
+                      <Form.Item label="amount">
+                        <Input
+                          type="number"
+                          placeholder="enter amount"
+                          value={bid}
+                          onChange={onChangeBid}
+                        />
+                      </Form.Item>
+                      <Form.Item>
+                        <Button
+                          type="primary"
+                          onClick={handleBid}
+                          htmlType="submit"
+                        >
+                          Bid
+                        </Button>
+                      </Form.Item>
+                    </Form>
+                  );
+                }else{
+                  return <h4 className="closed">Bidding is closed</h4>
+                }
+              } else {
+                return (
                   <div className="notlogined row">
-                    <h4>You are not logged in!!!
-                    Please login to bid</h4>
-                    <Button type="primary" href="/login"
-                    block>
+                    <h4>You are not logged in!!! Please login to bid</h4>
+                    <Button type="primary" href="/login" block>
                       Login
                     </Button>
-
                   </div>
-
-            )
+                );
               }
             })()}
-            
           </div>
         </div>
         <div className="Scroll row">
           <Bidsdata id={id} />
         </div>
         {/* <div>{data.bids}</div> */}
-
-        
       </div>
     </>
   );
