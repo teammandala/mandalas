@@ -28,7 +28,6 @@ const Completedauctions = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        
       })
       .catch((error) => {
         console.log(error);
