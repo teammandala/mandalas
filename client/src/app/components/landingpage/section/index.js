@@ -1,45 +1,50 @@
-import React from "react";
-import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
-import "./style.css";
+import React from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import './style.css';
+
 
 const Section = () => {
   return (
-    <>
-      <section className="herosection">
-        <div class="hero-text">
-        <h1 class="hero-title">
-          Own Your Interest
-          </h1>
-          <div class="hero-btns">
-              <div class="btn-desciption-box">
-              <a  class="btn"><Form className="d-flex">
-                <FormControl
-                  type="search"
-                  placeholder="Search"
-                  className="me-2"
-                  bg="light"
-                  aria-label="Search"
-                />
-              </Form></a>
-              <a href="">Own what you Love</a>
-              <div class="btn-desciption-box">
-              <a class="btn btn-alt" href="about">About Us</a>
-              </div>
-              </div>
-            <div class="hero-login-box">
-            <p class="hero-login-info">Be A Part Of <strong href='/' >Mandala.com</strong></p>
-            <a class="hero-login-btn" href="#">
-                Login
-              </a>
-              <i class="ri-arrow-right-s-line"></i>
-              </div>
+    <section className="s1">
+      <Container>
+        <Row className='bgimage'>
+          <Col md="12" className="text-center s1-intro p-2">
+            <h1>Own Your Interest</h1>
+            <h3>We are for all people who loves Rare Collection</h3>
+            
+          </Col>
+          <Col md="6" lg="4" className="text-center s1-advice">
+            <h3>Introducing Auction</h3>
+            
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
+            <a href="*">read more</a>
+          </Col>
+          <Col md="6" lg="4" className="text-center s1-advice">
+            
+            <h3>User friendly Interface</h3>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
+            <a href="*">read more</a>
+          </Col>
+          <Col md="6" lg="4" className="text-center s1-advice">
+            
+            <h3>Items Every-One Loves </h3>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
+            <a href="*">read more</a>
+          </Col>
+        </Row>
+      </Container>
+      
+    </section>
+  )
+}
 
-
-          </div>
-        </div>
-      </section>
-    </>
-  );
-};
-
-export default Section;
+export default Section

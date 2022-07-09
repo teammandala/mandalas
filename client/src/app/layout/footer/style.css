@@ -19,6 +19,7 @@ footer.nb-footer {
 background: #222;
 border-top: 4px solid #b78c33; 
 vertical-align: bottom;
+margin-top: 10px;
 }
 footer.nb-footer .about {
 margin: 0 auto;

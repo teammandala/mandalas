@@ -99,3 +99,84 @@ a{
   text-decoration: none;
   color: inherit;
 }
+
+        
+.s1 {
+  font-size: 16px;
+  border-radius: 10px;
+  margin: 4px;
+  /* border-style: groove; */
+  margin-top: 0.5em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
+  background-image: url('../../media/auction.png');
+  background-size:contain;
+}
+
+.s1-intro {
+  margin-bottom: 2em;
+  filter: blur(0.5px);
+}
+
+.s1-intro h1 {
+  
+  font-size: 3em;
+  font-weight: 100;
+  
+  color: rgb(16, 69, 119);
+}
+
+.s1-intro h3 {
+  font-size: 3.5em;
+  font-weight: 40px;
+  margin-top: 1em;
+  color: rgb(0, 0, 0);
+  text-shadow: slategray 1px 1px 10px;
+
+}
+
+.s1-avatar {
+  width: 60px;
+
+}
+
+.s1-advice {
+  padding: 2em;
+  transition: all .5s;
+  margin-bottom: 2em;
+
+
+
+}
+
+.s1-advice:hover {
+  box-shadow: #ff0202 1px 1px 10px, #ff00009c 1px 1px 10px;
+ border-style: groove;
+}
+
+.s1-advice h3 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  letter-spacing: 2px;
+  
+  color: rgb(0, 0, 0);
+  text-shadow: #0000009c 1px 1px 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.s1-advice p {
+  margin-top: 2em;
+  font-size: 1em;
+  line-height: 2;
+  color: rgb(244, 244, 244);
+}
+
+.s1-advice a {
+  font-size: .95em;
+  text-decoration: none;
+  color: hsl(120, 71%, 16%);
+  transition: all .5s;
+}
+
+.s1-advice a:hover {
+  color: var(--brand-color);
+}
