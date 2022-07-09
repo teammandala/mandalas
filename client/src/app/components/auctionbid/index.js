@@ -25,17 +25,21 @@ const BiddingPage = () => {
   };
 
   useEffect(() => {
-    auction
-      .getCurrentAuction(id)
-      .then((res) => {
-        const data = res.data.currentauctionData;
-        setData(data);
-        setSeller(data.seller.username);
-        setBidData(data.bids.sort().reverse());
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const interval = setInterval(
+      () =>
+        auction
+          .getCurrentAuction(id)
+          .then((res) => {
+            const data = res.data.currentauctionData;
+            setData(data);
+            setSeller(data.seller.username);
+            setBidData(data.bids.sort().reverse());
+          })
+          .catch((error) => {
+            console.log(error);
+          }),
+      10
+    );
 
     const cuser = user.getCurrentUser();
 
@@ -46,6 +50,8 @@ const BiddingPage = () => {
       setCurrentUser(cuser);
       setIsUser(cuser);
     }
+
+    return () => clearInterval(interval);
   }, []);
 
   const onChangeBid = (e) => {
