@@ -1,8 +1,7 @@
 import React from "react";
 import "./index.css";
 import Common from "./common.jsx";
-import web from "../../components/media/4380.jpg";
-
+import web from "../../components/media/auction1.png";
 import saphal from "../../components/media/pfp.jpg";
 import sagar from "../../components/media/sagar.jpg";
 import bj from "../../components/media/bj.jpg";
@@ -26,10 +25,41 @@ const index = () => {
               />
             </Col>
           </Row>
+        </Container>
+        <Container classname='section'>
+          <Row >
+        <Col md="6" lg="4" className="text-center s1-advice">
+            <h3>Introducing Auction</h3>
+
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
+          </Col>
+          <Col md="6" lg="4" className="text-center s1-advice">
+
+            <h3>User friendly Interface</h3>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
+          </Col>
+          <Col md="6" lg="4" className="text-center s1-advice">
+
+            <h3>Items Every-One Loves </h3>
+            <p>
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry
+            </p>
+          </Col>
+          </Row>
+        </Container>
+          <Container>
+            <div className="mem"><h1>Our Development Team Members</h1></div>
           <Row>
             <Col lg>
               <Card
-                className="auctions"
+                className="teams"
                 style={{
                   width: 300,
                 }}
@@ -51,7 +81,7 @@ const index = () => {
             </Col>
             <Col lg>
               <Card
-                className="auctions"
+                className="teams"
                 style={{
                   width: 300,
                 }}
@@ -73,7 +103,7 @@ const index = () => {
             </Col>
             <Col lg>
               <Card
-                className="auctions"
+                className="teams"
                 style={{
                   width: 300,
                 }}
@@ -95,7 +125,7 @@ const index = () => {
             </Col>
             <Col lg>
               <Card
-                className="auctions"
+                className="teams"
                 style={{
                   width: 300,
                 }}
@@ -117,7 +147,7 @@ const index = () => {
             </Col>
             <Col lg>
               <Card
-                className="auctions"
+                className="teams"
                 style={{
                   width: 300,
                 }}

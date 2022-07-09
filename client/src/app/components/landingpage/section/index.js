@@ -1,5 +1,4 @@
 import React from 'react';
-import './style.css';
 import Common from './common.jsx'
 import web from '../../../components/media/auction.png'
 
@@ -7,10 +6,10 @@ const Section = () => {
   return (
     <>
        <Common
-        name="About"
+        name="Welcome to"
         imgsrc={web}
         visit="/about"
-        btname="About Us"
+        btname="Know More"
       />
     </>
   )
