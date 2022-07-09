@@ -99,12 +99,12 @@ const BiddingPage = () => {
               </div>
               <div className="col start">
                 <h3>
-                  Started: {moment(data.bidStart).format("DD-MM-YYYY HH:mm")}
+                  Started: {moment(data.bidStart).format("DD-MM-YYYY HH:mm:ss")}
                 </h3>
               </div>
               <div className="col end">
                 <h3>
-                  Ends At: {moment(data.bidEnd).format("DD-MM-YYYY HH:mm")}
+                  Ends At: {moment(data.bidEnd).format("DD-MM-YYYY HH:mm:ss")}
                 </h3>
               </div>
               <div className="row seller">

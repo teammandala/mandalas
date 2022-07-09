@@ -90,15 +90,15 @@ const Myauctions = () => {
                     src={"http://localhost:8080/" + items.image}
                   />
                 </td>
-                <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                <td>{moment(items.created).format("YYYY/MM/DD-HH:mm:ss")}</td>
                 <td>
-                  {moment(items.bidStart).format("YYYY/MM/DD-HH:MM:SS")}
+                  {moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}
                 </td>{" "}
-                <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}</td>
                 <td>{items.startingBid}</td> <td>{items.status}</td>
                 <td>
                   {(() => {
-                    if (items.status === "pending") {
+                    if (items.status === "pending" || items.status === "rejected") {
                       return (
                         <button
                           className="btn btn-primary"
