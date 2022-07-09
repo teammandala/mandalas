@@ -99,9 +99,9 @@ const Completedauctions = () => {
                         onOk={handleCancel}
                         onCancel={handleCancel}
                       >
-                        <p>Winner: {bidData[0].bidder.username} </p>
-                        <p>Email: {bidData[0].bidder.email}</p>
-                        <p>Phone: {bidData[0].bidder.phone}</p>
+                        <p>Winner: {bidData[0].items.bidder.username} </p>
+                        {/* <p>Email: {bidData[0].bidder.email}</p>
+                        <p>Phone: {bidData[0].bidder.phone}</p> */}
                       </Modal>
                     </td>
                   </tr>

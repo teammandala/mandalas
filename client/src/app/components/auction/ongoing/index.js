@@ -17,7 +17,6 @@ const Ongoing = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        console.log(data);
       })
       .catch((error) => {
         console.log(error);
