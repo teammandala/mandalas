@@ -28,7 +28,6 @@ const Completedauctions = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        
       })
       .catch((error) => {
         console.log(error);
@@ -90,6 +89,11 @@ const Completedauctions = () => {
                     </td>
                     <td>{items.startingBid}</td>
                     <td>
+                      {/* {items.bids.sort().reverse()[0].bidder.username}
+                      <br />
+                      {items.bids[0].bidder.email}
+                      <br />
+                      {items.bids[0].bidder.phone} */}
                       <Button onClick={() => showWinnerModal(items)}>
                         View Winner
                       </Button>
@@ -99,9 +103,18 @@ const Completedauctions = () => {
                         onOk={handleCancel}
                         onCancel={handleCancel}
                       >
-                        <p>Winner: {bidData[0].items.bidder.username} </p>
-                        {/* <p>Email: {bidData[0].bidder.email}</p>
-                        <p>Phone: {bidData[0].bidder.phone}</p> */}
+                        <p>
+                          Winner:
+                          {items.bids.sort().reverse()[0].bidder.username}
+                        </p>
+                        <p>
+                          Email:
+                          {items.bids[0].bidder.email}
+                        </p>
+                        <p>
+                          Phone:
+                          {items.bids[0].bidder.phone}
+                        </p>
                       </Modal>
                     </td>
                   </tr>
