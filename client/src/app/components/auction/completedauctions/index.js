@@ -14,6 +14,9 @@ const Completedauctions = () => {
   const [bidData, setBidData] = useState([]);
   const showWinnerModal = (items) => {
     setId(items._id);
+
+    setBidData(items.bids.sort().reverse());
+    console.log(bidData);
     setIsWinnerModalVisible(true);
   };
 
@@ -25,8 +28,7 @@ const Completedauctions = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        setBidData(data.bids.sort().reverse());
-        console.log(bidData);
+        
       })
       .catch((error) => {
         console.log(error);
@@ -97,9 +99,9 @@ const Completedauctions = () => {
                         onOk={handleCancel}
                         onCancel={handleCancel}
                       >
-                        <p>Winner: {items.bids[0].bidder.username} </p>
-                        <p>Email: {items.bids[0].bidder.email}</p>
-                        <p>Phone: {items.bids[0].bidder.phone}</p>
+                        <p>Winner: {bidData[0].bidder.username} </p>
+                        <p>Email: {bidData[0].bidder.email}</p>
+                        <p>Phone: {bidData[0].bidder.phone}</p>
                       </Modal>
                     </td>
                   </tr>

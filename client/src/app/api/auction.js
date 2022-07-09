@@ -46,7 +46,7 @@ const getAuctionBySeller = async (id) => {
   return await axios.get(API_URL + "getmyauction/" + id);
 };
 const auctionDelete = async (id) => {
-  return await axios.delete(API_URL + "delete/" + id, console.log(id), {
+  return await axios.delete(API_URL + "delete/" + id, {
     headers: {
       "content-Type": "application/json",
     },
