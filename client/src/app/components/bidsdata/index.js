@@ -12,7 +12,7 @@ const Bidsdata = () => {
       .getCurrentAuction(id)
       .then((res) => {
         const data = res.data.currentauctionData;
-        setData(data.bids);
+        setData(data.bids.sort().reverse());
         // console.log(data);
       })
       .catch((error) => {
