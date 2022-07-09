@@ -6,7 +6,6 @@ import getUser from '../../api/user';
 import Noaccess from "../noaccess";
 import {Nav, Tab, Row, Col,} from'react-bootstrap'
 import Myauctions from "../../components/auction/myauctions";
-import Auctionstatus from "../../components/auction/auctionstatus";
 
 
 function Auctioneer() {
@@ -41,10 +40,7 @@ function Auctioneer() {
                           <Nav.Link eventKey="first">Auction Request</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">My Auction</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="third">My Auction Status</Nav.Link>
+                          <Nav.Link eventKey="second">My Auction Status</Nav.Link>
                         </Nav.Item>
                       </Nav>
                     </Col>
@@ -55,9 +51,6 @@ function Auctioneer() {
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
                           <Myauctions/>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                          <Auctionstatus />
                         </Tab.Pane>
                       </Tab.Content>
                       
@@ -80,10 +73,7 @@ function Auctioneer() {
                           <Nav.Link eventKey="first">Auction Request</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                          <Nav.Link eventKey="second">My Auction</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="third">My Auction Status</Nav.Link>
+                          <Nav.Link eventKey="second">My Auction Status</Nav.Link>
                         </Nav.Item>
                       </Nav>
                     </Col>
@@ -94,9 +84,6 @@ function Auctioneer() {
                         </Tab.Pane>
                         <Tab.Pane eventKey="second">
                           <Myauctions/>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third">
-                          <Auctionstatus />
                         </Tab.Pane>
                       </Tab.Content>
                       

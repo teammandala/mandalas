@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
 import Noaccess from "../noaccess";
-import KycData from "../../components/profile/kycdata";
 const Profilepage = () => {
   const [show, setShow] = useState(false);
 

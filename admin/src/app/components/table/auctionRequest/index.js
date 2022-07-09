@@ -6,7 +6,6 @@ import auction from "../../../api/auction";
 import "./style.css";
 
 const AuctionRequestTable = () => {
-  // const navigate = useNavigate();
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);

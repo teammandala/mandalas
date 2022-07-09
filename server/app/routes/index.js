@@ -69,8 +69,9 @@ router.put("/api/contact/status/:id", contact.contactStatus);
 router.get("/api/auction/getdata", auction.getAuctions);
 router.get("/api/auction/getdata/:id", auction.getCurrentAuction);
 router.get("/api/auction/getmyauction/:id", auction.auctionBySeller);
+router.delete("/api/auction/delete/:id", auction.deleteAuction);
 
-// carousel routes
+
 
 router.use(
   "/api/carousel/request",

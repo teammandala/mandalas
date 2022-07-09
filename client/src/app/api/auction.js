@@ -45,10 +45,18 @@ const getCurrentAuction = async (id) => {
 const getAuctionBySeller = async (id) => {
   return await axios.get(API_URL + "getmyauction/" + id);
 };
+const auctionDelete = async (id) => {
+  return await axios.delete(API_URL + "delete/" + id, console.log(id), {
+    headers: {
+      "content-Type": "application/json",
+    },
+  });
+};
 
 export default {
   auctionRequest,
   getApprovedAuctionData,
   getCurrentAuction,
   getAuctionBySeller,
+  auctionDelete,
 };

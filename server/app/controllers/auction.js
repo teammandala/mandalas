@@ -100,10 +100,24 @@ const auctionBySeller = async (req, res, next) => {
   }
 };
 
+const deleteAuction = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Carousel.findByIdAndDelete(id).then(() => {
+      res.status(201).send({
+        message: `Auction deleted successfully`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
+
 module.exports = {
   auctoinRequest,
   getAuctions,
   auctionStatus,
   getCurrentAuction,
   auctionBySeller,
+  deleteAuction,
 };
