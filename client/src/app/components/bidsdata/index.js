@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import auction from "../../api/auction";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
+import './style.css';
 
 const Bidsdata = () => {
   const [data, setData] = useState([]);
@@ -21,6 +22,7 @@ const Bidsdata = () => {
   }, []);
   return (
     <>
+    <div class='text1'> Bidding History</div>
       <Table responsive stripped borderes hover varient="dark">
         <thead>
           <tr>

@@ -72,7 +72,7 @@ const Footer = () => {
         <div class="container">
           <div class="row">
             <div class="col-sm-6">
-              <p>Copyright © 2017. Mandala.</p>
+              <p>Copyright © 2022. Mandala.</p>
             </div>
             <div class="col-sm-6"></div>
           </div>

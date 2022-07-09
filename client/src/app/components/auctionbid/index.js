@@ -84,28 +84,33 @@ const BiddingPage = () => {
       <div className="container-fluid auction-bid">
         <div className="container-fluid">
           <div className="row">
-            <div className="row">
+            <div className="row itemname">
               <h1>Product Name: {data.itemName}</h1>
             </div>
-            <div className="col">
-              <h2>Starting Price: {data.startingBid}</h2>
-            </div>
-            <div className="col">
-              <h3>
-                Started: {moment(data.bidStart).format("DD-MM-YYYY HH:MM")}
-              </h3>
-            </div>
-            <div className="col">
-              <h3>Ends At: {moment(data.bidEnd).format("DD-MM-YYYY HH:MM")}</h3>
-            </div>
             <div className="row">
-              <p>
-                Sold by: <strong>{seller}</strong>
-              </p>
+              <div className="col price">
+                <h2>Starting Price: Rs:{data.startingBid}</h2>
+              </div>
+              <div className="col start">
+                <h3>
+                  Started: {moment(data.bidStart).format("DD-MM-YYYY HH:MM")}
+                </h3>
+              </div>
+              <div className="col end">
+                <h3>
+                  Ends At: {moment(data.bidEnd).format("DD-MM-YYYY HH:MM")}
+                </h3>
+              </div>
+              <div className="row seller">
+                <p>
+                  Auction Organized By: <strong>{seller}</strong>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row description">
+          <p className="desc">Description:</p>
           <h4>{data.description}</h4>
         </div>
         <div className="row">
@@ -126,16 +131,21 @@ const BiddingPage = () => {
                 ) {
                   return (
                     <Form>
-                      <Timer endTime={data.bidEnd} update={update} />
-                      {bidData.length > 0 ? (
-                        <p>{` Last bid: $ ${data.bids[0].bid}`}</p>
-                      ) : (
-                        <p>{` Starting bid: $ ${data.startingBid}`}</p>
-                      )}
-                      <Form.Item label="amount">
+                      <div className="timer">
+                        <h>Ends In:</h>
+                        <h>
+                          <Timer endTime={data.bidEnd} update={update} />
+                        </h>
+                        {bidData.length > 0 ? (
+                          <p>{` Last bid: Rs: ${data.bids[0].bid}`}</p>
+                        ) : (
+                          <p>{` Starting bid: Rs ${data.startingBid}`}</p>
+                        )}
+                      </div>
+                      <Form.Item label="Enter Price">
                         <Input
                           type="number"
-                          placeholder="Your Bid ($)"
+                          placeholder="Your Bid Rs:"
                           value={bid}
                           onChange={onChangeBid}
                         />

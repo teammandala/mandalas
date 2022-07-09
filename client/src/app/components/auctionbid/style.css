@@ -57,4 +57,66 @@ margin-top: 10px;
 .closed{
     color: rgb(14, 21, 148);
 }
+.itemname h1{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    text-shadow: rgb(92, 0, 0) 0px 0px 10px;
+    font-size: 60px;
+}
+.price h2{
+    color: rgb(111, 60, 60);
+    font-weight: 400;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.start h3{
+    color: rgb(111, 60, 60);
+    font-weight: 400;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.end h3{
+    color: rgb(111, 60, 60);
+    font-weight: 400;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.seller p{
+    color: rgb(255, 255, 255);
+    font-weight: 400;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: slategrey 0px 0px 10px;
+}
+
+.description h4{
+    color: rgb(5, 6, 21);
+    font-weight: 400;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: slategrey 0px 0px 10px;
+}
+.description {
+    margin: 20px;
+    box-shadow: thistle 0px 0px 10px;
+    background-color: rgb(123, 152, 177);
+    /* padding: 20px; */
+}
+.desc{
+    color: rgb(0, 0, 0);
+    font-weight: 400;
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: slategrey 0px 0px 10px;
+
+}
+.timer{
+    box-shadow: yellowgreen 0px 0px 10px;
+    padding: 5px;
+    margin: 5px;
+    background-color: rgb(123, 177, 142);
+}
+.timer h{
+    color: rgb(0, 0, 0);
+    text-shadow: rgb(32, 26, 26) 0px 0px 10px;
+    font-size: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    
+}
 
