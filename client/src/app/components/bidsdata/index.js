@@ -29,8 +29,6 @@ const Bidsdata = () => {
           </tr>
         </thead>
         <tbody>
-          {/* <td>sagar prasad chaulagain</td>
-          <td>2000</td> */}
           {data.map((datas) => {
             return (
               <>

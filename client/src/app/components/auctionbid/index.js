@@ -122,8 +122,10 @@ const BiddingPage = () => {
                 ) {
                   return (
                     <Form>
-                      <Timer endTime={data.bidEnd} update={update} />
-                      {` Last bid: $ ${data.bids[0].bid}`}
+                      <h2>
+                      Ending In <Timer endTime={data.bidEnd} update={update} />
+                        </h2>  
+                      {/* <div>{` Amount should be higher than: $ ${data.bids[0].bid}`}</div> */}
                       <Form.Item label="amount">
                         <Input
                           type="number"

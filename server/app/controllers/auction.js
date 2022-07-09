@@ -103,7 +103,7 @@ const auctionBySeller = async (req, res, next) => {
 const deleteAuction = async (req, res, next) => {
   try {
     const id = req.params.id;
-    await Carousel.findByIdAndDelete(id).then(() => {
+    await Auction.findByIdAndDelete(id).then(() => {
       res.status(201).send({
         message: `Auction deleted successfully`,
       });
