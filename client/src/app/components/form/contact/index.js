@@ -51,6 +51,7 @@ const ContactForm = () => {
   return (
     <>
       <div className="container-fluid contact">
+        <div className="message">Leave message using below form and get in direct touch with Customer Support</div>
         <Form
           name="contact-form"
           method="post"

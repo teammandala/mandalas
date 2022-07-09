@@ -84,3 +84,11 @@ body {
     box-shadow: rgba(red, green, blue, alpha) 0px 0px 40px;
     background-image: url('../../media/contactus.png');
 }
+.message{
+    font-family: 'Courier New', Courier, monospace;
+    align-self: center;
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    text-shadow: whitesmoke 0px 0px 10px;
+}
