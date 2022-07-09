@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 import Common from './common.jsx'
-import web from '../../../components/media/4380.jpg'
+import web from '../../../components/media/auction.png'
 
 const Section = () => {
   return (

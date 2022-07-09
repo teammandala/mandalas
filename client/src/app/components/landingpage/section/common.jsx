@@ -14,7 +14,6 @@ function Common({ name, imgsrc, visit, btname }) {
                     {name}
                     <strong className="brand-name"> Mandala </strong>
                   </h1>
-
                   <h2 className="my-3">
                     We created Mandala for anyone who has a hard time to selling
                     their old antique products. We are a team of undergrowing
