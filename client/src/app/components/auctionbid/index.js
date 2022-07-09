@@ -38,7 +38,7 @@ const BiddingPage = () => {
           .catch((error) => {
             console.log(error);
           }),
-      10
+      1000
     );
 
     const cuser = user.getCurrentUser();
