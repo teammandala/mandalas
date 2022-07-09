@@ -137,11 +137,17 @@ const BiddingPage = () => {
                           <Timer endTime={data.bidEnd} update={update} />
                         </h>
                         {bidData.length > 0 ? (
-                          <p>{` Last bid: Rs: ${data.bids[0].bid}`}</p>
+                          <p>
+                            {` Last bid: Rs: ${data.bids[0].bid}`}
+                            <br />
+                            <br />
+                            {`Auction Leading by: ${data.bids[0].bidder.username}`}
+                          </p>
                         ) : (
                           <p>{` Starting bid: Rs ${data.startingBid}`}</p>
                         )}
                       </div>
+
                       <Form.Item label="Enter Price">
                         <Input
                           type="number"
@@ -163,7 +169,21 @@ const BiddingPage = () => {
                     </Form>
                   );
                 } else {
-                  return <h4 className="closed">Bidding is closed</h4>;
+                  return (
+                    <div className="winner">
+                      <h4 className="closed">Bidding is closed</h4>
+                      <p>
+                        {bidData.length > 0 ? (
+                          <p>
+                            {`Auction Winner: ${data.bids[0].bidder.username}`}
+                            {`Winning Bid: ${data.bids[0].bid}`}
+                          </p>
+                        ) : (
+                          <p>{` Starting bid: Rs ${data.startingBid}`}</p>
+                        )}
+                      </p>
+                    </div>
+                  );
                 }
               } else {
                 return (

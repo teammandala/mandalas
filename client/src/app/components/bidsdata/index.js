@@ -2,27 +2,33 @@ import React, { useState, useEffect } from "react";
 import auction from "../../api/auction";
 import { useParams } from "react-router-dom";
 import { Table } from "react-bootstrap";
-import './style.css';
+import "./style.css";
 
 const Bidsdata = () => {
   const [data, setData] = useState([]);
   const id = useParams().id;
 
   useEffect(() => {
-    auction
-      .getCurrentAuction(id)
-      .then((res) => {
-        const data = res.data.currentauctionData;
-        setData(data.bids.sort().reverse());
-        // console.log(data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    const interval = setInterval(
+      () =>
+        auction
+          .getCurrentAuction(id)
+          .then((res) => {
+            const data = res.data.currentauctionData;
+            setData(data.bids.sort().reverse());
+            // console.log(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          }),
+      10
+    );
+
+    return () => clearInterval(interval);
   }, []);
   return (
     <>
-    <div class='text1'> Bidding History</div>
+      <div class="text1"> Bidding History</div>
       <Table responsive stripped borderes hover varient="dark">
         <thead>
           <tr>
