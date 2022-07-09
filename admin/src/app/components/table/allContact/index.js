@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Modal, Button } from "antd";
+import moment from "moment";
 import contact from "../../../api/contact";
 
 const AllContact = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [isSolvedModalVisible, setIsSolvedModalVisible] = useState(false);
-
 
   useEffect(() => {
     contact
@@ -51,17 +51,16 @@ const AllContact = () => {
   };
   // };
 
-
-
   return (
-    <div className="all-contacts">
+    <>
+      <div class="text1"> Contact</div>
       <Table responsive striped bordered hover variant="dark">
         <thead>
           <tr>
             <th>id</th>
             <th>full name</th>
             <th>email</th>
-            <th>message</th>
+            <th>message/problem</th>
             <th>Status</th>
             <th>Contacted Date</th>
             <th>Action</th>
@@ -69,29 +68,44 @@ const AllContact = () => {
         </thead>
         <tbody>
           {data.map((items, index) => {
+            
             return (
               <>
                 <tr key={items._id}>
                   <td>{items._id}</td>
                   <td>{items.fullName}</td>
-                  <td>{items.email}</td>
+                  <td>
+                    <Button
+                      type="secondary"
+                      htmlType="submit"
+                      onClick={() =>
+                        (window.location = `mailto:${items.email}`)
+                      }
+                    >
+                      Send E-Mail to: {items.email}
+                    </Button>
+                  </td>
                   <td>{items.message}</td>
                   <td>{items.status}</td>
-                  <td>{items.requested}</td>
                   <td>
-                  <Button type="primary" onClick={() => showSolvedModal(items)} 
-                  block>
-                    Solve
-                  </Button>
-                  <Modal
-                    title="Are You Sure!!!"
-                    visible={isSolvedModalVisible}
-                    onCancel={handleCancel}
-                    onOk={handleSolved}
-                  >
-                    <p>This Action can be undone. Work Wisely</p>
-                  </Modal>
-                  
+                    {moment(items.requested).format("YYYY/MM/DD-HH:MM:SS")}
+                  </td>
+                  <td>
+                    <Button
+                      type="primary"
+                      onClick={() => showSolvedModal(items)}
+                      block
+                    >
+                      Solve
+                    </Button>
+                    <Modal
+                      title="Are You Sure!!!"
+                      visible={isSolvedModalVisible}
+                      onCancel={handleCancel}
+                      onOk={handleSolved}
+                    >
+                      <p>This Action can be undone. Work Wisely</p>
+                    </Modal>
                   </td>
                 </tr>
               </>
@@ -99,7 +113,7 @@ const AllContact = () => {
           })}
         </tbody>
       </Table>
-    </div>
+    </>
   );
 };
 

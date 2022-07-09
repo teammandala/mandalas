@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Image, Modal, Button } from "antd";
 import user from "../../../api/user";
+import moment from "moment";
 
 const AllUser = () => {
   const [data, setData] = useState([]);
@@ -52,8 +53,8 @@ const AllUser = () => {
 
 
 
-  return (
-    <div className="all-users">
+  return (<>
+    <div class='text1'> All Users</div>
       <Table responsive striped bordered hover variant="dark">
         <thead>
           <tr>
@@ -66,7 +67,7 @@ const AllUser = () => {
             <th>role</th>
             <th>address</th>
             <th>bio</th>
-            <th>created</th>
+            <th>Joined Date</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -84,13 +85,19 @@ const AllUser = () => {
                     {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
                   </td>
                   <td>{items.username}</td>
-                  <td>{items.email}</td>
+                  <td><Button type="secondary"
+          
+          htmlType="submit"
+              onClick={() => (window.location = `mailto:${items.email}`)}
+            >             
+            Send E-Mail to: {items.email}
+          </Button></td>
                   <td>{items.phone}</td>
                   <td>{items.name}</td>
                   <td>{items.role}</td>
                   <td>{items.address}</td>
                   <td>{items.bio}</td>
-                  <td>{items.created}</td>
+                  <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
                   <td>
                   <Button type="danger" onClick={() => showDeleteModal(items)}>
                     Delete
@@ -108,7 +115,7 @@ const AllUser = () => {
           })}
         </tbody>
       </Table>
-    </div>
+      </>
   );
 };
 

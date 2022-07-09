@@ -100,7 +100,7 @@ const ContactForm = () => {
           <Button type="primary"
           
           htmlType="submit"
-              onClick={() => (window.location = "mailto:yourmail@gmail.com")}
+              onClick={() => (window.location = "mailto:support@mandala.com")}
             >
               
             

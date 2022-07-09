@@ -24,6 +24,7 @@ const auctionStatus = async (id, status) => {
   );
 };
 
+
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   getAuctionData,

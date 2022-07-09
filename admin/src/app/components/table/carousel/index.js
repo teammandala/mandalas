@@ -50,6 +50,8 @@ const AllCarousel = () => {
   };
 
   return (
+    <>
+    <div class='text1'> Carousel Control Center</div>
     <div className="container-fluid">
       <Table
         responsive
@@ -99,6 +101,7 @@ const AllCarousel = () => {
         </tbody>
       </Table>
     </div>
+    </>
   );
 };
 

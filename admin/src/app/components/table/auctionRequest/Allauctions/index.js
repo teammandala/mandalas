@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
-import auction from "../../../api/auction";
+import auction from "../../../../api/auction";
 import "./style.css";
-
+import moment from "moment";
 const AuctionRequestTable = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
@@ -49,6 +49,7 @@ const AuctionRequestTable = () => {
   };
 
   const showRejectModal = (items) => {
+    setId(items._id);
     setIsRejectModalVisible(true);
   };
 
@@ -80,7 +81,7 @@ const AuctionRequestTable = () => {
 
   
   return (
-    <>
+    <><div class='text1'>Auction Requests </div>
       <Table
         responsive
         className="table_data"
@@ -121,9 +122,9 @@ const AuctionRequestTable = () => {
                     />
                     {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
                   </td>
-                  <td>{items.created}</td>
-                  <td>{items.bidStart}</td>
-                  <td>{items.bidEnd}</td>
+                  <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                  <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                  <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:MM:SS")}</td>
                   <td>{items.seller}</td>
                   <td>{items.startingBid}</td>
                   <td>{items.status}</td>

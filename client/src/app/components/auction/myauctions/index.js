@@ -7,7 +7,7 @@ import moment from "moment";
 
 const Myauctions = () => {
   const [data, setData] = useState([]);
-  
+
   const [id, setId] = useState("");
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
   const showDeleteModal = (items) => {
@@ -17,8 +17,6 @@ const Myauctions = () => {
 
   useEffect(() => {
     const cuser = user.getCurrentUser();
-
-    
 
     auction
       .getAuctionBySeller(cuser._id)
@@ -92,46 +90,39 @@ const Myauctions = () => {
                     src={"http://localhost:8080/" + items.image}
                   />
                 </td>
-                <td>{moment(items.created).format("YYYY/MM/DD")}</td>
-                <td>{moment(items.bidStart).format("YYYY/MM/DD")}</td> <td>{moment(items.bidEnd).format("YYYY/MM/DD")}</td>
+                <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
+                <td>
+                  {moment(items.bidStart).format("YYYY/MM/DD-HH:MM:SS")}
+                </td>{" "}
+                <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:MM:SS")}</td>
                 <td>{items.startingBid}</td> <td>{items.status}</td>
                 <td>
-                  {(()=>{
+                  {(() => {
                     if (items.status === "pending") {
-                      return(
+                      return (
                         <button
-                        className="btn btn-primary"
-                        onClick={() => showDeleteModal(items)}
-                        
-                      >
-                        Delete
-                      </button>
-                      
-                      
-                      )
-                      
-                  }else{
-                    return(
-                      <button
-                        className="btn btn-secondary"
-                        type="disabled"
-                      >
-                        Delete
-                      </button>
-                    )
-                  }  
-                
-                }
-                )()}
-                <Modal
-                      title="Are You Sure!"
-                      visible={isDeleteModalVisible}
-                      onOk={handleDelete}
-                      onCancel={handleCancel}
-                    >
-                      <p>Are you sure to Delete this Auction </p>
-                    </Modal>
-                  
+                          className="btn btn-primary"
+                          onClick={() => showDeleteModal(items)}
+                        >
+                          Delete
+                        </button>
+                      );
+                    } else {
+                      return (
+                        <button className="btn btn-secondary" type="disabled">
+                          Delete
+                        </button>
+                      );
+                    }
+                  })()}
+                  <Modal
+                    title="Are You Sure!"
+                    visible={isDeleteModalVisible}
+                    onOk={handleDelete}
+                    onCancel={handleCancel}
+                  >
+                    <p>Are you sure to Delete this Auction </p>
+                  </Modal>
                 </td>
               </tr>
             );
