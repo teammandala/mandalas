@@ -13,6 +13,7 @@ import { Last } from "react-bootstrap/esm/PageItem";
 const BiddingPage = () => {
   const [data, setData] = useState([]);
   const [seller, setSeller] = useState("");
+  const [bidData, setBidData] = useState([]);
   const [bid, setBid] = useState("");
   const [currentUser, setCurrentUser] = useState(undefined);
   const id = useParams().id;
@@ -30,6 +31,7 @@ const BiddingPage = () => {
         const data = res.data.currentauctionData;
         setData(data);
         setSeller(data.seller.username);
+        setBidData(data.bids);
       })
       .catch((error) => {
         console.log(error);
@@ -125,7 +127,7 @@ const BiddingPage = () => {
                   return (
                     <Form>
                       <Timer endTime={data.bidEnd} update={update} />
-                      {data.bids[0].bid !== "" ? (
+                      {bidData == null ? (
                         <p>{` Last bid: $ ${data.bids[0].bid}`}</p>
                       ) : (
                         <p>{` Starting bid: $ ${data.startingBid}`}</p>
