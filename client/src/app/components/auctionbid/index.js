@@ -128,7 +128,7 @@ const BiddingPage = () => {
                   return (
                     <Form>
                       <Timer endTime={data.bidEnd} update={update} />
-                      {bidData !== null ? (
+                      {bidData.length < 0 ? (
                         <p>{` Last bid: $ ${data.bids[0].bid}`}</p>
                       ) : (
                         <p>{` Starting bid: $ ${data.startingBid}`}</p>
