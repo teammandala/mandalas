@@ -137,7 +137,12 @@ const BiddingPage = () => {
                           <Timer endTime={data.bidEnd} update={update} />
                         </h>
                         {bidData.length > 0 ? (
-                          <p>{` Last bid: Rs: ${data.bids[0].bid}`}</p>
+                          <p>
+                            {` Last bid: Rs: ${data.bids[0].bid}`}
+                            <br />
+                            <br />
+                            {`Auction Leading by: ${data.bids[0].bidder.username}`}
+                          </p>
                         ) : (
                           <p>{` Starting bid: Rs ${data.startingBid}`}</p>
                         )}
