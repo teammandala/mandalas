@@ -117,7 +117,7 @@ const listByBidder = async (req, res) => {
   try {
     let auctions = await Auction.find({ "bids.bidder": req.params.id })
       .populate("seller", "username", User)
-      .populate("bids.bidder", "username")
+      .populate("bids.bidder", "username", User)
       .then((currentauctionData) => {
         res.status(200).send({ currentauctionData });
       })
