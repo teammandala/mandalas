@@ -7,6 +7,8 @@ import user from "../../api/user";
 import "./style.css";
 import { Button, Form, Input } from "antd";
 import Bidsdata from "../bidsdata";
+import Timer from "./timer";
+import { Last } from "react-bootstrap/esm/PageItem";
 
 const BiddingPage = () => {
   const [data, setData] = useState([]);
@@ -15,6 +17,11 @@ const BiddingPage = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
   const id = useParams().id;
   const [isUser, setIsUser] = useState(false);
+  const [justEnded, setJustEnded] = useState(false);
+
+  const update = () => {
+    setJustEnded(true);
+  };
 
   useEffect(() => {
     auction
@@ -67,6 +74,8 @@ const BiddingPage = () => {
   };
 
   const currentDate = new Date();
+  const minBid =
+    data.bids && data.bids.length > 0 ? data.bids[0].bid : data.startingBid;
 
   return (
     <>
@@ -113,10 +122,12 @@ const BiddingPage = () => {
                 ) {
                   return (
                     <Form>
+                      <Timer endTime={data.bidEnd} update={update} />
+                      {` Last bid: $ ${data.bids[0].bid}`}
                       <Form.Item label="amount">
                         <Input
                           type="number"
-                          placeholder="enter amount"
+                          placeholder="Your Bid ($)"
                           value={bid}
                           onChange={onChangeBid}
                         />
@@ -126,14 +137,15 @@ const BiddingPage = () => {
                           type="primary"
                           onClick={handleBid}
                           htmlType="submit"
+                          disabled={bid < minBid + 1}
                         >
-                          Bid
+                          Place Bid
                         </Button>
                       </Form.Item>
                     </Form>
                   );
-                }else{
-                  return <h4 className="closed">Bidding is closed</h4>
+                } else {
+                  return <h4 className="closed">Bidding is closed</h4>;
                 }
               } else {
                 return (
