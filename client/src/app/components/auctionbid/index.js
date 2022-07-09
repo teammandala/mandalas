@@ -89,10 +89,12 @@ const BiddingPage = () => {
               <h2>Starting Price: {data.startingBid}</h2>
             </div>
             <div className="col">
-              <h3>Started: {moment(data.bidStart).format("DD/MM/YYYY")}</h3>
+              <h3>
+                Started: {moment(data.bidStart).format("DD-MM-YYYY HH:MM")}
+              </h3>
             </div>
             <div className="col">
-              <h3>Ends At: {moment(data.bidEnd).format("DD/MM/YYYY")}</h3>
+              <h3>Ends At: {moment(data.bidEnd).format("DD-MM-YYYY HH:MM")}</h3>
             </div>
             <div className="row">
               <p>
@@ -123,7 +125,15 @@ const BiddingPage = () => {
                   return (
                     <Form>
                       <Timer endTime={data.bidEnd} update={update} />
-                      {` Last bid: $ ${data.bids[0].bid}`}
+                      {() => {
+                        if (data.bids[0].bid) {
+                          return <>{` Last bid: $ ${data.bids[0].bid}`}</>;
+                        } else {
+                          return (
+                            <>{` Bid Starting Price: $ ${data.startingBid}`}</>
+                          );
+                        }
+                      }}
                       <Form.Item label="amount">
                         <Input
                           type="number"
