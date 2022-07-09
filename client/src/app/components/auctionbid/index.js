@@ -32,7 +32,6 @@ const BiddingPage = () => {
         setData(data);
         setSeller(data.seller.username);
         setBidData(data.bids.sort().reverse());
-        console.log(data.bids);
       })
       .catch((error) => {
         console.log(error);
