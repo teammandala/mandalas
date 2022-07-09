@@ -16,7 +16,6 @@ const Completedauctions = () => {
     setId(items._id);
 
     setBidData(items.bids.sort().reverse());
-    console.log(bidData);
     setIsWinnerModalVisible(true);
   };
 
