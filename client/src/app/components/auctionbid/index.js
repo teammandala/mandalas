@@ -182,6 +182,8 @@ const BiddingPage = () => {
                         {bidData.length > 0 ? (
                           <p>
                             {`Auction Winner: ${data.bids[0].bidder.username}`}
+                            <br />
+                            <br />
                             {`Winning Bid: ${data.bids[0].bid}`}
                           </p>
                         ) : (
