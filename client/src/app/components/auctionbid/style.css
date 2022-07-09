@@ -15,11 +15,11 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634),
     0 6px 20px 0 rgba(166, 103, 103, 0.424);
     overflow: hidden;
-    margin: 0 auto;
+    margin: 10px auto;
     border-radius: 12px;
     border-style: groove;
     border-color: rgb(0, 0, 0);
-    border-width: 2.5px;
+    border-width: .5px;
     background: rgb(131,172,181);
     background: linear-gradient(238deg, rgba(131,172,181,1) 47%, rgb(94, 146, 168) 47%);
 }
