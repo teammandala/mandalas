@@ -14,6 +14,7 @@ const BiddingPage = () => {
   const [bid, setBid] = useState("");
   const [currentUser, setCurrentUser] = useState(undefined);
   const id = useParams().id;
+  const [isUser, setIsUser] = useState(false);
 
   useEffect(() => {
     auction
@@ -31,6 +32,10 @@ const BiddingPage = () => {
 
     if (cuser) {
       setCurrentUser(cuser);
+    }
+    if (cuser){
+      setCurrentUser(cuser);
+      setIsUser(cuser);
     }
   }, []);
 
@@ -101,7 +106,11 @@ const BiddingPage = () => {
           </div>
 
           <div className="bid row">
-            <Form>
+
+            {(() =>{
+              if (isUser){
+                return(
+                  <Form>
               <Form.Item label="amount">
                 <Input
                   type="number"
@@ -116,6 +125,23 @@ const BiddingPage = () => {
                 </Button>
               </Form.Item>
             </Form>
+                )
+              }else{
+                return(
+                  <div className="notlogined row">
+                    <h4>You are not logged in!!!
+                    Please login to bid</h4>
+                    <Button type="primary" href="/login"
+                    block>
+                      Login
+                    </Button>
+
+                  </div>
+
+            )
+              }
+            })()}
+            
           </div>
         </div>
         <div className="Scroll row">
