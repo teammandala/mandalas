@@ -9,8 +9,8 @@ const Section = () => {
        <Common
         name="About"
         imgsrc={web}
-        visit="/contact"
-        btname="Contact Us"
+        visit="/about"
+        btname="About Us"
       />
     </>
   )
