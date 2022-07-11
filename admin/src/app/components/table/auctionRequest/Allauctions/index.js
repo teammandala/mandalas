@@ -103,6 +103,7 @@ const AuctionRequestTable = () => {
             <th>seller</th>
             <th>startingBid</th>
             <th>status</th>
+            <th>User Contact</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -128,6 +129,7 @@ const AuctionRequestTable = () => {
                   <td>{items.seller}</td>
                   <td>{items.startingBid}</td>
                   <td>{items.status}</td>
+                  <td>{items.usercontactstatus}</td>
                   <td>
                     <Button
                       type="primary"

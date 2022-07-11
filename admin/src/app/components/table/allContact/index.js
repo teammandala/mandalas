@@ -32,7 +32,7 @@ const AllContact = () => {
 
   const handleSolved = () => {
     setIsSolvedModalVisible(false);
-    const status = "resloved";
+    const status = "resolved";
     contact
       .contactStatus(id, status)
       .then((res) => {
