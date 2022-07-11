@@ -8,10 +8,11 @@ import moment from "moment";
 const Completedauctions = () => {
   const [data, setData] = useState([]);
 
+  const [bidData, setBidData] = useState([]);
+
   const [id, setId] = useState("");
   const [isWinnerModalVisible, setIsWinnerModalVisible] = useState(false);
 
-  const [bidData, setBidData] = useState([]);
   const showWinnerModal = (items) => {
     setId(items._id);
 
@@ -27,6 +28,7 @@ const Completedauctions = () => {
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
+        setBidData(data.bids);
       })
       .catch((error) => {
         console.log(error);
@@ -61,10 +63,12 @@ const Completedauctions = () => {
             <th>Ending Time</th>
             <th>starting Price</th>
             <th>Winner</th>
+            <th>Contact Status</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
-          {data.map((items, index) => {
+          {data?.map((items, index) => {
             if (items.status === "approved") {
               if (currentDate > new Date(items.bidEnd)) {
                 return (
@@ -88,31 +92,46 @@ const Completedauctions = () => {
                     </td>
                     <td>{items.startingBid}</td>
                     <td>
-                      {/* {items.bids.sort().reverse()[0].bidder.username}
-                      <br />
-                      {items.bids[0].bidder.email}
-                      <br />
-                      {items.bids[0].bidder.phone} */}
+                      {items.bids?.length > 0 ?(
+                          <a>Username: {items.bids.sort().reverse()[0].bidder.username}
+                          <br />
+                          <Button
+                            type="primary"
+                            htmlType="submit"
+                            onClick={() =>
+                              (window.location = `mailto:${items.bids[0].bidder.email}`)
+                            }
+                          >
+                            Click Send E-Mail: {items.bids[0].bidder.email}
+                          </Button>
+                          <br />
+                          Phone: {items.bids[0].bidder.phone}
+                          <br />
+                          Full Name: {items.bids[0].bidder.name}
+                          <br />
+                          Won By Rs: {items.bids[0].bid}</a>
+                        ):(
+                          <a>No Bids</a>
+                        )}
+                      
+                      
+                    </td>
+
+                    <td>{items.usercontactstatus}</td>
+                    <td>
                       <Button onClick={() => showWinnerModal(items)}>
-                        View Winner
+                        Contact
                       </Button>
                       <Modal
-                        title="Winner"
+                        title="Contact"
                         visible={isWinnerModalVisible}
                         onOk={handleCancel}
                         onCancel={handleCancel}
                       >
                         <p>
-                          Winner:
-                          {items.bids.sort().reverse()[0].bidder.username}
-                        </p>
-                        <p>
-                          Email:
-                          {items.bids[0].bidder.email}
-                        </p>
-                        <p>
-                          Phone:
-                          {items.bids[0].bidder.phone}
+                          Click Ok button if you have contacted the winner
+                          <br />
+                          This Process is not reversible
                         </p>
                       </Modal>
                     </td>
