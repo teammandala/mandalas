@@ -80,6 +80,7 @@ const Completedauctions = () => {
             <th>starting Price</th>
             <th>Winner</th>
             <th>Contact Status</th>
+            <th>Delivery Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -134,6 +135,7 @@ const Completedauctions = () => {
                     </td>
 
                     <td>{items.usercontactstatus}</td>
+                    <td>{items.deliverystatus}</td>
                     <td>
                       <Button onClick={() => showStatusModal(items)}>
                         Contact

@@ -81,7 +81,7 @@ const AuctionRequestTable = () => {
 
   
   return (
-    <><div class='text1'>Auction Requests </div>
+    <><div class='text1'>Auction</div>
       <Table
         responsive
         className="table_data"
@@ -104,6 +104,7 @@ const AuctionRequestTable = () => {
             <th>startingBid</th>
             <th>status</th>
             <th>User Contact</th>
+            <th>Delivery Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -130,6 +131,7 @@ const AuctionRequestTable = () => {
                   <td>{items.startingBid}</td>
                   <td>{items.status}</td>
                   <td>{items.usercontactstatus}</td>
+                  <td>{items.deliverystatus}</td>
                   <td>
                     <Button
                       type="primary"

@@ -117,7 +117,7 @@ const Home = () => {
                 <h4>Normal Users: {bidderCount}</h4>
                 <h4>Admin: {adminCount}</h4>
               </Card.Text>
-              <Button href="/user" variant="secondary">
+              <Button href="/user" variant="primary">
                 View
               </Button>
             </Card.Body>
@@ -140,7 +140,7 @@ const Home = () => {
                 <h4>Pending: {pendingKYCCount} Approved: {approvedKYCCount}</h4>
                 <h4>Rejected: {rejectedKYCCount}</h4>
               </Card.Text>
-              <Button href="/kycrequest" variant="secondary">
+              <Button href="/kycrequest" variant="primary">
                 Verify Them
               </Button>
             </Card.Body>
