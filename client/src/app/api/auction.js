@@ -58,6 +58,20 @@ const getMyBid = async (id) => {
   return await axios.get(API_URL + "getmybidding/" + id);
 };
 
+const auctionStatus = async (id, usercontactstatus) => {
+  // console.log(id, status);
+  return await axios.put(
+    API_URL + `usercontactstatus/` + id,
+    { usercontactstatus },
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+};
+
+
 export default {
   auctionRequest,
   getApprovedAuctionData,
@@ -65,4 +79,5 @@ export default {
   getAuctionBySeller,
   auctionDelete,
   getMyBid,
+  auctionStatus,
 };
