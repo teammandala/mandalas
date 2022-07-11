@@ -89,7 +89,8 @@ const auctionBySeller = async (req, res, next) => {
   try {
     let auctions = await Auction.find({ seller: req.params.id })
       .populate("seller", "name", User)
-      .populate("bids.bidder", "username email phone", User)
+      .populate("bids.bidder", "username email phone name", User)
+      .populate("")
       .then((currentauctionData) => {
         res.status(200).send({ currentauctionData });
       })
@@ -117,8 +118,8 @@ const deleteAuction = async (req, res, next) => {
 const listByBidder = async (req, res) => {
   try {
     let auctions = await Auction.find({ "bids.bidder": req.params.id })
-      .populate("seller", "username email phone", User)
-      .populate("bids.bidder", "username email phone", User)
+      .populate("seller", "username email phone name", User)
+      .populate("bids.bidder", "username email phone name", User)
       .then((currentauctionData) => {
         res.status(200).send({ currentauctionData });
       })
