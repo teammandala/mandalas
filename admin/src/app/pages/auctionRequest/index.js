@@ -4,6 +4,7 @@ import {Nav, Tab, Row, Col,} from'react-bootstrap'
 import ApprovedAuctionTable from "../../components/table/auctionRequest/approved";
 import PendingAuctionTable from "../../components/table/auctionRequest/pending";
 import RejectedAuctionTable from "../../components/table/auctionRequest/rejected";
+import CompletedAuction from "../../components/table/auctionRequest/completed";
 const AuctionRequest = () => {
   return (
     <><div  className='container-fluid'>
@@ -24,6 +25,9 @@ const AuctionRequest = () => {
               <Nav.Item>
                 <Nav.Link eventKey="fourth">Rejected Auctions</Nav.Link>
               </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="fifth">Completed Auctions</Nav.Link>
+              </Nav.Item>
             </Nav>
           </Col>
           <Col sm={10}>
@@ -39,6 +43,9 @@ const AuctionRequest = () => {
               </Tab.Pane>
               <Tab.Pane eventKey="fourth">
                 <RejectedAuctionTable/>
+              </Tab.Pane>
+              <Tab.Pane eventKey="fifth">
+                <CompletedAuction />
               </Tab.Pane>
             </Tab.Content>
             

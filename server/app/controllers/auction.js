@@ -84,6 +84,23 @@ const auctionStatus = async (req, res, next) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
+const usercontactStatus = async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    await Auction.findByIdAndUpdate(
+      id,
+      { $set: { usercontactstatus: req.body.usercontactstatus } },
+      { new: true }
+    ).then((auction) => {
+      res.status(201).send({
+        auction,
+        message: `Auction status changed to  ${req.body.usercontactstatus}`,
+      });
+    });
+  } catch (err) {
+    res.status(500).json({ message: "Something went wrong." });
+  }
+};
 
 const auctionBySeller = async (req, res, next) => {
   try {
@@ -141,4 +158,5 @@ module.exports = {
   auctionBySeller,
   deleteAuction,
   listByBidder,
+  usercontactStatus
 };

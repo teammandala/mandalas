@@ -63,9 +63,9 @@ router.use(
 );
 
 router.put("/api/auction/status/:id", auction.auctionStatus);
+router.put("/api/auction/usercontactstatus/:id", auction.usercontactStatus);
 
 router.put("/api/contact/status/:id", contact.contactStatus);
-
 router.get("/api/auction/getdata", auction.getAuctions);
 router.get("/api/auction/getdata/:id", auction.getCurrentAuction);
 router.get("/api/auction/getmyauction/:id", auction.auctionBySeller);

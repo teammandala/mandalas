@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
 import { Modal, Button } from "antd";
 import moment from "moment";
-import contact from "../../../api/contact";
+import contact from "../../../../api/contact";
 
-const AllContact = () => {
+const ResolvedContact = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [isSolvedModalVisible, setIsSolvedModalVisible] = useState(false);
@@ -32,7 +32,7 @@ const AllContact = () => {
 
   const handleSolved = () => {
     setIsSolvedModalVisible(false);
-    const status = "resloved";
+    const status = "resolved";
     contact
       .contactStatus(id, status)
       .then((res) => {
@@ -68,6 +68,7 @@ const AllContact = () => {
         </thead>
         <tbody>
           {data.map((items, index) => {
+            if(items.status === "resolved"){
             
             return (
               <>
@@ -110,6 +111,7 @@ const AllContact = () => {
                 </tr>
               </>
             );
+                    }
           })}
         </tbody>
       </Table>
@@ -117,4 +119,4 @@ const AllContact = () => {
   );
 };
 
-export default AllContact;
+export default ResolvedContact;

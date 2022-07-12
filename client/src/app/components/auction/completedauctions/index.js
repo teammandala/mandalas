@@ -7,17 +7,14 @@ import moment from "moment";
 
 const Completedauctions = () => {
   const [data, setData] = useState([]);
-
   const [bidData, setBidData] = useState([]);
 
   const [id, setId] = useState("");
-  const [isWinnerModalVisible, setIsWinnerModalVisible] = useState(false);
+  const [isStatusModalVisible, setIsStatusModalVisible] = useState(false);
 
-  const showWinnerModal = (items) => {
+  const showStatusModal = (items) => {
     setId(items._id);
-
-    setBidData(items.bids.sort().reverse());
-    setIsWinnerModalVisible(true);
+    setIsStatusModalVisible(true);
   };
 
   useEffect(() => {
@@ -37,8 +34,27 @@ const Completedauctions = () => {
   const currentDate = new Date();
 
   const handleCancel = () => {
-    setIsWinnerModalVisible(false);
-    setIsWinnerModalVisible(false);
+    setIsStatusModalVisible(false);
+  };
+
+  const handleStatus = () => {
+    setIsStatusModalVisible(false);
+    const usercontactstatus = "contacted";
+    auction
+      .auctionStatus(id, usercontactstatus)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
   };
 
   return (
@@ -64,6 +80,7 @@ const Completedauctions = () => {
             <th>starting Price</th>
             <th>Winner</th>
             <th>Contact Status</th>
+            <th>Delivery Status</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -118,14 +135,15 @@ const Completedauctions = () => {
                     </td>
 
                     <td>{items.usercontactstatus}</td>
+                    <td>{items.deliverystatus}</td>
                     <td>
-                      <Button onClick={() => showWinnerModal(items)}>
+                      <Button onClick={() => showStatusModal(items)}>
                         Contact
                       </Button>
                       <Modal
                         title="Contact"
-                        visible={isWinnerModalVisible}
-                        onOk={handleCancel}
+                        visible={isStatusModalVisible}
+                        onOk={handleStatus}
                         onCancel={handleCancel}
                       >
                         <p>

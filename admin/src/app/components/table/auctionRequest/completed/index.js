@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
-import auction from "../../../../api/auction";
-import "./style.css";
+import auction from '../../../../api/auction';
+// import "./style.css";
 import moment from "moment";
-const AuctionRequestTable = () => {
+const CompletedAuction = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
   const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
@@ -22,6 +22,7 @@ const AuctionRequestTable = () => {
         console.log(error);
       });
   }, []);
+  const currentDate = new Date();
   
   const showApproveModal = (items) => {
     setId(items._id);
@@ -70,7 +71,6 @@ const AuctionRequestTable = () => {
           window.alert(error.response.data.message);
         }
       });
-    // window.location.reload();
   };
 
   const handleCancel = () => {
@@ -81,7 +81,7 @@ const AuctionRequestTable = () => {
 
   
   return (
-    <><div class='text1'>Auction</div>
+    <><div class='text1'>Auction Requests </div>
       <Table
         responsive
         className="table_data"
@@ -101,9 +101,8 @@ const AuctionRequestTable = () => {
             <th>bidStart</th>
             <th>bidEnd</th>
             <th>seller</th>
-            <th>startingBid</th>
-            <th>status</th>
-            <th>User Contact</th>
+            <th>Winner</th>
+            <th>Winner Contact Status</th>
             <th>Delivery Status</th>
             <th>Action</th>
           </tr>
@@ -111,61 +110,42 @@ const AuctionRequestTable = () => {
 
         <tbody>
           {data.map((items, index) => {
-            return (
-              <>
-                <tr key={items._id}>
-                  <td>{items._id}</td>
-                  <td>{items.itemName}</td>
-                  <td>{items.description}</td>
-                  <td>
-                    <Image
-                      width={200}
-                      src={"http://localhost:8080/" + items.image}
-                    />
-                    {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
-                  </td>
-                  <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
-                  <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:MM:SS")}</td>
-                  <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:MM:SS")}</td>
-                  <td>{items.seller}</td>
-                  <td>{items.startingBid}</td>
-                  <td>{items.status}</td>
-                  <td>{items.usercontactstatus}</td>
-                  <td>{items.deliverystatus}</td>
-                  <td>
-                    <Button
-                      type="primary"
-                      onClick={() => showApproveModal(items)}
-                    >
-                      Approve
-                    </Button>
-                    <Modal
-                      title="Are You Sure!"
-                      visible={isApproveModalVisible}
-                      onOk={handleApprove}
-                      onCancel={handleCancel}
-                    >
-                      <p>Are you sure you want to approve this Auction </p>
-                    </Modal>
+            if(items.status === "approved"){
+              if (currentDate > new Date(items.bidEnd)) {
+                return (
+                    <>
+                      <tr key={items._id}>
+                        <td>{items._id}</td>
+                        <td>{items.itemName}</td>
+                        <td>{items.description}</td>
+                        <td>
+                          <Image
+                            width={200}
+                            src={"http://localhost:8080/" + items.image}
+                          />
+                          {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
+                        </td>
+                        <td>{moment(items.created).format("YYYY/MM/DD-HH:mm:ss")}</td>
+                        <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}</td>
+                        <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}</td>
+                        <td>{items.seller}</td>
+                        <td>Winner</td>
+                        <td>{items.usercontactstatus}</td>
+                        <td>{items.deliverystatus}</td>
+                        <td>
+                          button
+                        </td>
+                      </tr>
+                    </>
+                  );
+            }else{
+                return(
+                    <></>
+                )
 
-                    <Button
-                      type="danger"
-                      onClick={() => showRejectModal(items)}
-                    >
-                      Reject
-                    </Button>
-                    <Modal
-                      title="Are You Sure!"
-                      visible={isRejectModalVisible}
-                      onOk={handleReject}
-                      onCancel={handleCancel}
-                    >
-                      <p>Are you sure you want to Reject this Auction </p>
-                    </Modal>
-                  </td>
-                </tr>
-              </>
-            );
+            }
+            }
+            
           })}
         </tbody>
       </Table>
@@ -173,4 +153,4 @@ const AuctionRequestTable = () => {
   );
 };
 
-export default AuctionRequestTable;
+export default CompletedAuction;
