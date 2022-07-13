@@ -109,7 +109,7 @@ const CompletedAuction = () => {
         </thead>
 
         <tbody>
-          {data.map((items, index) => {
+          {data?.map((items, index) => {
             if(items.status === "approved"){
               if (currentDate > new Date(items.bidEnd)) {
                 return (
@@ -128,8 +128,30 @@ const CompletedAuction = () => {
                         <td>{moment(items.created).format("YYYY/MM/DD-HH:mm:ss")}</td>
                         <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}</td>
                         <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}</td>
-                        <td>{items.seller}</td>
-                        <td>Winner</td>
+                        <td>{items.seller.name}</td>
+                        <td>
+                        {items.bids?.length > 0 ? (
+                          <a>Username: {items.bids.sort().reverse()[0].bidder.username}
+                          <br />
+                          <Button
+                            type="primary"
+                            htmlType="submit"
+                            onClick={() =>
+                              (window.location = `mailto:${items.bids[0].bidder.email}`)
+                            }
+                          >
+                            Click Send E-Mail: {items.bids[0].bidder.email}
+                          </Button>
+                          <br />
+                          Phone: {items.bids[0].bidder.phone}
+                          <br />
+                          Full Name: {items.bids[0].bidder.name}
+                          <br />
+                          Won By Rs: {items.bids[0].bid}</a>
+                        ):(
+                          <a>No Bids</a>
+                        )} 
+                        </td>
                         <td>{items.usercontactstatus}</td>
                         <td>{items.deliverystatus}</td>
                         <td>
