@@ -1,0 +1,19 @@
+.bidsdata{
+    background-color: wheat;
+    padding: 20px;
+    box-shadow: slategray 0px 0px 10px;
+    margin-top: 15px;
+    background: rgb(131,175,181);
+background: radial-gradient(circle, rgba(131,175,181,0.6492179635526085) 25%, rgba(95,162,89,0.48115073666185226) 52%, rgba(40,194,157,0.6576213248971463) 78%);
+}
+.auctions{
+    font-size: 16px;
+    /* background:#b9d79f9c; */
+    border-radius: 10px;
+    border-style: groove;
+    border-color: rgb(255, 255, 255);
+    margin-top: 0.5em;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.634), 0 6px 20px 0 rgba(166, 103, 103, 0.424);
+    padding: 10px;
+
+}

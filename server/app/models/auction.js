@@ -48,8 +48,8 @@ const auctionSchema = new Schema({
 
   deliverystatus:{
     type: String,
-    default: "no actions  taken",
-    enum: ["packed", "shipped", "delivered", "received"],
+    default: "no actions taken",
+    enum: ["packed", "shipped", "delivered"],
   },
 
   startingBid: { type: Number, default: 0 },

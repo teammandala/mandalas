@@ -7,25 +7,27 @@ import moment from "moment";
 
 const Completedauctions = () => {
   const [data, setData] = useState([]);
-  const [bidData, setBidData] = useState([]);
 
   const [id, setId] = useState("");
   const [isStatusModalVisible, setIsStatusModalVisible] = useState(false);
+  const [isPackedModalVisible, setIsPackedModalVisible] = useState(false);
 
   const showStatusModal = (items) => {
     setId(items._id);
     setIsStatusModalVisible(true);
   };
+  const showPackedModal = (items) => {
+    setId(items._id);
+    setIsPackedModalVisible(true);
+  }
 
   useEffect(() => {
     const cuser = user.getCurrentUser();
-
     auction
       .getAuctionBySeller(cuser._id)
       .then((res) => {
         const data = res.data.currentauctionData;
         setData(data);
-        setBidData(data.bids);
       })
       .catch((error) => {
         console.log(error);
@@ -35,6 +37,7 @@ const Completedauctions = () => {
 
   const handleCancel = () => {
     setIsStatusModalVisible(false);
+    setIsPackedModalVisible(false);
   };
 
   const handleStatus = () => {
@@ -42,6 +45,26 @@ const Completedauctions = () => {
     const usercontactstatus = "contacted";
     auction
       .auctionStatus(id, usercontactstatus)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
+  };
+
+  const handlePacked = () => {
+    setIsPackedModalVisible(false);
+    const deliverystatus = "packed";
+    auction
+      .auctiondeliveryStatus(id, deliverystatus)
       .then((res) => {
         window.alert(res.data.message, window.location.reload());
       })
@@ -103,13 +126,13 @@ const Completedauctions = () => {
                     </td>
                     <td>
                       {moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}
-                    </td>{" "}
+                    </td>
                     <td>
                       {moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}
                     </td>
                     <td>{items.startingBid}</td>
                     <td>
-                      {items.bids?.length > 0 ?(
+                      {items.bids?.length > 0 ? (
                           <a>Username: {items.bids.sort().reverse()[0].bidder.username}
                           <br />
                           <Button
@@ -129,9 +152,7 @@ const Completedauctions = () => {
                           Won By Rs: {items.bids[0].bid}</a>
                         ):(
                           <a>No Bids</a>
-                        )}
-                      
-                      
+                        )}                                           
                     </td>
 
                     <td>{items.usercontactstatus}</td>
@@ -148,6 +169,23 @@ const Completedauctions = () => {
                       >
                         <p>
                           Click Ok button if you have contacted the winner
+                          <br />
+                          This Process is not reversible
+                        </p>
+                      </Modal>
+                      <Button onClick={() => showPackedModal(items)}
+                      type='danger'
+                      >
+                        Packed & shipped
+                      </Button>
+                      <Modal
+                        title="Packed & shipped"
+                        visible={isPackedModalVisible}
+                        onOk={handlePacked}
+                        onCancel={handleCancel}
+                      >
+                        <p>
+                          click ok if you have packed and shipped to mandala
                           <br />
                           This Process is not reversible
                         </p>

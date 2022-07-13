@@ -8,7 +8,6 @@ import { useParams } from "react-router-dom";
 import ProfileUpdateForm from "../../components/form/profileUpdate";
 import AvatarUpdate from "../../components/form/avatarUpdate";
 import Noaccess from "../noaccess";
-import UserbidsData from "../../components/userbidsdata";
 const Profilepage = () => {
   const [show, setShow] = useState(false);
 
@@ -79,7 +78,7 @@ const Profilepage = () => {
                               title="My Bids"
                             >
                               <div className="container-fluid">
-                                <UserbidsData/>
+                              <Button href={`/profile/bids/${currentUser.username}/${currentUser._id}`}> View</Button>
                               </div>
                             </Tab>
                           </Tabs>

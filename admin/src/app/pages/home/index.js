@@ -193,7 +193,7 @@ const Home = () => {
           <Col lg className="container-fluid">
           <Card className="Card5">
             <Card.Body>
-              <Card.Title>Auction Request</Card.Title>
+              <Card.Title>Auctions</Card.Title>
               <Card.Text>
                 <h1>Total: {auctionCount}</h1>
               </Card.Text>

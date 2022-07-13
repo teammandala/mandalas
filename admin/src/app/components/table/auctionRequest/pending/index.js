@@ -124,7 +124,7 @@ const PendingAuctionTable = () => {
                         <td>{moment(items.created).format("YYYY/MM/DD-HH:MM:SS")}</td>
                         <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:MM:SS")}</td>
                         <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:MM:SS")}</td>
-                        <td>{items.seller}</td>
+                        <td>{items.seller.name}</td>
                         <td>{items.startingBid}</td>
                         <td>{items.status}</td>
                         <td>
