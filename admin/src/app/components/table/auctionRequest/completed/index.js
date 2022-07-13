@@ -8,8 +8,10 @@ import moment from "moment";
 const CompletedAuction = () => {
   const [data, setData] = useState([]);
   const [id, setId] = useState("");
-  const [isApproveModalVisible, setIsApproveModalVisible] = useState(false);
-  const [isRejectModalVisible, setIsRejectModalVisible] = useState(false);
+  const [isPackedModalVisible, setIsPackedModalVisible] = useState(false);
+  const [isShippedModalVisible, setIsShippedModalVisible] = useState(false);
+  const [isDeliveredModalVisible, setIsDeliveredModalVisible] = useState(false);
+  const [isCancelledModalVisible, setIsCancelledModalVisible] = useState(false);
 
   useEffect(() => {
     auction
@@ -24,59 +26,119 @@ const CompletedAuction = () => {
   }, []);
   const currentDate = new Date();
   
-  const showApproveModal = (items) => {
+  const showPackedModal = (items) => {
     setId(items._id);
-    setIsApproveModalVisible(true);
-  };
+    setIsPackedModalVisible(true);
+  }
 
-  const handleApprove = () => {
-    // console.log(id);
-    setIsApproveModalVisible(false);
-    const status = "approved";
-    auction
-      .auctionStatus(id, status)
-      .then((res) => {
-        window.alert(res.data.message, window.location.reload());
-      })
-      .catch((error) => {
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          window.alert(error.response.data.message);
-        }
-      });
-  };
-
-  const showRejectModal = (items) => {
+  const showShippedModal = (items) => {
     setId(items._id);
-    setIsRejectModalVisible(true);
-  };
+    setIsShippedModalVisible(true);
+  }
 
-  const handleReject = () => {
-    setIsRejectModalVisible(false);
-    const status = "rejected";
-    auction
-      .auctionStatus(id, status)
-      .then((res) => {
-        window.alert(res.data.message, window.location.reload());
-      })
-      .catch((error) => {
-        if (
-          error.response &&
-          error.response.status >= 400 &&
-          error.response.status <= 500
-        ) {
-          window.alert(error.response.data.message);
-        }
-      });
-  };
+  const showDeliveredModal = (items) => {
+    setId(items._id);
+    setIsDeliveredModalVisible(true);
+  }
+
+  const showCancelledModal = (items) => {
+    setId(items._id);
+    setIsCancelledModalVisible(true);
+  }
+
+
+
+
+ 
+
+  
 
   const handleCancel = () => {
-    setIsApproveModalVisible(false);
-    setIsRejectModalVisible(false);
+    setIsPackedModalVisible(false);
+    setIsShippedModalVisible(false);
+    setIsDeliveredModalVisible(false);
+    setIsCancelledModalVisible(false);
   };
+
+  const handlePacked = () => {
+    setIsPackedModalVisible(false);
+    const deliverystatus = "packed";
+    auction
+      .auctiondeliveryStatus(id, deliverystatus)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+    // window.location.reload();
+  };
+
+  const handleShipped = () => {
+    setIsShippedModalVisible(false);
+    const deliverystatus = "shipped";
+    auction
+      .auctiondeliveryStatus(id, deliverystatus)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+
+    };
+
+  const handleDelivered = () => {
+    setIsDeliveredModalVisible(false);
+    const deliverystatus = "delivered";
+    auction
+
+      .auctiondeliveryStatus(id, deliverystatus)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+  };
+
+  const handleCancelled = () => {
+    setIsCancelledModalVisible(false);
+    const status = "cancelled";
+    auction
+      .auctiondeliveryStatus(id, status)
+      .then((res) => {
+        window.alert(res.data.message, window.location.reload());
+      })
+      .catch((error) => {
+        if (
+          error.response &&
+          error.response.status >= 400 &&
+          error.response.status <= 500
+        ) {
+          window.alert(error.response.data.message);
+        }
+      });
+  }
+
   
 
   
@@ -128,7 +190,16 @@ const CompletedAuction = () => {
                         <td>{moment(items.created).format("YYYY/MM/DD-HH:mm:ss")}</td>
                         <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}</td>
                         <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}</td>
-                        <td>{items.seller.name}</td>
+                        <td>Name: {items.seller.name} <br /> <Button
+                            type="primary"
+                            htmlType="submit"
+                            onClick={() =>
+                              (window.location = `mailto:${items.seller.email}`)
+                            }
+                          >
+                            Click Send E-Mail: {items.seller.email}
+                          </Button> <br /> Phone: {items.seller.phone}
+                        </td>
                         <td>
                         {items.bids?.length > 0 ? (
                           <a>Username: {items.bids.sort().reverse()[0].bidder.username}
@@ -155,7 +226,70 @@ const CompletedAuction = () => {
                         <td>{items.usercontactstatus}</td>
                         <td>{items.deliverystatus}</td>
                         <td>
-                          button
+                        <Button onClick={() => showPackedModal(items)}
+                      type='secndary'
+                      >
+                        Packed & shipped
+                      </Button>
+                      <Modal
+                        title="Packed & shipped"
+                        visible={isPackedModalVisible}
+                        onOk={handlePacked}
+                        onCancel={handleCancel}
+                      >
+                        <p>
+                          click ok if you have packed 
+                        </p>
+                      </Modal>
+
+                      <Button onClick={() => showShippedModal(items)}
+                      type='primary'
+                      >
+                        Shipped
+                      </Button>
+                      <Modal
+                        title="Shipped"
+                        visible={isShippedModalVisible}
+                        onOk={handleShipped}
+                        onCancel={handleCancel}
+                      >
+                        <p>
+                          click ok if you have shipped
+                        </p>
+                      </Modal>
+
+                      <Button onClick={() => showDeliveredModal(items)}
+                      type='danger'
+                      >
+                        Delivered
+                      </Button>
+                      <Modal
+                        title="Delivered"
+                        visible={isDeliveredModalVisible}
+                        onOk={handleDelivered}
+                        onCancel={handleCancel}
+                      >
+                        <p>
+                          click ok if you have delivered
+                        </p>
+                      </Modal>
+                          
+                          <Button onClick={() => showCancelledModal(items)}
+                      type='ghost'
+                      >
+                        Cancelled
+                      </Button>
+                      <Modal
+                        title="Cancelled"
+                        visible={isCancelledModalVisible}
+                        onOk={handleCancelled}
+                        onCancel={handleCancel}
+                      >
+                        <p>
+                          click ok if you have cancelled
+                        </p>
+                      </Modal>
+
                         </td>
                       </tr>
                     </>

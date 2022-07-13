@@ -222,8 +222,7 @@ const UserbidsData = () => {
                                           <a>
                                             You won this auction <br /> by Rs:
                                             {items.bids[0].bid} <br />
-                                            Delivery status:
-                                            {items.deliverystatus}
+                                            Delivery status: {items.deliverystatus}
                                           </a>
                                         ) : (
                                           <a>you Didn't won this auction</a>
