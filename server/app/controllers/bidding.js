@@ -10,7 +10,7 @@ const userBid = async (req, res, next) => {
     };
 
     const auction = await Auction.findById(req.params.id);
-    auction.bids.push(bid);
+    auction.bids.splice(0, 0, bid);
     await auction.save().then((bid) => {
       res.status(201).send({
         bid,

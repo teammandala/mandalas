@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 import { Table } from "react-bootstrap";
 import { Image, Button, Modal } from "antd";
-import auction from '../../../../api/auction';
+import auction from "../../../../api/auction";
 // import "./style.css";
 import moment from "moment";
 const CompletedAuction = () => {
@@ -25,33 +25,26 @@ const CompletedAuction = () => {
       });
   }, []);
   const currentDate = new Date();
-  
+
   const showPackedModal = (items) => {
     setId(items._id);
     setIsPackedModalVisible(true);
-  }
+  };
 
   const showShippedModal = (items) => {
     setId(items._id);
     setIsShippedModalVisible(true);
-  }
+  };
 
   const showDeliveredModal = (items) => {
     setId(items._id);
     setIsDeliveredModalVisible(true);
-  }
+  };
 
   const showCancelledModal = (items) => {
     setId(items._id);
     setIsCancelledModalVisible(true);
-  }
-
-
-
-
- 
-
-  
+  };
 
   const handleCancel = () => {
     setIsPackedModalVisible(false);
@@ -97,8 +90,7 @@ const CompletedAuction = () => {
           window.alert(error.response.data.message);
         }
       });
-
-    };
+  };
 
   const handleDelivered = () => {
     setIsDeliveredModalVisible(false);
@@ -137,13 +129,11 @@ const CompletedAuction = () => {
           window.alert(error.response.data.message);
         }
       });
-  }
+  };
 
-  
-
-  
   return (
-    <><div class='text1'>Auction Requests </div>
+    <>
+      <div class="text1">Auction Requests </div>
       <Table
         responsive
         className="table_data"
@@ -172,136 +162,139 @@ const CompletedAuction = () => {
 
         <tbody>
           {data?.map((items, index) => {
-            if(items.status === "approved"){
+            if (items.status === "approved") {
               if (currentDate > new Date(items.bidEnd)) {
                 return (
-                    <>
-                      <tr key={items._id}>
-                        <td>{items._id}</td>
-                        <td>{items.itemName}</td>
-                        <td>{items.description}</td>
-                        <td>
-                          <Image
-                            width={200}
-                            src={"http://localhost:8080/" + items.image}
-                          />
-                          {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
-                        </td>
-                        <td>{moment(items.created).format("YYYY/MM/DD-HH:mm:ss")}</td>
-                        <td>{moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}</td>
-                        <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}</td>
-                        <td>Name: {items.seller.name} <br /> <Button
-                            type="primary"
-                            htmlType="submit"
-                            onClick={() =>
-                              (window.location = `mailto:${items.seller.email}`)
-                            }
-                          >
-                            Click Send E-Mail: {items.seller.email}
-                          </Button> <br /> Phone: {items.seller.phone}
-                        </td>
-                        <td>
+                  <>
+                    <tr key={items._id}>
+                      <td>{items._id}</td>
+                      <td>{items.itemName}</td>
+                      <td>{items.description}</td>
+                      <td>
+                        <Image
+                          width={200}
+                          src={"http://localhost:8080/" + items.image}
+                        />
+                        {/* <img src={"http://localhost:8080/" + items.id_image} alt="" /> */}
+                      </td>
+                      <td>
+                        {moment(items.created).format("YYYY/MM/DD-HH:mm:ss")}
+                      </td>
+                      <td>
+                        {moment(items.bidStart).format("YYYY/MM/DD-HH:mm:ss")}
+                      </td>
+                      <td>
+                        {moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}
+                      </td>
+                      <td>
+                        Name: {items.seller.name} <br />{" "}
+                        <Button
+                          type="primary"
+                          htmlType="submit"
+                          onClick={() =>
+                            (window.location = `mailto:${items.seller.email}`)
+                          }
+                        >
+                          Click Send E-Mail: {items.seller.email}
+                        </Button>{" "}
+                        <br /> Phone: {items.seller.phone}
+                      </td>
+                      <td>
                         {items.bids?.length > 0 ? (
-                          <a>Username: {items.bids.sort().reverse()[0].bidder.username}
-                          <br />
-                          <Button
-                            type="primary"
-                            htmlType="submit"
-                            onClick={() =>
-                              (window.location = `mailto:${items.bids[0].bidder.email}`)
-                            }
-                          >
-                            Click Send E-Mail: {items.bids[0].bidder.email}
-                          </Button>
-                          <br />
-                          Phone: {items.bids[0].bidder.phone}
-                          <br />
-                          Full Name: {items.bids[0].bidder.name}
-                          <br />
-                          Won By Rs: {items.bids[0].bid}</a>
-                        ):(
+                          <a>
+                            Username:{" "}
+                            {items.bids.sort().reverse()[0].bidder.username}
+                            <br />
+                            <Button
+                              type="primary"
+                              htmlType="submit"
+                              onClick={() =>
+                                (window.location = `mailto:${items.bids[0].bidder.email}`)
+                              }
+                            >
+                              Click Send E-Mail: {items.bids[0].bidder.email}
+                            </Button>
+                            <br />
+                            Phone: {items.bids[0].bidder.phone}
+                            <br />
+                            Full Name: {items.bids[0].bidder.name}
+                            <br />
+                            Won By Rs: {items.bids[0].bid}
+                          </a>
+                        ) : (
                           <a>No Bids</a>
-                        )} 
-                        </td>
-                        <td>{items.usercontactstatus}</td>
-                        <td>{items.deliverystatus}</td>
-                        <td>
-                        <Button onClick={() => showPackedModal(items)}
-                      type='secndary'
-                      >
-                        Packed & shipped
-                      </Button>
-                      <Modal
-                        title="Packed & shipped"
-                        visible={isPackedModalVisible}
-                        onOk={handlePacked}
-                        onCancel={handleCancel}
-                      >
-                        <p>
-                          click ok if you have packed 
-                        </p>
-                      </Modal>
+                        )}
+                      </td>
+                      <td>{items.usercontactstatus}</td>
+                      <td>{items.deliverystatus}</td>
+                      <td>
+                        <Button
+                          onClick={() => showPackedModal(items)}
+                          type="secndary"
+                        >
+                          Packed & shipped
+                        </Button>
+                        <Modal
+                          title="Packed & shipped"
+                          visible={isPackedModalVisible}
+                          onOk={handlePacked}
+                          onCancel={handleCancel}
+                        >
+                          <p>click ok if you have packed</p>
+                        </Modal>
 
-                      <Button onClick={() => showShippedModal(items)}
-                      type='primary'
-                      >
-                        Shipped
-                      </Button>
-                      <Modal
-                        title="Shipped"
-                        visible={isShippedModalVisible}
-                        onOk={handleShipped}
-                        onCancel={handleCancel}
-                      >
-                        <p>
-                          click ok if you have shipped
-                        </p>
-                      </Modal>
+                        <Button
+                          onClick={() => showShippedModal(items)}
+                          type="primary"
+                        >
+                          Shipped
+                        </Button>
+                        <Modal
+                          title="Shipped"
+                          visible={isShippedModalVisible}
+                          onOk={handleShipped}
+                          onCancel={handleCancel}
+                        >
+                          <p>click ok if you have shipped</p>
+                        </Modal>
 
-                      <Button onClick={() => showDeliveredModal(items)}
-                      type='danger'
-                      >
-                        Delivered
-                      </Button>
-                      <Modal
-                        title="Delivered"
-                        visible={isDeliveredModalVisible}
-                        onOk={handleDelivered}
-                        onCancel={handleCancel}
-                      >
-                        <p>
-                          click ok if you have delivered
-                        </p>
-                      </Modal>
-                          
-                          <Button onClick={() => showCancelledModal(items)}
-                      type='ghost'
-                      >
-                        Cancelled
-                      </Button>
-                      <Modal
-                        title="Cancelled"
-                        visible={isCancelledModalVisible}
-                        onOk={handleCancelled}
-                        onCancel={handleCancel}
-                      >
-                        <p>
-                          click ok if you have cancelled
-                        </p>
-                      </Modal>
+                        <Button
+                          onClick={() => showDeliveredModal(items)}
+                          type="danger"
+                        >
+                          Delivered
+                        </Button>
+                        <Modal
+                          title="Delivered"
+                          visible={isDeliveredModalVisible}
+                          onOk={handleDelivered}
+                          onCancel={handleCancel}
+                        >
+                          <p>click ok if you have delivered</p>
+                        </Modal>
 
-                        </td>
-                      </tr>
-                    </>
-                  );
-            }else{
-                return(
-                    <></>
-                )
-
+                        <Button
+                          onClick={() => showCancelledModal(items)}
+                          type="ghost"
+                        >
+                          Cancelled
+                        </Button>
+                        <Modal
+                          title="Cancelled"
+                          visible={isCancelledModalVisible}
+                          onOk={handleCancelled}
+                          onCancel={handleCancel}
+                        >
+                          <p>click ok if you have cancelled</p>
+                        </Modal>
+                      </td>
+                    </tr>
+                  </>
+                );
+              } else {
+                return <></>;
+              }
             }
-            }
-            
           })}
         </tbody>
       </Table>
