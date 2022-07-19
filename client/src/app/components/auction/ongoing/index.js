@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import user from "../../../api/user";
 import auction from "../../../api/auction";
 import { Image, Modal } from "antd";
-import { Table } from "react-bootstrap";
+import { Table, Button } from "react-bootstrap";
 import moment from "moment";
 
 const Ongoing = () => {
@@ -48,6 +48,7 @@ const Ongoing = () => {
             <th>Starting Time</th>
             <th>Ending Time</th>
             <th>starting Price</th>
+            <th>Action</th>
             
           </tr>
         </thead>
@@ -74,6 +75,13 @@ const Ongoing = () => {
                           </td>{" "}
                           <td>{moment(items.bidEnd).format("YYYY/MM/DD-HH:mm:ss")}</td>
                           <td>{items.startingBid}</td>
+                          <td><Button
+                              type="primary"
+                              block
+                              href={`/auctionandbid/${items._id}`}
+                            >
+                              Watch Live
+                            </Button></td>
                         </tr>
                       );
                 }

@@ -60,7 +60,9 @@
 }
 .header-img1{
   box-shadow: #484848 0px 0px 10px;
-  
+  border-radius: 1em;
+  background: rgb(209,121,1);
+  background: radial-gradient(circle, rgba(209,121,1,1) 44%, rgba(209,187,1,1) 50%, rgba(182,150,36,1) 50%, rgba(42,39,33,1) 56%);
 }
 .teams{
   font-size: 16px;

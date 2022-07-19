@@ -132,6 +132,7 @@ const Completedauctions = () => {
                     </td>
                     <td>{items.startingBid}</td>
                     <td>
+                      
                       {items.bids?.length > 0 ? (
                           <a>Username: {items.bids.sort().reverse()[0].bidder.username}
                           <br />
@@ -149,10 +150,21 @@ const Completedauctions = () => {
                           <br />
                           Full Name: {items.bids[0].bidder.name}
                           <br />
-                          Won By Rs: {items.bids[0].bid}</a>
+                          Won By Rs: {items.bids[0].bid}
+                          <br />
+                          <Button
+                              type="secondary"
+                              block
+                              href={`/auctionandbid/${items._id}`}
+                            >
+                              View History
+                            </Button>  
+                          </a>
+                          
                         ):(
                           <a>No Bids</a>
-                        )}                                           
+                        )}  
+                                                               
                     </td>
 
                     <td>{items.usercontactstatus}</td>
@@ -190,6 +202,7 @@ const Completedauctions = () => {
                           This Process is not reversible
                         </p>
                       </Modal>
+                      
                     </td>
                   </tr>
                 );
