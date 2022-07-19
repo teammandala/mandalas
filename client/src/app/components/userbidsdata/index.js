@@ -181,6 +181,7 @@ const UserbidsData = () => {
                     <Row className="justify-content-center">
                       {data.map((items) => {
                         if (currentDate > new Date(items.bidEnd)) {
+                          if (items.bids[0].bidder.username === currentUser.username) {
                           return (
                             <div className="site-card wrapper">
                               <Container>
@@ -213,22 +214,10 @@ const UserbidsData = () => {
                                         {moment(items.bidEnd).format(
                                           "DD/MM/YYYY:HH:mm:ss"
                                         )}
+                                        <br />
+                                        <p>You won this auction by <br />by Rs: {items.bids[0].bid} </p>
+                                        <p>Delivery Status: <strong>{items.deliverystatus}</strong></p>
                                       </p>
-
-                                      {
-                                        (items.bids
-                                          .sort()
-                                          .reverse()[0].bidder.username = currentUser.username ? (
-                                          <a>
-                                            You won this auction <br /> by Rs:
-                                            {items.bids[0].bid} <br />
-                                            Delivery status:{" "}
-                                            {items.deliverystatus}
-                                          </a>
-                                        ) : (
-                                          <a>you Didn't won this auction</a>
-                                        ))
-                                      }
                                       <Button
                                         type="primary"
                                         block
@@ -242,6 +231,8 @@ const UserbidsData = () => {
                               </Container>
                             </div>
                           );
+
+                        }
                         }
                       })}
                     </Row>
